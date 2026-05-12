@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog — No Half Measures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN SYSTEM — shared with index.html
+  ============================================================ */
+  :root{
+    --red:#da3123;
+    --red-dim:#a8261b;
+    --bg:#0a0a0a;
+    --ink:#f5f4f1;
+    --ink-dim:#8a8784;
+    --ink-faint:#3a3a38;
+    --frame:3px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{font-feature-settings:"ss01";line-height:1.4}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* type */
+  .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.01em;line-height:0.88;text-transform:uppercase}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.04em;text-transform:uppercase;font-size:11px;color:var(--ink-dim)}
+  .mono.red{color:var(--red)}
+
+  /* lockups */
+  .framed-wordmark{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:var(--frame) solid currentColor;
+    padding:0.42em 0.55em 0.32em;
+    font-family:'Archivo Black',sans-serif;font-weight:900;
+    letter-spacing:0.005em;line-height:1;text-transform:uppercase;
+    font-size:42px;color:var(--ink);
+  }
+  .lettermark{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:var(--frame) solid currentColor;
+    padding:0.18em 0.32em 0.12em;
+    font-family:'Archivo Black',sans-serif;font-weight:900;
+    letter-spacing:0.005em;line-height:1;text-transform:uppercase;
+    font-size:42px;color:var(--ink);
+  }
+
+  /* nav */
+  nav.top{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    mix-blend-mode:difference;
+    color:#fff;
+  }
+  nav.top .lettermark{font-size:18px;color:#fff;border-color:#fff;border-width:2px;padding:6px 10px 4px}
+  nav.top ul{display:flex;gap:28px;list-style:none}
+  nav.top ul a{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.12em}
+  nav.top .right{display:flex;align-items:center;gap:18px}
+  nav.top .donate{border:2px solid #fff;padding:8px 14px 6px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:11px;letter-spacing:0.1em}
+
+  /* ticker */
+  .ticker{
+    position:fixed;bottom:0;left:0;right:0;z-index:55;
+    background:var(--red);color:#0a0a0a;
+    border-top:2px solid #0a0a0a;
+    overflow:hidden;
+    height:36px;display:flex;align-items:center;
+  }
+  .ticker-track{display:flex;white-space:nowrap;animation:scroll 38s linear infinite;gap:48px;padding-left:48px}
+  .ticker-track span{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:0.08em;display:inline-flex;align-items:center;gap:48px}
+  .ticker-track span::after{content:"/";color:#0a0a0a;opacity:0.6;font-weight:900;margin-left:48px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* countdown */
+  .countdown{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  }
+  .cd-cell{
+    position:relative;
+    border:2px solid #1a1a1a;
+    background:linear-gradient(180deg,#0e0e0e,#070707);
+    padding:32px 12px 18px;text-align:center;
+    overflow:hidden;
+  }
+  .cd-cell::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--red),transparent);
+    opacity:0.5;
+  }
+  .cd-num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(48px,8vw,120px);
+    line-height:0.88;letter-spacing:-0.03em;
+    color:var(--ink);font-variant-numeric:tabular-nums;
+    display:block;
+  }
+  .cd-label{margin-top:12px;font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:0.24em;font-size:10px;color:var(--ink-dim);font-weight:600}
+  .cd-corner{position:absolute;width:10px;height:10px;border:2px solid var(--red)}
+  .cd-corner.tl{top:8px;left:8px;border-right:none;border-bottom:none}
+  .cd-corner.tr{top:8px;right:8px;border-left:none;border-bottom:none}
+  .cd-corner.bl{bottom:8px;left:8px;border-right:none;border-top:none}
+  .cd-corner.br{bottom:8px;right:8px;border-left:none;border-top:none}
+
+  /* eyebrow bar */
+  .eyebrow-row{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:32px}
+  .eyebrow-row .bar{width:48px;height:2px;background:var(--red)}
+
+  /* chip */
+  .chip{border:1px solid #2a2a28;padding:8px 12px 6px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-dim)}
+  .chip.red{border-color:var(--red);color:var(--red)}
+
+  /* register button */
+  .register{
+    display:inline-flex;align-items:center;justify-content:center;gap:14px;
+    background:var(--red);color:#0a0a0a;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:18px;letter-spacing:0.04em;
+    padding:22px 28px 18px;
+    transition:transform .15s ease;
+  }
+  .register:hover{transform:translateY(-2px)}
+  .register .arrow{font-size:22px;line-height:1}
+
+  /* event detail list */
+  .event-dl dt{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);margin-bottom:6px}
+  .event-dl dd{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:26px;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em}
+  .event-dl dd small{display:block;font-family:'Archivo',sans-serif;text-transform:none;font-weight:500;font-size:14px;color:var(--ink-dim);margin-top:4px;letter-spacing:0;line-height:1.4}
+
+  /* footer */
+  footer{padding:80px 28px;border-top:1px solid #1f1f1d;position:relative}
+  footer .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  footer .links{display:flex;gap:20px;flex-wrap:wrap}
+  footer .links a{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.12em;color:var(--ink-dim)}
+  footer .links a:hover{color:var(--ink)}
+  footer .big{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(72px,16vw,260px);line-height:0.85;letter-spacing:-0.03em;
+    margin-top:64px;
+    -webkit-text-stroke:1px var(--ink);color:transparent;
+  }
+
+  /* ============================================================
+     PAGE-SPECIFIC STYLES
+  ============================================================ */
+
+  /* page header */
+  .page-header{
+    position:relative;
+    padding:160px 28px 80px;
+    overflow:hidden;
+  }
+  .page-header-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);
+    background-size:80px 80px;pointer-events:none;
+    mask-image:radial-gradient(ellipse at 20% 60%,#000 20%,transparent 68%);
+  }
+  .page-header .container{position:relative;max-width:1240px;margin:0 auto}
+  .source-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid #2a2a28;padding:6px 14px 5px;margin-bottom:24px;
+  }
+  .source-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+  .page-title{font-size:clamp(96px,18vw,260px);letter-spacing:-0.03em}
+  .page-sub{max-width:520px;margin-top:24px;color:var(--ink-dim);font-size:15px;line-height:1.55}
+
+  /* blog wrapper */
+  .blog-wrap{padding:0 28px 140px;max-width:1240px;margin:0 auto}
+
+  /* listing header */
+  .listing-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+    padding:20px 0;
+    border-top:1px solid #1a1a1a;
+    border-bottom:1px solid #1a1a1a;
+    margin-bottom:40px;
+  }
+  .listing-label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.01em}
+  .listing-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em;margin-right:12px}
+
+  /* post card */
+  .post-card{
+    position:relative;
+    border:1px solid #1a1a1a;
+    background:linear-gradient(180deg,#0d0d0d,#080808);
+    overflow:hidden;
+  }
+  .post-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--red) 30%,var(--red) 70%,transparent);
+  }
+
+  /* post card header bar */
+  .post-header{
+    padding:36px 48px 28px;
+    border-bottom:1px solid #1a1a1a;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .post-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em;margin-bottom:12px}
+  .post-title{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(40px,6vw,84px);letter-spacing:-0.025em;line-height:0.88;
+  }
+  .post-title .accent{color:var(--red)}
+  .post-date{
+    flex-shrink:0;align-self:flex-start;
+    border:1px solid #2a2a28;padding:10px 16px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);
+    white-space:nowrap;
+  }
+
+  /* post body */
+  .post-body{padding:48px}
+  .post-divider{height:1px;background:linear-gradient(90deg,transparent,#2a2a28,transparent);margin:40px 0}
+
+  /* two-col event layout inside post */
+  .post-event{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;
+    position:relative;
+    border:1px solid #1f1f1d;
+    background:linear-gradient(180deg,#0a0a0a,#060606);
+    padding:40px;
+  }
+  .post-event::before,.post-event::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--red)}
+  .post-event::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+  .post-event::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+  .event-right{display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+  .event-includes{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+  /* tagline block */
+  .tagline-block{
+    text-align:center;padding:32px 0;
+    border-top:1px solid #1a1a1a;
+    margin-top:40px;
+  }
+  .tagline-block .site-link{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;
+    letter-spacing:0.12em;color:var(--red);margin-bottom:14px;
+    border-bottom:1px solid var(--red-dim);padding-bottom:2px;
+  }
+  .tagline-block .main-line{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(24px,4.5vw,56px);letter-spacing:-0.02em;line-height:0.9;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width:880px){
+    nav.top ul{display:none}
+    nav.top{padding:14px 20px}
+
+    .page-header{padding:120px 20px 60px}
+    .blog-wrap{padding:0 20px 100px}
+    .listing-head{flex-direction:column;gap:10px}
+
+    .countdown{grid-template-columns:repeat(2,1fr)}
+
+    .post-header{padding:24px 24px 20px;flex-direction:column;gap:12px}
+    .post-body{padding:24px}
+
+    .post-event{grid-template-columns:1fr;padding:28px}
+
+    footer{padding:60px 20px}
+    footer .big{font-size:clamp(36px,10vw,260px);word-break:break-word}
+  }
+  @media (max-width:480px){
+    .page-header{padding:96px 16px 48px}
+    .blog-wrap{padding:0 16px 80px}
+    .cd-cell{padding:18px 6px 12px}
+    .register{width:100%;justify-content:center}
+    .post-event{padding:20px 16px}
+    footer{padding:48px 16px}
+    footer .links{gap:14px}
+    footer .big{font-size:clamp(30px,8.5vw,260px)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="top">
+  <a href="/" class="lettermark">NHM</a>
+  <ul>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">FAQs</a></li>
+    <li><a href="/#event">Events</a></li>
+    <li><a href="#">Authors</a></li>
+  </ul>
+  <div class="right">
+    <a href="#" class="donate">Donate</a>
+  </div>
+</nav>
+
+<!-- ============== PAGE HEADER ============== -->
+<header class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="container">
+    <div class="source-pill">
+      <span class="source-dot"></span>
+      <span class="mono">nhmlife.com</span>
+    </div>
+    <h1 class="block page-title">Blog</h1>
+    <p class="page-sub">Dispatches from No Half Measures — the work, the people, the conviction behind it.</p>
+  </div>
+</header>
+
+<!-- ============== BLOG LISTING ============== -->
+<div class="blog-wrap">
+
+  <div class="listing-head">
+    <div>
+      <span class="listing-num">/ 01</span>
+      <span class="listing-label">Latest Posts</span>
+    </div>
+    <span class="mono">01 Post · May 2026</span>
+  </div>
+
+  <!-- ===== POST CARD ===== -->
+  <article class="post-card">
+
+    <!-- Card header -->
+    <div class="post-header">
+      <div>
+        <div class="post-num">// NHM Blog — Post 001</div>
+        <h2 class="post-title">NHM Unleashed<br><span class="accent">— May 23rd</span></h2>
+      </div>
+      <time class="post-date" datetime="2026-05-01">May 1, 2026</time>
+    </div>
+
+    <!-- Card body -->
+    <div class="post-body">
+
+      <!-- Countdown eyebrow -->
+      <div class="eyebrow-row">
+        <span class="bar"></span>
+        <span class="mono red">// Countdown to NHM Unleashed</span>
+        <span class="bar"></span>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="cd-cell">
+          <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+          <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+          <span class="cd-num" id="cd-days">00</span>
+          <span class="cd-label">Days</span>
+        </div>
+        <div class="cd-cell">
+          <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+          <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+          <span class="cd-num" id="cd-hours">00</span>
+          <span class="cd-label">Hours</span>
+        </div>
+        <div class="cd-cell">
+          <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+          <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+          <span class="cd-num" id="cd-mins">00</span>
+          <span class="cd-label">Minutes</span>
+        </div>
+        <div class="cd-cell">
+          <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+          <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+          <span class="cd-num" id="cd-secs">00</span>
+          <span class="cd-label">Seconds</span>
+        </div>
+      </div>
+
+      <div class="post-divider"></div>
+
+      <!-- Event details -->
+      <div class="post-event">
+
+        <div class="event-left">
+          <dl class="event-dl">
+            <dt>// Date &amp; Time</dt>
+            <dd>May 23, 2026<small>Saturday · 6:00 PM — 10:00 PM EST</small></dd>
+            <dt>// Location</dt>
+            <dd>The Woolen Mill<small>1707 Princess Anne St · Downtown Fredericksburg, VA</small></dd>
+            <dt>// Dress Code</dt>
+            <dd>Cocktail Attire<small>Show up sharp. Show up real.</small></dd>
+          </dl>
+        </div>
+
+        <div class="event-right">
+          <div>
+            <div class="mono">// Evening Includes</div>
+            <div class="event-includes">
+              <span class="chip red">Heavy Hors d'œuvres</span>
+              <span class="chip">Live Music</span>
+              <span class="chip">Stories &amp; Celebration</span>
+              <span class="chip">Open Bar</span>
+              <span class="chip">Year-One Reveal</span>
+            </div>
+          </div>
+          <div>
+            <div class="mono" style="margin-bottom:16px">// No Half Measures — Launch Party</div>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeyf3v8xoUWEy-XuMn6ViJI8Fic7No-Scq5DSMu7Xl6lh__RA/viewform?pli=1"
+              target="_blank"
+              rel="noopener"
+              class="register"
+            >Register Now <span class="arrow">→</span></a>
+            <div class="mono" style="margin-top:14px">Seats Limited · Confirmation Required</div>
+          </div>
+        </div>
+
+      </div><!-- /post-event -->
+
+      <!-- Tagline -->
+      <div class="tagline-block">
+        <a href="https://www.nhmlife.com" target="_blank" rel="noopener" class="site-link">www.nhmlife.com</a>
+        <div class="main-line">All In Is<br>The Only Way Out.</div>
+      </div>
+
+    </div><!-- /post-body -->
+
+  </article><!-- /post-card -->
+
+</div><!-- /blog-wrap -->
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container" style="max-width:1240px;margin:0 auto">
+    <div class="row">
+      <div>
+        <div class="framed-wordmark" style="font-size:22px">No Half Measures</div>
+        <div class="mono" style="margin-top:14px">// Fredericksburg, VA — nhmlife.com</div>
+      </div>
+      <div class="links">
+        <a href="/blog">Blog</a>
+        <a href="#">About</a>
+        <a href="#">FAQs</a>
+        <a href="#">Authors</a>
+        <a href="/#event">Events</a>
+        <a href="#">Shop</a>
+        <a href="#">Donate</a>
+        <a href="#">Volunteer</a>
+      </div>
+    </div>
+
+    <h3 class="big">No Half<br>Measures</h3>
+
+    <div class="row" style="margin-top:48px">
+      <div class="mono">© 2026 · No Half Measures · A 501(c)(3)</div>
+      <div class="mono">/ nhmlife.com · Drawing a Line. Rejecting Compromise. /</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== TICKER ============== -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>All In Is The Only Way Out</span>
+    <span>No Half Measures</span>
+    <span>Nobody Made It Going Halfway</span>
+    <span>Full Commitment Changes Everything</span>
+    <span>NHM Unleashed · May 23</span>
+    <span>All In Is The Only Way Out</span>
+    <span>No Half Measures</span>
+    <span>Nobody Made It Going Halfway</span>
+    <span>Full Commitment Changes Everything</span>
+    <span>NHM Unleashed · May 23</span>
+  </div>
+</div>
+
+<script>
+  /* live countdown — same target as main page: May 23 2026, 6PM EDT */
+  const target = new Date('2026-05-23T18:00:00-04:00').getTime();
+  const pad = n => String(Math.max(0,n)).padStart(2,'0');
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000);  diff -= h*3600000;
+    const m = Math.floor(diff/60000);    diff -= m*60000;
+    const s = Math.floor(diff/1000);
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
