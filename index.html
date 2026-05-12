@@ -319,20 +319,83 @@
     -webkit-text-stroke:1px var(--ink);color:transparent;
   }
 
-  /* responsive */
+  /* ===== TABLET / MOBILE ≤880px ===== */
   @media (max-width:880px){
+    /* nav */
     nav.top ul{display:none}
+    nav.top{padding:14px 20px}
+
+    /* hero */
+    .hero{padding:100px 20px 80px}
+
+    /* reduce section vertical padding */
+    section{padding:80px 20px}
+    .manifesto{padding:80px 20px}
+
+    /* section-head: stack title + meta vertically */
+    .section-head{flex-direction:column;gap:16px}
+    .section-head .mono{max-width:100%!important;text-align:left!important}
+
+    /* countdown: 2-col */
     .countdown{grid-template-columns:repeat(2,1fr)}
+
+    /* hide decorative floating elements — they overlap content on narrow screens */
+    .float{display:none}
+
+    /* pillars: 2-col */
     .pillars{grid-template-columns:1fr 1fr}
     .pillar:nth-child(2){border-right:none}
     .pillar:nth-child(1),.pillar:nth-child(2){border-bottom:1px solid #1f1f1d}
-    .event{grid-template-columns:1fr;padding:32px}
+
+    /* mosaic: all full-width stacked */
     .mosaic{grid-auto-rows:60px}
     .mosaic .photo.a{grid-column:1/span 12;grid-row:1/span 5}
     .mosaic .photo.b{grid-column:1/span 12;grid-row:6/span 5}
     .mosaic .photo.c{grid-column:1/span 12;grid-row:11/span 5}
     .mosaic .photo.d{grid-column:1/span 12;grid-row:16/span 5}
     .mosaic .photo.e{grid-column:1/span 12;grid-row:21/span 5}
+
+    /* manifesto */
+    .manifesto .row{flex-direction:column;gap:16px}
+    .manifesto-body{font-size:16px!important}
+
+    /* values: single column, un-sticky sidebar */
+    .values-grid{grid-template-columns:1fr!important;gap:40px!important}
+    .values-sidebar{position:static!important;top:auto!important}
+
+    /* event card */
+    .event{grid-template-columns:1fr;padding:32px}
+    .event-left dd{font-size:22px}
+
+    /* footer */
+    footer{padding:60px 20px}
+    footer .big{font-size:clamp(36px,10vw,260px);word-break:break-word}
+  }
+
+  /* ===== PHONE ≤480px ===== */
+  @media (max-width:480px){
+    section{padding:64px 16px}
+    .manifesto{padding:64px 16px}
+    .hero{padding:88px 16px 80px}
+
+    /* countdown cells: tighter padding */
+    .cd-cell{padding:20px 8px 12px}
+
+    /* pillars: single column */
+    .pillars{grid-template-columns:1fr}
+    .pillar{border-right:none;border-bottom:1px solid #1f1f1d}
+    .pillar:last-child{border-bottom:none}
+
+    /* register button: full width */
+    .register{width:100%;justify-content:center}
+
+    /* event */
+    .event{padding:24px 16px}
+
+    /* footer */
+    footer{padding:48px 16px}
+    footer .links{gap:16px}
+    footer .big{font-size:clamp(30px,8.5vw,260px)}
   }
 </style>
 </head>
@@ -483,7 +546,7 @@
     <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE — 03</div>
     <h2 data-parallax-x="-40">All in is the<br>only way out.</h2>
     <div class="row">
-      <div style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
+      <div class="manifesto-body" style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
         Nobody made it going halfway.<br>Half efforts build nothing.<br>Full commitment changes everything.
       </div>
       <div class="meta">NO HALF MEASURES · EST. FREDERICKSBURG · /</div>
@@ -501,7 +564,7 @@
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start">
+    <div class="values-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start">
       <ol style="list-style:none;display:grid;gap:0;border-top:1px solid #1f1f1d">
         <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
           <span class="mono red">/ 01</span>
@@ -535,7 +598,7 @@
         </li>
       </ol>
 
-      <div style="position:sticky;top:80px">
+      <div class="values-sidebar" style="position:sticky;top:80px">
         <div class="photo" data-parallax="-30" data-label="PORTRAIT / FOUNDER" style="aspect-ratio:3/4">
           <span class="crosshair"></span>
         </div>
@@ -666,6 +729,9 @@
   const manifestoTitle = document.querySelector('[data-parallax-x]');
   let ticking = false;
   function update(){
+    const mobile = window.matchMedia('(max-width:880px)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(mobile || reducedMotion){ ticking=false; return; }
     const y = window.scrollY;
     for(const el of floats){
       const speed = parseFloat(el.dataset.speed || 0.3);
@@ -675,7 +741,6 @@
       const amt = parseFloat(el.dataset.parallax || 0);
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // progress: -1 (below) to 1 (above)
       const progress = (rect.top + rect.height/2 - vh/2) / vh;
       el.style.transform = `translate3d(0, ${progress * amt}px, 0)`;
     }
