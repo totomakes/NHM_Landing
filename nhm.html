@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NHM Life — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#da3123;
+    --bg:#0a0a0a;
+    --ink:#f5f4f1;
+    --ink-dim:#8a8784;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Archivo',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;
+    mix-blend-mode:difference;color:#fff;
+  }
+  .lettermark{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:2px solid #fff;padding:6px 10px 4px;
+    font-family:'Archivo Black',sans-serif;font-weight:900;
+    letter-spacing:0.005em;line-height:1;text-transform:uppercase;
+    font-size:18px;color:#fff;
+  }
+  .donate{
+    border:2px solid #fff;padding:8px 14px 6px;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:11px;letter-spacing:0.1em;
+  }
+
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:120px 28px 80px;
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
+  }
+
+  /* eyebrow */
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;text-transform:uppercase;
+    font-size:11px;letter-spacing:0.12em;color:var(--red);
+    display:flex;align-items:center;gap:12px;margin-bottom:28px;
+  }
+  .eyebrow .bar{width:36px;height:2px;background:var(--red)}
+
+  /* title */
+  .title{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(72px,16vw,220px);
+    letter-spacing:-0.03em;line-height:0.85;
+    margin-bottom:48px;
+  }
+  .title .red{color:var(--red)}
+
+  /* sub */
+  .sub{
+    font-size:15px;color:var(--ink-dim);line-height:1.6;
+    max-width:420px;margin-bottom:52px;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown{
+    display:flex;gap:12px;justify-content:center;
+    margin-bottom:40px;
+    width:100%;max-width:780px;
+  }
+  .cd-cell{
+    flex:1;
+    position:relative;
+    border:2px solid #1a1a1a;
+    background:linear-gradient(180deg,#0e0e0e,#070707);
+    padding:28px 10px 16px;
+    text-align:center;overflow:hidden;
+  }
+  .cd-cell::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--red),transparent);
+    opacity:0.5;
+  }
+  .cd-corner{position:absolute;width:8px;height:8px;border:2px solid var(--red)}
+  .cd-corner.tl{top:6px;left:6px;border-right:none;border-bottom:none}
+  .cd-corner.tr{top:6px;right:6px;border-left:none;border-bottom:none}
+  .cd-corner.bl{bottom:6px;left:6px;border-right:none;border-top:none}
+  .cd-corner.br{bottom:6px;right:6px;border-left:none;border-top:none}
+  .cd-num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(42px,8vw,100px);
+    line-height:0.9;letter-spacing:-0.03em;
+    color:var(--ink);font-variant-numeric:tabular-nums;
+    display:block;
+  }
+  .cd-label{
+    margin-top:10px;font-family:'Archivo',sans-serif;
+    text-transform:uppercase;letter-spacing:0.22em;
+    font-size:9px;color:var(--ink-dim);font-weight:600;
+  }
+
+  /* event line */
+  .event-line{
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    text-transform:uppercase;letter-spacing:0.1em;
+    color:var(--ink-dim);margin-bottom:36px;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;
+  }
+  .event-line .sep{color:var(--red);opacity:0.7}
+
+  /* CTA */
+  .register{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--red);color:#0a0a0a;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:16px;letter-spacing:0.05em;
+    padding:20px 32px 16px;
+    transition:transform .15s ease;
+    margin-bottom:16px;
+  }
+  .register:hover{transform:translateY(-2px)}
+  .register .arrow{font-size:20px;line-height:1}
+
+  .seats{
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-dim);
+    margin-bottom:32px;
+  }
+
+  /* site link */
+  .site-ref{
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);
+    border-bottom:1px solid #2a2a28;padding-bottom:2px;
+    transition:color .15s ease,border-color .15s ease;
+  }
+  .site-ref:hover{color:var(--ink);border-color:var(--ink-dim)}
+
+  /* ── TICKER ── */
+  .ticker{
+    position:fixed;bottom:0;left:0;right:0;z-index:55;
+    background:var(--red);color:#0a0a0a;
+    border-top:2px solid #0a0a0a;
+    overflow:hidden;height:36px;display:flex;align-items:center;
+  }
+  .ticker-track{
+    display:flex;white-space:nowrap;
+    animation:scroll 38s linear infinite;
+    gap:48px;padding-left:48px;
+  }
+  .ticker-track span{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:13px;letter-spacing:0.08em;
+    display:inline-flex;align-items:center;gap:48px;
+  }
+  .ticker-track span::after{content:"/";color:#0a0a0a;opacity:0.6;font-weight:900;margin-left:48px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:600px){
+    nav{padding:14px 16px}
+    .hero{padding:100px 20px 80px;gap:0}
+    .countdown{gap:8px}
+    .cd-cell{padding:18px 6px 12px}
+    .register{width:100%;justify-content:center;font-size:15px}
+    .event-line{font-size:10px;gap:4px 10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="lettermark">NHM</a>
+  <a href="#" class="donate">Donate</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <div class="eyebrow">
+    <span class="bar"></span>
+    // nhmlife.com — coming soon
+    <span class="bar"></span>
+  </div>
+
+  <h1 class="title">NHM<br><span class="red">Life</span></h1>
+
+  <p class="sub">
+    The full site is on its way. Until then — one night, one room, one chance to be in the room where it starts.
+  </p>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown" id="countdown">
+    <div class="cd-cell">
+      <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+      <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+      <span class="cd-num" id="cd-days">00</span>
+      <span class="cd-label">Days</span>
+    </div>
+    <div class="cd-cell">
+      <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+      <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+      <span class="cd-num" id="cd-hours">00</span>
+      <span class="cd-label">Hours</span>
+    </div>
+    <div class="cd-cell">
+      <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+      <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+      <span class="cd-num" id="cd-mins">00</span>
+      <span class="cd-label">Minutes</span>
+    </div>
+    <div class="cd-cell">
+      <span class="cd-corner tl"></span><span class="cd-corner tr"></span>
+      <span class="cd-corner bl"></span><span class="cd-corner br"></span>
+      <span class="cd-num" id="cd-secs">00</span>
+      <span class="cd-label">Seconds</span>
+    </div>
+  </div>
+
+  <!-- EVENT LINE -->
+  <div class="event-line">
+    <span>May 23, 2026</span>
+    <span class="sep">/</span>
+    <span>Saturday · 6:00 PM</span>
+    <span class="sep">/</span>
+    <span>The Woolen Mill</span>
+    <span class="sep">/</span>
+    <span>Fredericksburg, VA</span>
+  </div>
+
+  <!-- CTA -->
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSeyf3v8xoUWEy-XuMn6ViJI8Fic7No-Scq5DSMu7Xl6lh__RA/viewform?pli=1"
+    target="_blank"
+    rel="noopener"
+    class="register"
+  >Register Now <span class="arrow">→</span></a>
+
+  <div class="seats">Seats limited · Confirmation required</div>
+
+  <a href="https://www.nhmlife.com" target="_blank" rel="noopener" class="site-ref">
+    www.nhmlife.com
+  </a>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>All In Is The Only Way Out</span>
+    <span>No Half Measures</span>
+    <span>Nobody Made It Going Halfway</span>
+    <span>Full Commitment Changes Everything</span>
+    <span>NHM Unleashed · May 23</span>
+    <span>All In Is The Only Way Out</span>
+    <span>No Half Measures</span>
+    <span>Nobody Made It Going Halfway</span>
+    <span>Full Commitment Changes Everything</span>
+    <span>NHM Unleashed · May 23</span>
+  </div>
+</div>
+
+<script>
+  const target = new Date('2026-05-23T18:00:00-04:00').getTime();
+  const pad = n => String(Math.max(0,n)).padStart(2,'0');
+  function tick(){
+    let diff = Math.max(0, target - Date.now());
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000);  diff -= h*3600000;
+    const m = Math.floor(diff/60000);    diff -= m*60000;
+    const s = Math.floor(diff/1000);
+    document.getElementById('cd-days').textContent  = pad(d);
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
