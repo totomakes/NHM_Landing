@@ -21,7 +21,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body{font-feature-settings:"ss01";line-height:1.4}
+  body{font-feature-settings:"ss01";line-height:1.4;padding-bottom:36px}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
@@ -407,6 +407,8 @@
     .the-ask{padding:100px 20px}
     .section-head{flex-direction:column;gap:16px}
     .section-head .mono{max-width:100%!important;text-align:left!important}
+    /* override inline max-width/text-align on all direct child divs in section-head */
+    .section-head > div{max-width:100%!important;text-align:left!important}
     .float{display:none}
     /* pillars 2-col */
     .pillars{grid-template-columns:1fr 1fr}
@@ -459,8 +461,10 @@
     /* CTAs full-width */
     .hero-ctas,.plan-ctas,.cta-row,.the-ask-ctas{flex-direction:column;width:100%}
     .btn-gold,.btn-outline{width:100%;justify-content:center;font-size:14px;padding:18px 20px 14px}
-    /* newsletter */
-    .newsletter-row .nl-form{width:100%}
+    /* newsletter — stack form column on narrow phones */
+    .newsletter-row .nl-form{width:100%;flex-direction:column}
+    .newsletter-row .nl-form input{border-right:2px solid #1f1f1d;border-bottom:none}
+    .newsletter-row .nl-form button{width:100%;padding:16px 20px}
     footer{padding:48px 16px}
     footer .links{gap:16px}
     footer .big{font-size:clamp(30px,8.5vw,260px)}

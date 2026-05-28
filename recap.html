@@ -20,7 +20,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body{line-height:1.4}
+  body{line-height:1.4;padding-bottom:36px}
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
   button{cursor:pointer}
@@ -222,7 +222,7 @@
     text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);
     margin-bottom:20px;
   }
-  #gallery{
+  #photo-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:3px;
@@ -414,13 +414,15 @@
     .recap-body{grid-template-columns:1fr}
     .recap-pull{position:static;margin-bottom:32px}
     .give-inner{grid-template-columns:1fr;gap:40px}
-    #gallery{grid-template-columns:repeat(3,1fr)}
+    #photo-grid{grid-template-columns:repeat(3,1fr)}
+    .gallery-header{flex-direction:column;align-items:flex-start;gap:12px}
+    .gallery-dl{align-self:flex-start}
     footer{padding:60px 20px}
     footer .big{font-size:clamp(36px,10vw,200px)}
     .newsletter-row{flex-direction:column;align-items:flex-start}
   }
   @media (max-width:540px){
-    #gallery{grid-template-columns:repeat(2,1fr)}
+    #photo-grid{grid-template-columns:repeat(2,1fr)}
     section{padding:64px 16px}
     .hero{padding:88px 16px 72px}
     .hero-ctas,.lb-actions{flex-direction:column;width:100%}
@@ -532,7 +534,7 @@
     </div>
     <p class="gallery-sub">Find yourself. Tag a friend. Remember what it felt like.</p>
 
-    <div id="gallery" role="list" aria-label="Event photo gallery"></div>
+    <div id="photo-grid" role="list" aria-label="Event photo gallery"></div>
   </div>
 </section>
 
@@ -668,7 +670,7 @@ const thumbs = Array.from({length: TOTAL}, (_, i) => `photos/thumbs/p${String(i+
 const fulls  = Array.from({length: TOTAL}, (_, i) => `photos/full/p${String(i+1).padStart(3,'0')}.webp`);
 
 /* ─── BUILD GALLERY ─── */
-const grid = document.getElementById('gallery');
+const grid = document.getElementById('photo-grid');
 grid.innerHTML = thumbs.map((src, i) =>
   `<button class="gal-cell" role="listitem" data-index="${i}" aria-label="Open photo ${i+1} of ${TOTAL}">
     <img src="${src}" alt="NHM Unleashed event photo ${i+1}" loading="${i < 12 ? 'eager' : 'lazy'}" decoding="async">
@@ -677,7 +679,7 @@ grid.innerHTML = thumbs.map((src, i) =>
 
 grid.addEventListener('click', e => {
   const cell = e.target.closest('.gal-cell');
-  if(cell) openLightbox(+cell.dataset.index);
+  if (cell) openLightbox(+cell.dataset.index);
 });
 
 /* ─── LIGHTBOX ─── */
