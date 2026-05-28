@@ -11,6 +11,8 @@
   :root{
     --red:#da3123;
     --red-dim:#a8261b;
+    --gold:#c8952a;
+    --gold-dim:#a07520;
     --bg:#0a0a0a;
     --ink:#f5f4f1;
     --ink-dim:#8a8784;
@@ -23,11 +25,11 @@
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
-  /* ---------- type ---------- */
+  /* ---------- type utilities ---------- */
   .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.01em;line-height:0.88;text-transform:uppercase}
-  .narrow-block{font-family:'Archivo Narrow','Archivo',sans-serif;font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.04em;text-transform:uppercase;font-size:11px;color:var(--ink-dim)}
   .mono.red{color:var(--red)}
+  .mono.gold{color:var(--gold)}
 
   /* ---------- logo / lockups ---------- */
   .framed-wordmark{
@@ -36,31 +38,17 @@
     padding:0.42em 0.55em 0.32em;
     font-family:'Archivo Black',sans-serif;font-weight:900;
     letter-spacing:0.005em;line-height:1;text-transform:uppercase;
-    font-size:42px;
-    color:var(--ink);
+    font-size:42px;color:var(--ink);
   }
   .framed-wordmark.red{color:var(--red)}
-  .framed-wordmark.small{font-size:14px;border-width:2px;padding:6px 10px 4px}
-  .framed-wordmark.tiny{font-size:11px;border-width:2px;padding:5px 8px 3px}
-
-  .icon-nm{
-    display:inline-flex;align-items:center;justify-content:center;
-    border:var(--frame) solid currentColor;
-    width:1.6em;height:1.6em;
-    font-family:'Archivo Black',sans-serif;font-weight:900;
-    letter-spacing:-0.04em;line-height:1;text-transform:uppercase;
-    font-size:42px;color:var(--ink);
-    flex-shrink:0;
-  }
-  .icon-nm span{transform:translateY(0.02em)}
 
   .lettermark{
     display:inline-flex;align-items:center;justify-content:center;
-    border:var(--frame) solid currentColor;
-    padding:0.18em 0.32em 0.12em;
+    border:2px solid currentColor;
+    padding:6px 10px 4px;
     font-family:'Archivo Black',sans-serif;font-weight:900;
     letter-spacing:0.005em;line-height:1;text-transform:uppercase;
-    font-size:42px;color:var(--ink);
+    font-size:18px;
   }
 
   /* ---------- nav ---------- */
@@ -68,134 +56,136 @@
     position:fixed;top:0;left:0;right:0;z-index:60;
     display:flex;align-items:center;justify-content:space-between;
     padding:18px 28px;
-    mix-blend-mode:difference;
-    color:#fff;
+    background:rgba(10,10,10,0.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    color:var(--ink);
   }
-  nav.top .lettermark{font-size:18px;color:#fff;border-color:#fff;border-width:2px;padding:6px 10px 4px}
   nav.top ul{display:flex;gap:28px;list-style:none}
-  nav.top ul a{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.12em}
+  nav.top ul a{
+    font-family:'Archivo',sans-serif;font-weight:600;
+    text-transform:uppercase;font-size:11px;letter-spacing:0.12em;
+    color:var(--ink-dim);transition:color .15s ease;
+  }
+  nav.top ul a:hover{color:var(--ink)}
   nav.top .right{display:flex;align-items:center;gap:18px}
   nav.top .donate{
-    border:2px solid #fff;padding:8px 14px 6px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:11px;letter-spacing:0.1em;
+    background:var(--gold);color:#0a0a0a;border:none;
+    padding:9px 18px 7px;cursor:pointer;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:11px;letter-spacing:0.1em;
+    transition:background .15s ease;
   }
+  nav.top .donate:hover{background:var(--gold-dim)}
 
   /* ---------- ticker ---------- */
   .ticker{
     position:fixed;bottom:0;left:0;right:0;z-index:55;
     background:var(--red);color:#0a0a0a;
     border-top:2px solid #0a0a0a;
-    overflow:hidden;
-    height:36px;display:flex;align-items:center;
+    overflow:hidden;height:36px;display:flex;align-items:center;
   }
-  .ticker-track{display:flex;white-space:nowrap;animation:scroll 38s linear infinite;gap:48px;padding-left:48px}
-  .ticker-track span{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:0.08em;display:inline-flex;align-items:center;gap:48px}
+  .ticker-track{display:flex;white-space:nowrap;animation:scroll 44s linear infinite;gap:48px;padding-left:48px}
+  .ticker-track span{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:13px;letter-spacing:0.08em;
+    display:inline-flex;align-items:center;gap:48px;
+  }
   .ticker-track span::after{content:"/";color:#0a0a0a;opacity:0.6;font-weight:900;margin-left:48px}
   @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- CTAs ---------- */
+  .btn-gold{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--gold);color:#0a0a0a;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:15px;letter-spacing:0.05em;
+    padding:20px 30px 16px;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .btn-gold:hover{transform:translateY(-2px);background:var(--gold-dim)}
+
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:12px;
+    background:transparent;color:var(--ink);
+    border:2px solid var(--ink-faint);
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:15px;letter-spacing:0.05em;
+    padding:18px 30px 14px;
+    transition:transform .15s ease,border-color .15s ease;
+  }
+  .btn-outline:hover{transform:translateY(-2px);border-color:var(--ink-dim)}
 
   /* ---------- hero ---------- */
   .hero{
     position:relative;min-height:100vh;
-    padding:120px 28px 80px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    overflow:hidden;
+    padding:140px 28px 120px;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    text-align:center;overflow:hidden;
   }
   .hero-grid{
-    position:absolute;inset:0;
+    position:absolute;inset:0;pointer-events:none;
     background-image:
       linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),
       linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);
     background-size:80px 80px;
-    pointer-events:none;
     mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
   }
   .hero-eyebrow{
-    display:flex;align-items:center;gap:12px;justify-content:center;
-    margin-top:24px;
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:36px;
   }
   .hero-eyebrow .bar{width:48px;height:2px;background:var(--red)}
 
   .hero-title{
-    text-align:center;
-    margin:32px auto 0;
-    font-size:clamp(56px,11vw,168px);
-    letter-spacing:-0.02em;
+    font-size:clamp(60px,12vw,172px);
+    letter-spacing:-0.025em;line-height:0.88;
+    margin-bottom:20px;
   }
   .hero-title .red{color:var(--red)}
-  .hero-title .strike{position:relative;display:inline-block}
-  .hero-title .strike::after{
-    content:"";position:absolute;left:-2%;right:-2%;top:50%;height:0.08em;
-    background:var(--red);transform:translateY(-50%) rotate(-2deg);
+
+  .hero-tagline{
+    font-family:'Archivo Black',sans-serif;
+    text-transform:uppercase;letter-spacing:0.04em;
+    font-size:clamp(13px,1.4vw,18px);
+    color:var(--gold);
+    margin-bottom:20px;
   }
 
   .hero-sub{
-    text-align:center;max-width:680px;margin:28px auto 0;
-    color:var(--ink-dim);font-size:15px;line-height:1.55;
+    max-width:560px;color:var(--ink-dim);
+    font-size:16px;line-height:1.65;
+    margin-bottom:44px;
   }
 
-  /* ---------- countdown ---------- */
-  .countdown{
-    margin:64px auto 0;max-width:1100px;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-    position:relative;
-  }
-  .cd-cell{
-    position:relative;
-    border:2px solid #1a1a1a;
-    background:linear-gradient(180deg,#0e0e0e,#070707);
-    padding:32px 12px 18px;text-align:center;
-    overflow:hidden;
-  }
-  .cd-cell::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--red),transparent);
-    opacity:0.5;
-  }
-  .cd-num{
-    font-family:'Archivo Black',sans-serif;
-    font-size:clamp(64px,12vw,168px);
-    line-height:0.88;letter-spacing:-0.03em;
-    color:var(--ink);
-    font-variant-numeric:tabular-nums;
-    display:block;
-  }
-  .cd-label{
-    margin-top:14px;font-family:'Archivo',sans-serif;text-transform:uppercase;
-    letter-spacing:0.24em;font-size:10px;color:var(--ink-dim);font-weight:600;
-  }
-  .cd-corner{position:absolute;width:10px;height:10px;border:2px solid var(--red)}
-  .cd-corner.tl{top:8px;left:8px;border-right:none;border-bottom:none}
-  .cd-corner.tr{top:8px;right:8px;border-left:none;border-bottom:none}
-  .cd-corner.bl{bottom:8px;left:8px;border-right:none;border-top:none}
-  .cd-corner.br{bottom:8px;right:8px;border-left:none;border-top:none}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 
-  /* ---------- floating red elements ---------- */
+  /* ---------- floating elements ---------- */
   .float{position:absolute;pointer-events:none;will-change:transform}
   .float .tag{
     background:var(--red);color:#0a0a0a;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:11px;letter-spacing:0.06em;
-    padding:6px 10px 4px;
+    font-size:11px;letter-spacing:0.06em;padding:6px 10px 4px;
     box-shadow:0 8px 30px rgba(218,49,35,0.25);
   }
   .float .stamp{
     border:2px solid var(--red);color:var(--red);
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:11px;letter-spacing:0.06em;
-    padding:6px 10px 4px;
+    font-size:11px;letter-spacing:0.06em;padding:6px 10px 4px;
     background:rgba(218,49,35,0.06);
   }
   .float .nm-mini{
     border:2px solid var(--red);color:var(--red);
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:18px;letter-spacing:0;
-    padding:4px 8px 2px;
+    font-size:18px;letter-spacing:0;padding:4px 8px 2px;
     background:#0a0a0a;
   }
   .float .dot{width:10px;height:10px;background:var(--red);border-radius:50%}
   .float .slash{
-    color:var(--red);font-family:'Archivo Black',sans-serif;font-weight:900;
-    font-size:80px;line-height:1;transform:skewX(-12deg);
-    opacity:0.6;
+    color:var(--red);font-family:'Archivo Black',sans-serif;
+    font-size:80px;line-height:1;transform:skewX(-12deg);opacity:0.6;
   }
   .float .square{width:14px;height:14px;background:var(--red)}
 
@@ -204,35 +194,62 @@
   .container{max-width:1240px;margin:0 auto;position:relative}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:48px}
   .section-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:12px;letter-spacing:0.08em}
+  .section-num.gold{color:var(--gold)}
   .section-title{font-size:clamp(40px,7vw,96px);letter-spacing:-0.02em}
 
   /* ---------- photo placeholder ---------- */
   .photo{
     position:relative;
-    background:
-      repeating-linear-gradient(135deg,
-        #161614 0 14px,
-        #1c1c1a 14px 28px);
-    border:1px solid #232321;
-    color:var(--ink-dim);
+    background:repeating-linear-gradient(135deg,#161614 0 14px,#1c1c1a 14px 28px);
+    border:1px solid #232321;color:var(--ink-dim);
     display:flex;align-items:flex-end;justify-content:flex-start;
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;text-transform:uppercase;letter-spacing:0.12em;
-    overflow:hidden;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.12em;overflow:hidden;
   }
-  .photo::before{
-    content:attr(data-label);
-    position:absolute;top:14px;left:14px;
-    color:var(--ink-dim);
-  }
-  .photo::after{
-    content:"PHOTO PLACEHOLDER";
-    position:absolute;bottom:14px;right:14px;color:#4a4a48;
-  }
+  .photo::before{content:attr(data-label);position:absolute;top:14px;left:14px;color:var(--ink-dim)}
+  .photo::after{content:"PHOTO PLACEHOLDER";position:absolute;bottom:14px;right:14px;color:#4a4a48}
   .photo .crosshair{position:absolute;top:50%;left:50%;width:36px;height:36px;transform:translate(-50%,-50%);opacity:0.25}
   .photo .crosshair::before,.photo .crosshair::after{content:"";position:absolute;background:#fff}
   .photo .crosshair::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
   .photo .crosshair::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
+
+  /* ---------- stakes section ---------- */
+  .stakes-callout{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(20px,3vw,38px);letter-spacing:-0.015em;line-height:1.1;
+    color:var(--ink);
+    padding:36px 0;
+    border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
+    margin-top:8px;
+  }
+  .stakes-callout .red{color:var(--red)}
+
+  /* ---------- don's story ---------- */
+  .dons-story-inner{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+  }
+  .pull-quote{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(22px,3.2vw,40px);letter-spacing:-0.02em;line-height:1.05;
+    border-left:4px solid var(--gold);padding-left:24px;
+    margin-bottom:28px;
+  }
+  .dons-story-text p{
+    color:var(--ink-dim);font-size:16px;line-height:1.65;margin-top:16px;
+  }
+  .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ---------- pillars ---------- */
+  .pillars{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-top:48px;border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
+  }
+  .pillar{padding:36px 24px;border-right:1px solid #1f1f1d;position:relative}
+  .pillar:last-child{border-right:none}
+  .pillar .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em}
+  .pillar h3{margin-top:18px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:24px;letter-spacing:-0.01em;line-height:1}
+  .pillar p{margin-top:14px;color:var(--ink-dim);font-size:14px;line-height:1.55}
 
   /* ---------- manifesto strip ---------- */
   .manifesto{
@@ -260,113 +277,166 @@
   .mosaic .photo.d{grid-column:7/span 5;grid-row:8/span 7}
   .mosaic .photo.e{grid-column:1/span 5;grid-row:14/span 4}
 
-  /* ---------- pillars ---------- */
-  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d}
-  .pillar{padding:36px 24px;border-right:1px solid #1f1f1d;position:relative}
-  .pillar:last-child{border-right:none}
-  .pillar .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em}
-  .pillar h3{margin-top:18px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:24px;letter-spacing:-0.01em;line-height:1}
-  .pillar p{margin-top:14px;color:var(--ink-dim);font-size:14px;line-height:1.55}
+  /* ---------- plan section ---------- */
+  .plan-cols{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    margin-top:48px;border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
+  }
+  .plan-col{padding:40px 32px;border-right:1px solid #1f1f1d}
+  .plan-col:last-child{border-right:none}
+  .plan-col .num{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:11px;letter-spacing:0.08em;margin-bottom:20px}
+  .plan-col h3{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(30px,4.5vw,54px);letter-spacing:-0.015em;line-height:0.88;margin-bottom:20px;
+  }
+  .plan-col p{color:var(--ink-dim);font-size:14px;line-height:1.6}
 
-  /* ---------- event card ---------- */
-  .event{
-    margin-top:60px;
+  .plan-ctas{margin-top:48px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* newsletter form (shared by plan + footer) */
+  .newsletter-row{
+    margin-top:48px;padding:32px;
     border:1px solid #1f1f1d;
     background:linear-gradient(180deg,#0d0d0d,#080808);
-    padding:48px;
-    display:grid;grid-template-columns:1fr 1fr;gap:48px;
-    position:relative;
+    display:flex;align-items:center;gap:24px;flex-wrap:wrap;
   }
-  .event::before,.event::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--red)}
-  .event::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
-  .event::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
-
-  .event-left dt{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);margin-bottom:6px}
-  .event-left dd{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:28px;line-height:1.05;margin-bottom:24px;letter-spacing:-0.01em}
-  .event-left dd small{display:block;font-family:'Archivo',sans-serif;text-transform:none;font-weight:500;font-size:14px;color:var(--ink-dim);margin-top:4px;letter-spacing:0;line-height:1.4}
-
-  .event-right{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
-  .event-includes{display:flex;gap:8px;flex-wrap:wrap}
-  .chip{
-    border:1px solid #2a2a28;padding:8px 12px 6px;
-    font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;
-    color:var(--ink-dim);
+  .newsletter-row .nl-label{
+    flex:1;min-width:180px;
   }
-  .chip.red{border-color:var(--red);color:var(--red)}
-  .register{
-    display:inline-flex;align-items:center;justify-content:center;gap:14px;
-    background:var(--red);color:#0a0a0a;
-    border:none;cursor:pointer;
+  .newsletter-row .nl-label strong{
+    display:block;font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:13px;letter-spacing:0.02em;color:var(--ink);margin-bottom:6px;
+  }
+  .newsletter-row .nl-label p{color:var(--ink-dim);font-size:13px;line-height:1.5}
+  .newsletter-row .nl-form{display:flex;flex:2;min-width:240px}
+  .newsletter-row .nl-form input{
+    flex:1;background:#0a0a0a;border:2px solid #1f1f1d;border-right:none;
+    color:var(--ink);font-family:'Archivo',sans-serif;font-size:14px;
+    padding:14px 16px;outline:none;transition:border-color .15s ease;
+  }
+  .newsletter-row .nl-form input::placeholder{color:var(--ink-faint)}
+  .newsletter-row .nl-form input:focus{border-color:var(--gold)}
+  .newsletter-row .nl-form button{
+    background:var(--gold);color:#0a0a0a;border:none;cursor:pointer;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:18px;letter-spacing:0.04em;
-    padding:22px 28px 18px;
-    position:relative;
-    transition:transform .15s ease;
+    font-size:12px;letter-spacing:0.08em;padding:14px 20px;
+    transition:background .15s ease;white-space:nowrap;
   }
-  .register:hover{transform:translateY(-2px)}
-  .register .arrow{font-size:22px;line-height:1}
+  .newsletter-row .nl-form button:hover{background:var(--gold-dim)}
+
+  /* ---------- impact grid ---------- */
+  .impact-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-top:48px;border:1px solid #1f1f1d;
+  }
+  .impact-cell{padding:36px 28px;border-right:1px solid #1f1f1d;position:relative}
+  .impact-cell:last-child{border-right:none}
+  .impact-cell::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--gold);
+  }
+  .impact-cell .amount{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(28px,4vw,52px);letter-spacing:-0.02em;line-height:1;
+    color:var(--gold);margin-bottom:14px;
+  }
+  .impact-cell .amount small{font-size:0.48em;color:var(--ink-dim);letter-spacing:0}
+  .impact-cell p{color:var(--ink-dim);font-size:14px;line-height:1.55}
+  .impact-cell .freq{
+    margin-top:14px;font-family:'JetBrains Mono',monospace;
+    font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-faint);
+  }
+  .impact-cta{margin-top:48px;text-align:center}
+
+  /* ---------- values ---------- */
+  /* (uses inline styles for grid + sticky, overridden by mobile classes) */
+
+  /* ---------- the ask ---------- */
+  .the-ask{
+    padding:160px 28px;
+    background:linear-gradient(180deg,#080808,#0f0f0d);
+    border-top:1px solid #1f1f1d;
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .the-ask-bg{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(to right,rgba(255,255,255,0.02) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(255,255,255,0.02) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);
+  }
+  .the-ask h2{
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:clamp(44px,9.5vw,148px);line-height:0.88;letter-spacing:-0.03em;
+    margin-bottom:32px;
+  }
+  .the-ask-sub{
+    font-size:18px;color:var(--ink-dim);line-height:1.55;
+    max-width:440px;margin:0 auto 48px;
+  }
+  .the-ask-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+  .the-ask-legal{
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-faint);
+  }
 
   /* ---------- footer ---------- */
-  footer{padding:80px 28px 80px;border-top:1px solid #1f1f1d;position:relative}
+  footer{padding:80px 28px;border-top:1px solid #1f1f1d;position:relative}
   footer .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
   footer .links{display:flex;gap:24px;flex-wrap:wrap}
-  footer .links a{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.12em;color:var(--ink-dim)}
+  footer .links a{
+    font-family:'Archivo',sans-serif;font-weight:600;
+    text-transform:uppercase;font-size:11px;letter-spacing:0.12em;color:var(--ink-dim);
+  }
   footer .links a:hover{color:var(--ink)}
   footer .big{
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:clamp(72px,16vw,260px);line-height:0.85;letter-spacing:-0.03em;
-    color:var(--ink);margin-top:64px;
+    margin-top:64px;
     -webkit-text-stroke:1px var(--ink);color:transparent;
   }
 
   /* ===== TABLET / MOBILE ≤880px ===== */
   @media (max-width:880px){
-    /* nav */
     nav.top ul{display:none}
     nav.top{padding:14px 20px}
-
-    /* hero */
     .hero{padding:100px 20px 80px}
-
-    /* reduce section vertical padding */
     section{padding:80px 20px}
     .manifesto{padding:80px 20px}
-
-    /* section-head: stack title + meta vertically */
+    .the-ask{padding:100px 20px}
     .section-head{flex-direction:column;gap:16px}
     .section-head .mono{max-width:100%!important;text-align:left!important}
-
-    /* countdown: 2-col */
-    .countdown{grid-template-columns:repeat(2,1fr)}
-
-    /* hide decorative floating elements — they overlap content on narrow screens */
     .float{display:none}
-
-    /* pillars: 2-col */
+    /* pillars 2-col */
     .pillars{grid-template-columns:1fr 1fr}
     .pillar:nth-child(2){border-right:none}
     .pillar:nth-child(1),.pillar:nth-child(2){border-bottom:1px solid #1f1f1d}
-
-    /* mosaic: all full-width stacked */
+    /* plan cols 1-col */
+    .plan-cols{grid-template-columns:1fr}
+    .plan-col{border-right:none;border-bottom:1px solid #1f1f1d}
+    .plan-col:last-child{border-bottom:none}
+    /* impact grid 2-col */
+    .impact-grid{grid-template-columns:1fr 1fr}
+    .impact-cell:nth-child(2){border-right:none}
+    .impact-cell:nth-child(1),.impact-cell:nth-child(2){border-bottom:1px solid #1f1f1d}
+    /* mosaic stacked */
     .mosaic{grid-auto-rows:60px}
     .mosaic .photo.a{grid-column:1/span 12;grid-row:1/span 5}
     .mosaic .photo.b{grid-column:1/span 12;grid-row:6/span 5}
     .mosaic .photo.c{grid-column:1/span 12;grid-row:11/span 5}
     .mosaic .photo.d{grid-column:1/span 12;grid-row:16/span 5}
     .mosaic .photo.e{grid-column:1/span 12;grid-row:21/span 5}
-
     /* manifesto */
     .manifesto .row{flex-direction:column;gap:16px}
     .manifesto-body{font-size:16px!important}
-
-    /* values: single column, un-sticky sidebar */
+    /* don's story */
+    .dons-story-inner{grid-template-columns:1fr;gap:40px}
+    /* values */
     .values-grid{grid-template-columns:1fr!important;gap:40px!important}
     .values-sidebar{position:static!important;top:auto!important}
-
-    /* event card */
-    .event{grid-template-columns:1fr;padding:32px}
-    .event-left dd{font-size:22px}
-
+    /* newsletter row */
+    .newsletter-row{flex-direction:column;align-items:flex-start}
     /* footer */
     footer{padding:60px 20px}
     footer .big{font-size:clamp(36px,10vw,260px);word-break:break-word}
@@ -377,22 +447,20 @@
     section{padding:64px 16px}
     .manifesto{padding:64px 16px}
     .hero{padding:88px 16px 80px}
-
-    /* countdown cells: tighter padding */
-    .cd-cell{padding:20px 8px 12px}
-
-    /* pillars: single column */
+    .the-ask{padding:80px 16px}
+    /* pillars 1-col */
     .pillars{grid-template-columns:1fr}
     .pillar{border-right:none;border-bottom:1px solid #1f1f1d}
     .pillar:last-child{border-bottom:none}
-
-    /* register button: full width */
-    .register{width:100%;justify-content:center}
-
-    /* event */
-    .event{padding:24px 16px}
-
-    /* footer */
+    /* impact grid 1-col */
+    .impact-grid{grid-template-columns:1fr}
+    .impact-cell{border-right:none!important;border-bottom:1px solid #1f1f1d}
+    .impact-cell:last-child{border-bottom:none}
+    /* CTAs full-width */
+    .hero-ctas,.plan-ctas,.cta-row,.the-ask-ctas{flex-direction:column;width:100%}
+    .btn-gold,.btn-outline{width:100%;justify-content:center;font-size:14px;padding:18px 20px 14px}
+    /* newsletter */
+    .newsletter-row .nl-form{width:100%}
     footer{padding:48px 16px}
     footer .links{gap:16px}
     footer .big{font-size:clamp(30px,8.5vw,260px)}
@@ -401,149 +469,169 @@
 </head>
 <body>
 
-<!-- ============== NAV ============== -->
+<!-- ============================================================ NAV -->
 <nav class="top">
-  <a href="#" class="lettermark">NHM</a>
+  <a href="/" class="lettermark">NHM</a>
   <ul>
+    <li><a href="#stakes">The Stakes</a></li>
+    <li><a href="#story">Don's Story</a></li>
     <li><a href="#mission">Mission</a></li>
-    <li><a href="#story">Story</a></li>
-    <li><a href="#event">Event</a></li>
-    <li><a href="#values">Values</a></li>
+    <li><a href="#give">Give</a></li>
   </ul>
   <div class="right">
-    <a href="#" class="donate">Donate</a>
+    <a href="#give" class="donate">Donate</a>
   </div>
 </nav>
 
-<!-- ============== HERO ============== -->
+<!-- ============================================================ 01 HERO -->
 <section class="hero" data-screen-label="01 Hero">
   <div class="hero-grid"></div>
 
-  <!-- floating red elements -->
   <div class="float" data-speed="0.18" style="top:14%;left:6%"><div class="stamp">All In</div></div>
   <div class="float" data-speed="0.32" style="top:22%;right:8%"><div class="nm-mini">N/M</div></div>
   <div class="float" data-speed="0.45" style="top:62%;left:4%"><div class="dot"></div></div>
-  <div class="float" data-speed="0.55" style="top:74%;right:14%"><div class="tag">Launch · 05.23</div></div>
+  <div class="float" data-speed="0.55" style="top:74%;right:14%"><div class="tag">No Half Measures</div></div>
   <div class="float" data-speed="0.25" style="top:48%;right:4%"><div class="square"></div></div>
-  <div class="float" data-speed="0.38" style="top:88%;left:18%"><div class="stamp">No Compromise</div></div>
+  <div class="float" data-speed="0.38" style="top:88%;left:18%"><div class="stamp">Fredericksburg, VA</div></div>
   <div class="float" data-speed="0.2" style="top:8%;right:30%"><span class="slash">/</span></div>
 
   <div class="hero-eyebrow">
     <span class="bar"></span>
-    <span class="mono red">// COUNTDOWN TO</span>
+    <span class="mono red">// NO HALF MEASURES</span>
     <span class="bar"></span>
   </div>
 
   <h1 class="hero-title block">
-    NHM<br><span class="red">UNLEASHED</span>
+    NHM<br><span class="red">ALL IN.</span>
   </h1>
 
+  <p class="hero-tagline">All in is the only way out.</p>
+
   <p class="hero-sub">
-    A launch night for the work, the people, and the conviction behind it.
-    No spotlight chasing. No half measures. Just the room, the room's stories,
-    and what we're building next.
+    In Fredericksburg, men are dying from addiction every week. We meet them in the wreckage, walk with them through recovery, and help them build a life worth staying for.
   </p>
 
-  <!-- countdown -->
-  <div class="countdown" id="countdown">
-    <div class="cd-cell">
-      <span class="cd-corner tl"></span><span class="cd-corner tr"></span><span class="cd-corner bl"></span><span class="cd-corner br"></span>
-      <span class="cd-num" id="cd-days">00</span>
-      <span class="cd-label">Days</span>
+  <div class="hero-ctas">
+    <a href="#give" class="btn-gold">Give Now <span>→</span></a>
+    <a href="#story" class="btn-outline">Read Don's Story <span>→</span></a>
+  </div>
+</section>
+
+<!-- ============================================================ 02 THE STAKES -->
+<section id="stakes" data-screen-label="02 The Stakes">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">/ 02 — THE STAKES</div>
+        <h2 class="block section-title" style="margin-top:18px">The story<br>you don't<br><span style="color:var(--red)">see.</span></h2>
+      </div>
+      <div style="max-width:440px;align-self:flex-end">
+        <p style="color:var(--ink-dim);font-size:16px;line-height:1.65;margin-bottom:18px">Last year, more than 100,000 Americans died from overdose. Behind each number was a son, a father, a friend.</p>
+        <p style="color:var(--ink-dim);font-size:16px;line-height:1.65">In our county, men who want out can't always find a door. Treatment ends. Family ties are gone. Housing falls through. The cycle wins.</p>
+      </div>
     </div>
-    <div class="cd-cell">
-      <span class="cd-corner tl"></span><span class="cd-corner tr"></span><span class="cd-corner bl"></span><span class="cd-corner br"></span>
-      <span class="cd-num" id="cd-hours">00</span>
-      <span class="cd-label">Hours</span>
-    </div>
-    <div class="cd-cell">
-      <span class="cd-corner tl"></span><span class="cd-corner tr"></span><span class="cd-corner bl"></span><span class="cd-corner br"></span>
-      <span class="cd-num" id="cd-mins">00</span>
-      <span class="cd-label">Minutes</span>
-    </div>
-    <div class="cd-cell">
-      <span class="cd-corner tl"></span><span class="cd-corner tr"></span><span class="cd-corner bl"></span><span class="cd-corner br"></span>
-      <span class="cd-num" id="cd-secs">00</span>
-      <span class="cd-label">Seconds</span>
+
+    <div class="stakes-callout">
+      No Half Measures exists because <span class="red">half measures are how good men die.</span>
     </div>
   </div>
 </section>
 
-<!-- ============== MISSION ============== -->
-<section id="mission" data-screen-label="02 Mission">
+<!-- ============================================================ 03 DON'S STORY -->
+<section id="story" data-screen-label="03 Don's Story">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-num">/ 01 — MISSION</div>
-        <h2 class="block section-title" style="margin-top:18px">What we do.<br><span style="color:var(--red)">No filters.</span></h2>
+        <div class="section-num">/ 03 — DON'S STORY</div>
+        <h2 class="block section-title" style="margin-top:18px">The road<br>he walked.</h2>
       </div>
-      <div class="mono" style="max-width:260px;text-align:right">We meet people where they are and ask, "how can I help?"</div>
+      <div class="mono" style="max-width:260px;text-align:right">Our most important asset. The whole site orbits it.</div>
+    </div>
+
+    <div class="dons-story-inner">
+      <div class="dons-story-text">
+        <div class="pull-quote">Don walked out of prison with nothing but a Bible and a debt to pay.</div>
+        <p>He'd been the addict everyone gave up on. The guy you cross the street to avoid. Then something broke. He went all in.</p>
+        <p>Years later, he runs the company that pays his bills, leads the church that prays for his city, and now leads the work you're reading about.</p>
+        <p>No Half Measures isn't a theory. It's the road he walked, built into something other men can walk too.</p>
+        <div class="cta-row">
+          <a href="#" class="btn-gold">Watch Don's Story <span>→</span></a>
+        </div>
+      </div>
+      <div class="photo" data-label="DON / FOUNDER" style="aspect-ratio:4/5">
+        <span class="crosshair"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="float" data-speed="0.3" style="top:20%;right:5%;z-index:5"><div class="nm-mini">N/M</div></div>
+  <div class="float" data-speed="0.45" style="bottom:15%;left:5%;z-index:5"><div class="stamp">All In</div></div>
+</section>
+
+<!-- ============================================================ 04 WHAT ALL IN LOOKS LIKE -->
+<section id="mission" data-screen-label="04 What All In Looks Like">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">/ 04 — WHAT ALL IN LOOKS LIKE</div>
+        <h2 class="block section-title" style="margin-top:18px">One man.<br>Four stages.<br><span style="color:var(--red)">All in.</span></h2>
+      </div>
+      <div class="mono" style="max-width:260px;text-align:right">All in at every one. No conditions. No halfway.</div>
     </div>
 
     <div class="pillars">
       <div class="pillar">
         <div class="num">/ 01</div>
         <h3>In Addiction</h3>
-        <p>We connect them to resources and model lives that show recovery is possible.</p>
+        <p>We show up. No conditions. We connect men to detox, treatment, and recovery beds — and we stay in the relationship.</p>
       </div>
       <div class="pillar">
         <div class="num">/ 02</div>
         <h3>In Recovery</h3>
-        <p>We provide job training and opportunities that expand their vision.</p>
+        <p>We build skills. Job training, work ethic, and trades that lead to real income.</p>
       </div>
       <div class="pillar">
         <div class="num">/ 03</div>
         <h3>Transitioning Out</h3>
-        <p>Housing — a stable place to land during critical seasons of rebuilding.</p>
+        <p>We open doors. A stable place to live during the year a man's life is most fragile.</p>
       </div>
       <div class="pillar">
         <div class="num">/ 04</div>
-        <h3>At Every Stage</h3>
-        <p>Community to lean on when life gets heavy and hope feels out of reach.</p>
+        <h3>For Life</h3>
+        <p>We stay close. Brotherhood that lasts after the program ends, because relapse waits for isolation.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== STORY MOSAIC w/ offset parallax ============== -->
-<section id="story" data-screen-label="03 Story" style="padding-top:60px">
+<!-- ============================================================ STORY MOSAIC -->
+<section data-screen-label="Story Mosaic" style="padding-top:60px">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-num">/ 02 — ON THE GROUND</div>
+        <div class="section-num">// ON THE GROUND</div>
         <h2 class="block section-title" style="margin-top:18px">Show up.<br>Open doors.<br>Share meals.</h2>
       </div>
       <div class="mono" style="max-width:260px;text-align:right">We don't help from a distance. Real people. Real rooms. Real recoveries.</div>
     </div>
 
     <div class="mosaic">
-      <div class="photo a" data-parallax="-30" data-label="01 / STREET" style="min-height:0">
-        <span class="crosshair"></span>
-      </div>
-      <div class="photo b" data-parallax="40" data-label="02 / GATHERING">
-        <span class="crosshair"></span>
-      </div>
-      <div class="photo c" data-parallax="-20" data-label="03 / WORK">
-        <span class="crosshair"></span>
-      </div>
-      <div class="photo d" data-parallax="55" data-label="04 / HOUSING">
-        <span class="crosshair"></span>
-      </div>
-      <div class="photo e" data-parallax="-45" data-label="05 / TRAINING">
-        <span class="crosshair"></span>
-      </div>
+      <div class="photo a" data-parallax="-30" data-label="01 / STREET" style="min-height:0"><span class="crosshair"></span></div>
+      <div class="photo b" data-parallax="40"  data-label="02 / GATHERING"><span class="crosshair"></span></div>
+      <div class="photo c" data-parallax="-20" data-label="03 / WORK"><span class="crosshair"></span></div>
+      <div class="photo d" data-parallax="55"  data-label="04 / HOUSING"><span class="crosshair"></span></div>
+      <div class="photo e" data-parallax="-45" data-label="05 / TRAINING"><span class="crosshair"></span></div>
     </div>
   </div>
 
-  <!-- floating reds -->
-  <div class="float" data-speed="0.3" style="top:30%;right:6%;z-index:5"><div class="nm-mini">N/M</div></div>
+  <div class="float" data-speed="0.3"  style="top:30%;right:6%;z-index:5"><div class="nm-mini">N/M</div></div>
   <div class="float" data-speed="0.45" style="bottom:18%;left:6%;z-index:5"><div class="stamp">Wholehearted</div></div>
 </section>
 
-<!-- ============== MANIFESTO STRIP ============== -->
-<section class="manifesto" data-screen-label="04 Manifesto">
+<!-- ============================================================ MANIFESTO STRIP -->
+<section class="manifesto" data-screen-label="Manifesto">
   <div class="container">
-    <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE — 03</div>
+    <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE</div>
     <h2 data-parallax-x="-40">All in is the<br>only way out.</h2>
     <div class="row">
       <div class="manifesto-body" style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
@@ -554,12 +642,99 @@
   </div>
 </section>
 
-<!-- ============== VALUES + offset photo ============== -->
-<section id="values" data-screen-label="05 Values">
+<!-- ============================================================ 05 THE PLAN -->
+<section id="give" data-screen-label="05 The Plan">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-num">/ 04 — VALUES</div>
+        <div class="section-num gold">/ 05 — THE PLAN</div>
+        <h2 class="block section-title" style="margin-top:18px">Three ways<br>to be<br><span style="color:var(--gold)">all in.</span></h2>
+      </div>
+      <div class="mono" style="max-width:260px;text-align:right">Pick your lane. Escalate your commitment. Go all in on it.</div>
+    </div>
+
+    <div class="plan-cols">
+      <div class="plan-col">
+        <div class="num">/ 01</div>
+        <h3>Give</h3>
+        <p>Fund the work. Monthly or one-time. Every dollar goes to the ground, not the overhead.</p>
+      </div>
+      <div class="plan-col">
+        <div class="num">/ 02</div>
+        <h3>Pray</h3>
+        <p>Get the Hope Merchant newsletter. One story a week. No spam. Just the work, unfiltered.</p>
+      </div>
+      <div class="plan-col">
+        <div class="num">/ 03</div>
+        <h3>Show Up</h3>
+        <p>Volunteer, host, or partner your church with us. Show up in the room where it happens.</p>
+      </div>
+    </div>
+
+    <div class="plan-ctas">
+      <a href="#" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
+      <a href="#" class="btn-outline">Give One Time <span>→</span></a>
+    </div>
+
+    <div class="newsletter-row">
+      <div class="nl-label">
+        <strong>Get the Newsletter</strong>
+        <p>One story a week. No spam. The Hope Merchant updates — straight to your inbox.</p>
+      </div>
+      <div class="nl-form">
+        <input type="email" placeholder="Your email address">
+        <button type="button">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 06 WHAT YOUR GIFT DOES -->
+<section data-screen-label="06 What Your Gift Does" style="padding-top:40px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num gold">/ 06 — WHAT YOUR GIFT DOES</div>
+        <h2 class="block section-title" style="margin-top:18px">Dollars to<br><span style="color:var(--gold)">outcomes.</span></h2>
+      </div>
+      <div class="mono" style="max-width:260px;text-align:right">Every dollar tied to a real man and a real result. No vague overhead.</div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-cell">
+        <div class="amount">$25<small>/mo</small></div>
+        <p>One week of groceries for a man in early recovery.</p>
+        <div class="freq">Monthly giving</div>
+      </div>
+      <div class="impact-cell">
+        <div class="amount">$100<small>/mo</small></div>
+        <p>A month of job training materials and skill-building resources.</p>
+        <div class="freq">Monthly giving</div>
+      </div>
+      <div class="impact-cell">
+        <div class="amount">$500<small>/mo</small></div>
+        <p>A bed in transitional housing, fully covered.</p>
+        <div class="freq">Monthly giving</div>
+      </div>
+      <div class="impact-cell">
+        <div class="amount">$1K<small> once</small></div>
+        <p>Sponsors a man's first 90 days — the window where most relapse happens.</p>
+        <div class="freq">One-time gift</div>
+      </div>
+    </div>
+
+    <div class="impact-cta">
+      <a href="#" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ VALUES -->
+<section id="values" data-screen-label="Values">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">// VALUES</div>
         <h2 class="block section-title" style="margin-top:18px">Who<br>we<br><span style="color:var(--red)">are.</span></h2>
       </div>
     </div>
@@ -608,61 +783,27 @@
     </div>
   </div>
 
-  <!-- floating reds -->
-  <div class="float" data-speed="0.5" style="top:8%;right:38%;z-index:5"><span class="slash">/</span></div>
-  <div class="float" data-speed="0.3" style="bottom:14%;right:12%;z-index:5"><div class="tag">Est. 2024</div></div>
+  <div class="float" data-speed="0.5"  style="top:8%;right:38%;z-index:5"><span class="slash">/</span></div>
+  <div class="float" data-speed="0.3"  style="bottom:14%;right:12%;z-index:5"><div class="tag">Est. 2024</div></div>
 </section>
 
-<!-- ============== EVENT ============== -->
-<section id="event" style="padding-top:40px" data-screen-label="06 Event">
+<!-- ============================================================ 08 THE ASK -->
+<section class="the-ask" data-screen-label="08 The Ask">
+  <div class="the-ask-bg"></div>
   <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">/ 05 — LAUNCH NIGHT</div>
-        <h2 class="block section-title" style="margin-top:18px">The room<br>where it starts.</h2>
-      </div>
-      <div class="mono" style="max-width:280px;text-align:right">One night. No livestream. The people, the stories, the work.</div>
+    <div class="mono red" style="margin-bottom:28px">/ 08 — THE ASK</div>
+    <h2>Nobody made it<br>going halfway.</h2>
+    <p class="the-ask-sub">Be a Hope Merchant. $25 a month, every month, builds the work.</p>
+    <div class="the-ask-ctas">
+      <a href="#" class="btn-gold">Become a Hope Merchant <span>→</span></a>
+      <a href="#" class="btn-outline">Give One Time <span>→</span></a>
     </div>
-
-    <div class="event">
-      <div class="event-left">
-        <dl>
-          <dt>// Date & Time</dt>
-          <dd>May 23, 2026<small>Saturday · 6:00 PM — 10:00 PM EST</small></dd>
-          <dt>// Location</dt>
-          <dd>The Woolen Mill<small>1707 Princess Anne St · Downtown Fredericksburg, VA</small></dd>
-          <dt>// Dress Code</dt>
-          <dd>Cocktail Attire<small>Show up sharp. Show up real.</small></dd>
-        </dl>
-      </div>
-      <div class="event-right">
-        <div>
-          <div class="mono" style="margin-bottom:14px">// EVENING INCLUDES</div>
-          <div class="event-includes">
-            <span class="chip red">Heavy Hors d'œuvres</span>
-            <span class="chip red">Open Bar</span>
-            <span class="chip">Live Music</span>
-            <span class="chip">Stories from the Work</span>
-            <span class="chip">Year-One Reveal</span>
-            <span class="chip">Community</span>
-          </div>
-        </div>
-
-        <div>
-          <button class="register">Register Now <span class="arrow">→</span></button>
-          <div class="mono" style="margin-top:14px">SEATS LIMITED · CONFIRMATION REQUIRED</div>
-        </div>
-      </div>
-    </div>
+    <div class="the-ask-legal">NHM Foundation is a 501(c)(3) · Gifts are tax-deductible</div>
   </div>
-
-  <!-- floating reds -->
-  <div class="float" data-speed="0.4" style="top:18%;left:4%;z-index:5"><div class="stamp">RSVP · OPEN</div></div>
-  <div class="float" data-speed="0.6" style="bottom:8%;right:6%;z-index:5"><div class="dot"></div></div>
 </section>
 
-<!-- ============== FOOTER ============== -->
-<footer data-screen-label="07 Footer">
+<!-- ============================================================ FOOTER -->
+<footer data-screen-label="Footer">
   <div class="container">
     <div class="row">
       <div>
@@ -673,8 +814,20 @@
         <a href="#">Instagram</a>
         <a href="#">YouTube</a>
         <a href="#">Contact</a>
-        <a href="#">Donate</a>
+        <a href="#give">Give</a>
         <a href="#">Volunteer</a>
+      </div>
+    </div>
+
+    <!-- footer newsletter -->
+    <div class="newsletter-row" style="margin-top:48px">
+      <div class="nl-label">
+        <strong>Hope Merchant Newsletter</strong>
+        <p>One story a week. No spam. The work, unfiltered — straight to your inbox.</p>
+      </div>
+      <div class="nl-form">
+        <input type="email" placeholder="Your email address">
+        <button type="button">Subscribe →</button>
       </div>
     </div>
 
@@ -687,75 +840,56 @@
   </div>
 </footer>
 
-<!-- ============== TICKER ============== -->
+<!-- ============================================================ TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span>All In Is The Only Way Out</span>
     <span>No Half Measures</span>
     <span>Nobody Made It Going Halfway</span>
     <span>Full Commitment Changes Everything</span>
-    <span>NHM Unleashed · May 23</span>
+    <span>Become a Hope Merchant</span>
     <span>All In Is The Only Way Out</span>
     <span>No Half Measures</span>
     <span>Nobody Made It Going Halfway</span>
     <span>Full Commitment Changes Everything</span>
-    <span>NHM Unleashed · May 23</span>
+    <span>Become a Hope Merchant</span>
   </div>
 </div>
 
 <script>
-  /* ---------- live countdown ---------- */
-  // target: May 23, 2026, 6:00 PM EST (UTC-5 => 23:00Z, but EDT is UTC-4 so 22:00Z)
-  // Use Eastern time; user said May 23, 6PM. Use ISO with offset -04:00 (EDT in late May).
-  const target = new Date('2026-05-23T18:00:00-04:00').getTime();
-  const pad = n => String(Math.max(0,n)).padStart(2,'0');
-  function tick(){
-    const now = Date.now();
-    let diff = Math.max(0, target - now);
-    const d = Math.floor(diff/86400000); diff -= d*86400000;
-    const h = Math.floor(diff/3600000);  diff -= h*3600000;
-    const m = Math.floor(diff/60000);    diff -= m*60000;
-    const s = Math.floor(diff/1000);
-    document.getElementById('cd-days').textContent  = pad(d);
-    document.getElementById('cd-hours').textContent = pad(h);
-    document.getElementById('cd-mins').textContent  = pad(m);
-    document.getElementById('cd-secs').textContent  = pad(s);
-  }
-  tick(); setInterval(tick,1000);
-
-  /* ---------- parallax (scroll-linked, throttled w/ rAF) ---------- */
+  /* ---------- parallax (rAF throttled, skips mobile + reduced-motion) ---------- */
   const floats = Array.from(document.querySelectorAll('.float'));
   const photos = Array.from(document.querySelectorAll('[data-parallax]'));
   const manifestoTitle = document.querySelector('[data-parallax-x]');
   let ticking = false;
+
   function update(){
     const mobile = window.matchMedia('(max-width:880px)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    if(mobile || reducedMotion){ ticking=false; return; }
+    if(mobile || reducedMotion){ ticking = false; return; }
     const y = window.scrollY;
     for(const el of floats){
       const speed = parseFloat(el.dataset.speed || 0.3);
-      el.style.transform = `translate3d(0, ${-y*speed}px, 0)`;
+      el.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
     }
     for(const el of photos){
       const amt = parseFloat(el.dataset.parallax || 0);
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      const progress = (rect.top + rect.height/2 - vh/2) / vh;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
       el.style.transform = `translate3d(0, ${progress * amt}px, 0)`;
     }
     if(manifestoTitle){
       const rect = manifestoTitle.getBoundingClientRect();
       const vh = window.innerHeight;
-      const progress = (rect.top + rect.height/2 - vh/2) / vh;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
       manifestoTitle.style.transform = `translate3d(${progress * -60}px, 0, 0)`;
     }
     ticking = false;
   }
-  function onScroll(){
-    if(!ticking){ requestAnimationFrame(update); ticking = true; }
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
+
+  function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
+  window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', update);
   update();
 </script>
