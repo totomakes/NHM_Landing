@@ -11,8 +11,6 @@
 <style>
   :root{
     --red:#da3123;
-    --gold:#FFE000;
-    --gold-dim:#CDB400;
     --bg:#0a0a0a;
     --ink:#f5f4f1;
     --ink-dim:#8a8784;
@@ -44,12 +42,12 @@
   .nav-links a{font-family:'Archivo',sans-serif;font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.12em;color:var(--ink-dim);transition:color .15s}
   .nav-links a:hover{color:var(--ink)}
   .nav-donate{
-    background:var(--gold);color:#0a0a0a;border:none;
+    background:#fff;color:#0a0a0a;border:none;
     padding:9px 18px 7px;font-family:'Archivo Black',sans-serif;
     text-transform:uppercase;font-size:11px;letter-spacing:0.1em;
     transition:background .15s;
   }
-  .nav-donate:hover{background:var(--gold-dim)}
+  .nav-donate:hover{background:rgba(255,255,255,0.85)}
 
   /* ── TICKER ── */
   .ticker{
@@ -66,12 +64,12 @@
   /* ── CTAs ── */
   .btn-gold{
     display:inline-flex;align-items:center;gap:12px;
-    background:var(--gold);color:#0a0a0a;border:none;
+    background:#fff;color:#0a0a0a;border:none;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:15px;letter-spacing:0.05em;padding:20px 30px 16px;
     transition:transform .15s,background .15s;
   }
-  .btn-gold:hover{transform:translateY(-2px);background:var(--gold-dim)}
+  .btn-gold:hover{transform:translateY(-2px);background:rgba(255,255,255,0.88)}
   .btn-outline{
     display:inline-flex;align-items:center;gap:12px;
     background:transparent;color:var(--ink);
@@ -139,7 +137,7 @@
   section{position:relative;padding:120px 28px;overflow:hidden}
   .container{max-width:1240px;margin:0 auto}
   .section-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:12px;letter-spacing:0.08em;margin-bottom:6px}
-  .section-num.gold{color:var(--gold)}
+  .section-num.gold{color:var(--red)}
   .section-title{
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:clamp(36px,6vw,84px);letter-spacing:-0.02em;line-height:0.9;
@@ -159,7 +157,7 @@
   .recap-pull{
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:clamp(22px,3vw,36px);letter-spacing:-0.015em;line-height:1.05;
-    border-left:4px solid var(--gold);padding-left:24px;
+    border-left:4px solid var(--red);padding-left:24px;
     position:sticky;top:100px;
   }
 
@@ -583,7 +581,7 @@
 
     <div class="give-inner">
       <div class="give-left">
-        <h2 class="give-title">You saw the vision.<br>Help us<br><span style="color:#FFE000">build it.</span></h2>
+        <h2 class="give-title">You saw the vision.<br>Help us<br><span style="color:var(--ink)">build it.</span></h2>
         <p>Your gift funds housing, job training, and the community that keeps people sober long after the program ends. Every dollar goes straight into the work.</p>
         <div style="margin-top:28px">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyf3v8xoUWEy-XuMn6ViJI8Fic7No-Scq5DSMu7Xl6lh__RA/viewform" target="_blank" rel="noopener" class="btn-gold">Give Now →</a>

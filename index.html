@@ -11,8 +11,6 @@
   :root{
     --red:#da3123;
     --red-dim:#a8261b;
-    --gold:#FFE000;
-    --gold-dim:#CDB400;
     --bg:#0a0a0a;
     --ink:#f5f4f1;
     --ink-dim:#8a8784;
@@ -29,7 +27,7 @@
   .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.01em;line-height:0.88;text-transform:uppercase}
   .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.04em;text-transform:uppercase;font-size:11px;color:var(--ink-dim)}
   .mono.red{color:var(--red)}
-  .mono.gold{color:var(--gold)}
+  .mono.gold{color:var(--red)}
 
   /* ---------- logo / lockups ---------- */
   .framed-wordmark{
@@ -71,13 +69,13 @@
   nav.top ul a:hover{color:var(--ink)}
   nav.top .right{display:flex;align-items:center;gap:18px}
   nav.top .donate{
-    background:var(--gold);color:#0a0a0a;border:none;
+    background:#fff;color:#0a0a0a;border:none;
     padding:9px 18px 7px;cursor:pointer;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:11px;letter-spacing:0.1em;
     transition:background .15s ease;
   }
-  nav.top .donate:hover{background:var(--gold-dim)}
+  nav.top .donate:hover{background:rgba(255,255,255,0.85)}
 
   /* ---------- ticker ---------- */
   .ticker{
@@ -98,13 +96,13 @@
   /* ---------- CTAs ---------- */
   .btn-gold{
     display:inline-flex;align-items:center;gap:12px;
-    background:var(--gold);color:#0a0a0a;
+    background:#fff;color:#0a0a0a;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:15px;letter-spacing:0.05em;
     padding:20px 30px 16px;
     transition:transform .15s ease,background .15s ease;
   }
-  .btn-gold:hover{transform:translateY(-2px);background:var(--gold-dim)}
+  .btn-gold:hover{transform:translateY(-2px);background:rgba(255,255,255,0.88)}
 
   .btn-outline{
     display:inline-flex;align-items:center;gap:12px;
@@ -194,7 +192,7 @@
   .container{max-width:1240px;margin:0 auto;position:relative}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:48px}
   .section-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:12px;letter-spacing:0.08em}
-  .section-num.gold{color:var(--gold)}
+  .section-num.gold{color:var(--red)}
   .section-title{font-size:clamp(40px,7vw,96px);letter-spacing:-0.02em}
 
   /* ---------- photo placeholder ---------- */
@@ -284,7 +282,7 @@
   }
   .plan-col{padding:40px 32px;border-right:1px solid #1f1f1d}
   .plan-col:last-child{border-right:none}
-  .plan-col .num{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:11px;letter-spacing:0.08em;margin-bottom:20px}
+  .plan-col .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em;margin-bottom:20px}
   .plan-col h3{
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
     font-size:clamp(30px,4.5vw,54px);letter-spacing:-0.015em;line-height:0.88;margin-bottom:20px;
@@ -333,12 +331,12 @@
   .impact-cell:last-child{border-right:none}
   .impact-cell::before{
     content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--gold);
+    background:var(--red);
   }
   .impact-cell .amount{
     font-family:'Archivo Black',sans-serif;
     font-size:clamp(28px,4vw,52px);letter-spacing:-0.02em;line-height:1;
-    color:var(--gold);margin-bottom:14px;
+    color:var(--ink);margin-bottom:14px;
   }
   .impact-cell .amount small{font-size:0.48em;color:var(--ink-dim);letter-spacing:0}
   .impact-cell p{color:var(--ink-dim);font-size:14px;line-height:1.55}
@@ -651,8 +649,8 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-num gold">/ 05 — THE PLAN</div>
-        <h2 class="block section-title" style="margin-top:18px">Three ways<br>to be<br><span style="color:var(--gold)">all in.</span></h2>
+        <div class="section-num">/ 05 — THE PLAN</div>
+        <h2 class="block section-title" style="margin-top:18px">Three ways<br>to be<br><span style="color:var(--red)">all in.</span></h2>
       </div>
       <div class="mono" style="max-width:260px;text-align:right">Pick your lane. Escalate your commitment. Go all in on it.</div>
     </div>
@@ -698,8 +696,8 @@
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="section-num gold">/ 06 — WHAT YOUR GIFT DOES</div>
-        <h2 class="block section-title" style="margin-top:18px">Dollars to<br><span style="color:var(--gold)">outcomes.</span></h2>
+        <div class="section-num">/ 06 — WHAT YOUR GIFT DOES</div>
+        <h2 class="block section-title" style="margin-top:18px">Dollars to<br><span style="color:var(--red)">outcomes.</span></h2>
       </div>
       <div class="mono" style="max-width:260px;text-align:right">Every dollar tied to a real man and a real result. No vague overhead.</div>
     </div>
