@@ -163,39 +163,17 @@
 
   /* ── VIDEO SECTION ── */
   .video-wrap{
-    background:linear-gradient(180deg,#0d0d0d,#080808);
-    border:1px solid #1f1f1d;
     aspect-ratio:16/9;
     position:relative;
-    display:flex;flex-direction:column;
-    align-items:center;justify-content:center;
     overflow:hidden;
     max-width:960px;margin:0 auto;
+    background:#000;
   }
-  .video-wrap::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,transparent,var(--red),transparent);
+  .video-wrap iframe{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    border:0;
   }
-  .video-wrap .vp-play{
-    width:72px;height:72px;border:2px solid var(--ink-faint);border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;color:var(--ink-dim);margin-bottom:20px;
-  }
-  .video-wrap .vp-title{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:20px;letter-spacing:0.02em;color:var(--ink);margin-bottom:10px;
-  }
-  .video-wrap .vp-sub{
-    font-family:'JetBrains Mono',monospace;font-size:11px;
-    text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-dim);
-  }
-  .video-wrap .vp-corners .c{
-    position:absolute;width:14px;height:14px;border:2px solid var(--red);
-  }
-  .video-wrap .vp-corners .c.tl{top:12px;left:12px;border-right:none;border-bottom:none}
-  .video-wrap .vp-corners .c.tr{top:12px;right:12px;border-left:none;border-bottom:none}
-  .video-wrap .vp-corners .c.bl{bottom:12px;left:12px;border-right:none;border-top:none}
-  .video-wrap .vp-corners .c.br{bottom:12px;right:12px;border-left:none;border-top:none}
 
   /* ── GALLERY ── */
   .gallery-header{
@@ -504,16 +482,16 @@
   <div class="container">
     <div class="section-num">/ 03 — WATCH THE NIGHT</div>
     <h2 class="section-title">Don's talk,<br>in full.</h2>
-    <p class="mono" style="margin-bottom:36px">If you were there, relive it. If you missed it, this is the heart of everything we are building.</p>
+    <p class="mono" style="margin-bottom:36px">If you were there, relive it. If you weren't — this is the heart of everything we are building.</p>
 
     <div class="video-wrap">
-      <div class="vp-corners">
-        <div class="c tl"></div><div class="c tr"></div>
-        <div class="c bl"></div><div class="c br"></div>
-      </div>
-      <div class="vp-play">▶</div>
-      <div class="vp-title">Don's Full Talk — NHM Unleashed</div>
-      <div class="vp-sub">Video edit in progress · Back soon</div>
+      <iframe
+        src="https://www.youtube.com/embed/s1YucQyP73w"
+        title="Don's Full Talk — NHM Unleashed · May 23, 2026"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
 </section>
