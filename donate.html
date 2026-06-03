@@ -81,9 +81,10 @@
   /* ── HERO ── */
   .hero{
     min-height:78vh;padding:140px 28px 80px;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+    text-align:left;position:relative;overflow:hidden;
   }
+  .hero .container-narrow{max-width:760px;width:100%}
   .hero-grid{
     position:absolute;inset:0;pointer-events:none;
     background-image:
@@ -101,7 +102,7 @@
   }
   .hero-title .red{color:var(--red)}
   .hero-sub{max-width:560px;color:var(--ink-dim);font-size:17px;line-height:1.65;margin-bottom:40px}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-start}
 
   /* ── SECTIONS ── */
   section{position:relative;padding:110px 28px;overflow:hidden}
@@ -301,16 +302,16 @@
       <input type="number" id="customAmount" min="1" step="1" placeholder="Enter a custom amount" inputmode="numeric" aria-label="Custom donation amount">
     </div>
 
-    <div class="pay-head">Giving <b id="amtLabel">$25</b> — pick your method:</div>
+    <div class="pay-head">Selected amount: <b id="amtLabel">$25</b></div>
     <div class="pay-buttons">
-      <a id="paypalBtn" class="pay-btn paypal" href="#" target="_blank" rel="noopener">
-        <span class="dot"></span> Give <span id="ppAmt">$25</span> · PayPal
-      </a>
       <a id="venmoBtn" class="pay-btn venmo" href="#" target="_blank" rel="noopener">
         <span class="dot"></span> Give <span id="vAmt">$25</span> · Venmo
       </a>
+      <a id="paypalBtn" class="pay-btn paypal" href="https://www.paypal.com/ncp/payment/TS6J7ABEZH32E" target="_blank" rel="noopener">
+        <span class="dot"></span> Give · PayPal
+      </a>
     </div>
-    <div class="assure">Secure · Tax-deductible · 501(c)(3) · Goes straight to the work</div>
+    <div class="assure">Venmo pre-fills your amount · PayPal opens a secure checkout where you confirm it · Tax-deductible · 501(c)(3)</div>
   </div>
 </section>
 
@@ -321,31 +322,6 @@
     <p>You'll receive a confirmation and a tax receipt at the email tied to your payment. Every dollar goes to the ground — housing, training, and the brotherhood that keeps men sober long after the program ends.</p>
   </div>
 </div>
-
-<!-- ── OTHER WAYS TO GIVE ── -->
-<section class="other-section">
-  <div class="container">
-    <div class="section-num">/ 02 — OTHER WAYS TO GIVE</div>
-    <h2 class="section-title">More ways<br>to be all in.</h2>
-    <div class="other-grid">
-      <div class="other-card">
-        <div class="oc-icon">P</div>
-        <h3>PayPal</h3>
-        <p>Give any amount directly.<br><a href="https://paypal.me/NoHalfMeasures" target="_blank" rel="noopener">paypal.me/NoHalfMeasures</a></p>
-      </div>
-      <div class="other-card">
-        <div class="oc-icon">@</div>
-        <h3>Venmo</h3>
-        <p>Send to our handle.<br><strong>@NoHalfMeasures</strong></p>
-      </div>
-      <div class="other-card">
-        <div class="oc-icon">✉</div>
-        <h3>Check by Mail</h3>
-        <p>Payable to <strong>No Half Measures Foundation</strong><br>123 Main St, Fredericksburg, VA 22401</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -386,32 +362,26 @@
 </div>
 
 <script>
-  /* ===== PAYMENT HANDLES — replace with the real accounts ===== */
-  const PAYPAL_HANDLE = "NoHalfMeasures";          // paypal.me/<handle>
-  const VENMO_HANDLE  = "NoHalfMeasures";          // venmo @handle (no @)
+  /* ===== PAYMENT ACCOUNTS ===== */
+  const VENMO_HANDLE = "nohalfmeasuresfoundation";   // venmo.com/u/nohalfmeasuresfoundation
   const NOTE = "No Half Measures donation";
+  /* PayPal uses a fixed hosted-checkout link (set on the button); amount is confirmed on PayPal's page. */
 
   let amount = 25;
 
   const tiers      = document.getElementById('tiers');
   const customEl   = document.getElementById('customAmount');
-  const paypalBtn  = document.getElementById('paypalBtn');
   const venmoBtn   = document.getElementById('venmoBtn');
   const amtLabel   = document.getElementById('amtLabel');
-  const ppAmt      = document.getElementById('ppAmt');
   const vAmt       = document.getElementById('vAmt');
 
   function fmt(a){ return '$' + a; }
 
   function updateLinks(){
     const a = amount > 0 ? amount : '';
-    paypalBtn.href = a
-      ? `https://paypal.me/${PAYPAL_HANDLE}/${a}`
-      : `https://paypal.me/${PAYPAL_HANDLE}`;
     venmoBtn.href = `https://venmo.com/${VENMO_HANDLE}?txn=pay${a ? `&amount=${a}` : ''}&note=${encodeURIComponent(NOTE)}`;
     const label = a ? fmt(a) : '—';
     amtLabel.textContent = label;
-    ppAmt.textContent = label;
     vAmt.textContent  = label;
   }
 
