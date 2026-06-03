@@ -210,6 +210,12 @@
   .photo .crosshair::before,.photo .crosshair::after{content:"";position:absolute;background:#fff}
   .photo .crosshair::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
   .photo .crosshair::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
+  /* real images inside .photo */
+  .photo.has-img{background:#111;border:1px solid #232321}
+  .photo.has-img::before{color:#fff;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,0.6);bottom:14px;top:auto;left:14px}
+  .photo.has-img::after{display:none}
+  .photo.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .photo.has-img .ph-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,10,0.55))}
 
   /* ---------- stakes section ---------- */
   .stakes-callout{
@@ -478,10 +484,11 @@
     <li><a href="#stakes">The Stakes</a></li>
     <li><a href="#story">Don's Story</a></li>
     <li><a href="#mission">Mission</a></li>
+    <li><a href="/recap">Recap</a></li>
     <li><a href="#give">Give</a></li>
   </ul>
   <div class="right">
-    <a href="#give" class="donate">Donate</a>
+    <a href="/donate" class="donate">Donate</a>
   </div>
 </nav>
 
@@ -514,7 +521,7 @@
   </p>
 
   <div class="hero-ctas">
-    <a href="#give" class="btn-gold">Give Now <span>→</span></a>
+    <a href="/donate" class="btn-gold">Give Now <span>→</span></a>
     <a href="#story" class="btn-outline">Read Don's Story <span>→</span></a>
   </div>
 </section>
@@ -560,8 +567,9 @@
           <a href="#" class="btn-gold">Watch Don's Story <span>→</span></a>
         </div>
       </div>
-      <div class="photo" data-label="DON / FOUNDER" style="aspect-ratio:4/5">
-        <span class="crosshair"></span>
+      <div class="photo has-img" data-label="DON / FOUNDER" style="aspect-ratio:4/5">
+        <img src="images/founder.webp" alt="Don, founder of No Half Measures, sitting with a Bible at sunset" loading="lazy" decoding="async">
+        <span class="ph-scrim"></span>
       </div>
     </div>
   </div>
@@ -618,11 +626,21 @@
     </div>
 
     <div class="mosaic">
-      <div class="photo a" data-parallax="-30" data-label="01 / STREET" style="min-height:0"><span class="crosshair"></span></div>
-      <div class="photo b" data-parallax="40"  data-label="02 / GATHERING"><span class="crosshair"></span></div>
-      <div class="photo c" data-parallax="-20" data-label="03 / WORK"><span class="crosshair"></span></div>
-      <div class="photo d" data-parallax="55"  data-label="04 / HOUSING"><span class="crosshair"></span></div>
-      <div class="photo e" data-parallax="-45" data-label="05 / TRAINING"><span class="crosshair"></span></div>
+      <div class="photo a has-img" data-parallax="-30" data-label="01 / STREET" style="min-height:0">
+        <img src="images/street.webp" alt="Meeting men where they are, on the street" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo b has-img" data-parallax="40"  data-label="02 / BROTHERHOOD">
+        <img src="images/team.webp" alt="The NHM team together" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo c has-img" data-parallax="-20" data-label="03 / RECOVERY">
+        <img src="images/training.webp" alt="Job training and skill-building in recovery" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo d has-img" data-parallax="55"  data-label="04 / HOUSING">
+        <img src="images/townhouse.webp" alt="Transitional housing" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo e has-img" data-parallax="-45" data-label="05 / FREDERICKSBURG">
+        <img src="images/burg.webp" alt="Downtown Fredericksburg, Virginia" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
     </div>
   </div>
 
@@ -674,8 +692,8 @@
     </div>
 
     <div class="plan-ctas">
-      <a href="#" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
-      <a href="#" class="btn-outline">Give One Time <span>→</span></a>
+      <a href="/donate" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
+      <a href="/donate" class="btn-outline">Give One Time <span>→</span></a>
     </div>
 
     <div class="newsletter-row">
@@ -726,7 +744,7 @@
     </div>
 
     <div class="impact-cta">
-      <a href="#" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
+      <a href="/donate" class="btn-gold">Become a Hope Merchant — $25/mo <span>→</span></a>
     </div>
   </div>
 </section>
@@ -776,8 +794,9 @@
       </ol>
 
       <div class="values-sidebar" style="position:sticky;top:80px">
-        <div class="photo" data-parallax="-30" data-label="PORTRAIT / FOUNDER" style="aspect-ratio:3/4">
-          <span class="crosshair"></span>
+        <div class="photo has-img" data-parallax="-30" data-label="DON / FOUNDER" style="aspect-ratio:3/4">
+          <img src="images/founder.webp" alt="Don, founder of No Half Measures" loading="lazy" decoding="async">
+          <span class="ph-scrim"></span>
         </div>
         <div class="framed-wordmark red" style="margin-top:24px;font-size:18px">No Half Measures</div>
         <div class="mono" style="margin-top:12px">— A LIFE WORTH LIVING ON THE OTHER SIDE OF PAIN.</div>
@@ -797,8 +816,8 @@
     <h2>Nobody made it<br>going halfway.</h2>
     <p class="the-ask-sub">Be a Hope Merchant. $25 a month, every month, builds the work.</p>
     <div class="the-ask-ctas">
-      <a href="#" class="btn-gold">Become a Hope Merchant <span>→</span></a>
-      <a href="#" class="btn-outline">Give One Time <span>→</span></a>
+      <a href="/donate" class="btn-gold">Become a Hope Merchant <span>→</span></a>
+      <a href="/donate" class="btn-outline">Give One Time <span>→</span></a>
     </div>
     <div class="the-ask-legal">NHM Foundation is a 501(c)(3) · Gifts are tax-deductible</div>
   </div>
@@ -816,8 +835,8 @@
         <a href="#">Instagram</a>
         <a href="#">YouTube</a>
         <a href="#">Contact</a>
-        <a href="#give">Give</a>
-        <a href="#">Volunteer</a>
+        <a href="/donate">Give</a>
+        <a href="/recap">Recap</a>
       </div>
     </div>
 
