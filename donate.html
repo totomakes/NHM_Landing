@@ -254,11 +254,11 @@
   <div class="hero-grid"></div>
   <div class="eyebrow">
     <span class="bar"></span>
-    <span>// GIVE — NO HALF MEASURES</span>
+    <span data-edit="donate.hero_eyebrow">// GIVE — NO HALF MEASURES</span>
     <span class="bar"></span>
   </div>
   <h1 class="hero-title">All in<br><span class="red">starts here.</span></h1>
-  <p class="hero-sub">
+  <p class="hero-sub" data-edit="donate.hero_sub">
     Every dollar funds recovery — job training, housing, community. No overhead games. No half measures. Your gift goes straight to the work.
   </p>
   <div class="hero-ctas">
@@ -272,29 +272,29 @@
   <div class="container">
     <div class="section-num">/ 01 — CHOOSE YOUR IMPACT</div>
     <h2 class="section-title">Choose your impact.</h2>
-    <p class="section-lead">Pick an amount — or enter your own. Then give in seconds through PayPal or Venmo. Every gift is tax-deductible.</p>
+    <p class="section-lead" data-edit="donate.choose_lead">Pick an amount — or enter your own. Then give in seconds through PayPal or Venmo. Every gift is tax-deductible.</p>
 
     <div class="tiers" id="tiers">
       <button class="tier active" data-amount="25">
         <span class="badge">Most Common</span>
         <div class="amt">$25</div>
-        <div class="name">The Table</div>
-        <div class="desc">Feeds a room — a shared meal for men doing the work of recovery.</div>
+        <div class="name" data-edit="donate.tier1_name">The Table</div>
+        <div class="desc" data-edit="donate.tier1_desc">Feeds a room — a shared meal for men doing the work of recovery.</div>
       </button>
       <button class="tier" data-amount="100">
         <div class="amt">$100</div>
-        <div class="name">The Week</div>
-        <div class="desc">Funds a full week of job training and skill-building resources.</div>
+        <div class="name" data-edit="donate.tier2_name">The Week</div>
+        <div class="desc" data-edit="donate.tier2_desc">Funds a full week of job training and skill-building resources.</div>
       </button>
       <button class="tier" data-amount="250">
         <div class="amt">$250</div>
-        <div class="name">The Month</div>
-        <div class="desc">A month of resources and support for a man rebuilding his life.</div>
+        <div class="name" data-edit="donate.tier3_name">The Month</div>
+        <div class="desc" data-edit="donate.tier3_desc">A month of resources and support for a man rebuilding his life.</div>
       </button>
       <button class="tier" data-amount="500">
         <div class="amt">$500</div>
-        <div class="name">The Door</div>
-        <div class="desc">Opens a door — a contribution toward transitional housing.</div>
+        <div class="name" data-edit="donate.tier4_name">The Door</div>
+        <div class="desc" data-edit="donate.tier4_desc">Opens a door — a contribution toward transitional housing.</div>
       </button>
     </div>
 
@@ -319,8 +319,8 @@
 <!-- ── NOTE STRIP ── -->
 <div class="note-strip">
   <div class="container">
-    <h2>No overhead games. No half measures.</h2>
-    <p>You'll receive a confirmation and a tax receipt at the email tied to your payment. Every dollar goes to the ground — housing, training, and the brotherhood that keeps men sober long after the program ends.</p>
+    <h2 data-edit="donate.note_heading">No overhead games. No half measures.</h2>
+    <p data-edit="donate.note_body">You'll receive a confirmation and a tax receipt at the email tied to your payment. Every dollar goes to the ground — housing, training, and the brotherhood that keeps men sober long after the program ends.</p>
   </div>
 </div>
 
@@ -407,5 +407,6 @@
 
   updateLinks();
 </script>
+<script src="/assets/content.js" defer></script>
 </body>
 </html>

@@ -443,7 +443,7 @@
 
   <p class="hero-date">May 23, 2026 &nbsp;·&nbsp; Silk Mill &nbsp;·&nbsp; Fredericksburg, VA</p>
 
-  <p class="hero-sub">
+  <p class="hero-sub" data-edit="recap.hero_sub">
     This night marked the beginning of something that doesn't go halfway.
     Below you'll find Don's full talk and photos from the night.
   </p>
@@ -466,13 +466,13 @@
     <h2 class="section-title">One room.<br>All in.</h2>
 
     <div class="recap-body">
-      <div class="recap-pull">
+      <div class="recap-pull" data-edit="recap.pull_quote">
         "All in is the only way out."
       </div>
       <div>
-        <p>On May 23rd, you packed the Silk Mill and helped us launch something that matters. We worshiped together, we heard Don share how he got from the bottom back to life, and we got our first real look at what No Half Measures is built to do: walk with people through addiction, through recovery, and through everything that comes after.</p>
-        <p>None of this works from a distance. It works because people show up, look each other in the eye, and refuse to let go. That is exactly what you did on the 23rd. That is the whole mission in one room.</p>
-        <p>Below you'll find the photos from the night and Don's full talk. If it moved you, there is a way to stay in it.</p>
+        <p data-edit="recap.recap_p1">On May 23rd, you packed the Silk Mill and helped us launch something that matters. We worshiped together, we heard Don share how he got from the bottom back to life, and we got our first real look at what No Half Measures is built to do: walk with people through addiction, through recovery, and through everything that comes after.</p>
+        <p data-edit="recap.recap_p2">None of this works from a distance. It works because people show up, look each other in the eye, and refuse to let go. That is exactly what you did on the 23rd. That is the whole mission in one room.</p>
+        <p data-edit="recap.recap_p3">Below you'll find the photos from the night and Don's full talk. If it moved you, there is a way to stay in it.</p>
       </div>
     </div>
   </div>
@@ -509,7 +509,7 @@
         ↓ Download All 103 Photos
       </a>
     </div>
-    <p class="gallery-sub">Find yourself. Tag a friend.</p>
+    <p class="gallery-sub" data-edit="recap.gallery_sub">Find yourself. Tag a friend.</p>
 
     <div id="photo-grid" role="list" aria-label="Event photo gallery"></div>
   </div>
@@ -536,7 +536,7 @@
   <div class="container">
     <div class="section-num">/ 05 — STAY IN IT</div>
     <h2 class="section-title">Get the<br><span style="color:var(--red)">Hope Merchant.</span></h2>
-    <p style="color:var(--ink-dim);font-size:16px;line-height:1.65;max-width:560px;margin-bottom:0">
+    <p style="color:var(--ink-dim);font-size:16px;line-height:1.65;max-width:560px;margin-bottom:0" data-edit="recap.newsletter_sub">
       One story a week about real people getting their lives back. No spam, no noise, just proof that this works.
     </p>
 
@@ -730,5 +730,6 @@ document.addEventListener('keydown', e => {
   if(e.key === 'Escape')     closeLightbox();
 });
 </script>
+<script src="/assets/content.js" defer></script>
 </body>
 </html>
