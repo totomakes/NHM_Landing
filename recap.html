@@ -355,7 +355,9 @@
     border:1px solid #1f1f1d;
     font-family:'JetBrains Mono',monospace;font-size:11px;
     text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-dim);
+    transition:border-color .15s,background .15s;
   }
+  a.give-method:hover{border-color:var(--red);background:#0e0e0c}
   .give-method .micon{
     width:32px;height:32px;border:1px solid #2a2a28;
     display:flex;align-items:center;justify-content:center;
@@ -569,27 +571,27 @@
       <div class="give-right">
         <div class="give-alt-title">// Other ways to give</div>
         <div class="give-methods">
-          <div class="give-method">
+          <a class="give-method" href="https://venmo.com/u/nohalfmeasuresfoundation" target="_blank" rel="noopener">
             <div class="micon">@</div>
             <div>
               <div style="color:var(--ink);font-size:12px;margin-bottom:3px">Venmo</div>
-              <div>@NoHalfMeasures</div>
+              <div>@nohalfmeasuresfoundation</div>
             </div>
-          </div>
-          <div class="give-method">
+          </a>
+          <a class="give-method" href="https://www.paypal.com/ncp/payment/TS6J7ABEZH32E" target="_blank" rel="noopener">
             <div class="micon">P</div>
             <div>
               <div style="color:var(--ink);font-size:12px;margin-bottom:3px">PayPal</div>
-              <div>paypal.me/nhmfoundation</div>
+              <div>Give with PayPal →</div>
             </div>
-          </div>
-          <div class="give-method">
-            <div class="micon">✉</div>
+          </a>
+          <a class="give-method" href="/donate">
+            <div class="micon">→</div>
             <div>
-              <div style="color:var(--ink);font-size:12px;margin-bottom:3px">Check by mail</div>
-              <div>Payable to "No Half Measures Foundation"</div>
+              <div style="color:var(--ink);font-size:12px;margin-bottom:3px">All giving options</div>
+              <div>Go to the donate page</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
