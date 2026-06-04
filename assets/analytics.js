@@ -31,11 +31,25 @@
     try { if (gaReady && window.gtag) gtag('event', name, params); } catch (e) {}
   };
 
-  // ---- consent ----
+  // ---- consent (region-aware: banner only where required) ----
+  var CONSENT_REGIONS = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
   var choice = null;
   try { choice = localStorage.getItem(CONSENT_KEY); } catch (e) {}
-  if (choice === 'granted') loadGA();
-  else if (choice !== 'denied') document.addEventListener('DOMContentLoaded', showBanner);
+
+  function whenReady(fn) { if (document.body) fn(); else document.addEventListener('DOMContentLoaded', fn); }
+
+  if (choice === 'granted') {
+    loadGA();
+  } else if (choice === 'denied') {
+    /* visitor opted out — respect it */
+  } else {
+    // no stored choice: only the EU/UK/EEA needs an opt-in banner; everyone else (incl. US) loads directly
+    fetch('/api/geo').then(function (r) { return r.json(); }).then(function (d) {
+      var cc = ((d && d.country) || '').toUpperCase();
+      if (CONSENT_REGIONS.indexOf(cc) !== -1) whenReady(showBanner);
+      else loadGA();
+    }).catch(function () { loadGA(); });
+  }
 
   function setConsent(v) {
     try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
