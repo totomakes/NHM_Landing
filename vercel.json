@@ -1,3 +1,11 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/recap",
+      "permanent": false,
+      "missing": [{ "type": "query", "key": "edit" }]
+    }
+  ]
 }
