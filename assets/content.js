@@ -1,6 +1,8 @@
 // Applies editable copy from /api/content to any [data-edit="page.field"] element.
 // Safe by design: only overrides text on success; pages keep built-in copy if the API is unavailable.
 (function () {
+  // In edit mode the editor script owns the content to avoid clobbering live edits.
+  if (/[?&]edit=1(&|$)/.test(location.search)) return;
   fetch('/api/content', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (data) {
