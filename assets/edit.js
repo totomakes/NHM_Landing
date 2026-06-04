@@ -25,7 +25,7 @@
           var dot = key.indexOf('.'); if (dot < 0) return;
           var page = key.slice(0, dot), field = key.slice(dot + 1);
           var val = full[page] && full[page][field];
-          if (typeof val === 'string' && val.trim() !== '') el.textContent = val;
+          if (typeof val === 'string') el.textContent = val;
           el.setAttribute('data-orig', el.textContent);
           el.classList.add('nhm-editable');
 
