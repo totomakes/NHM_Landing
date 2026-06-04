@@ -13,7 +13,8 @@
         if (dot < 0) return;
         var page = key.slice(0, dot), field = key.slice(dot + 1);
         var val = data[page] && data[page][field];
-        if (typeof val === 'string' && el.textContent !== val) el.textContent = val;
+        // ignore empty values — fall back to the page's built-in copy so nothing renders blank
+        if (typeof val === 'string' && val.trim() !== '' && el.textContent !== val) el.textContent = val;
       });
     })
     .catch(function () {});
