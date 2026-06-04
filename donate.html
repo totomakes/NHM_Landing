@@ -448,8 +448,14 @@
     updateLinks();
   });
 
+  var ppBtn = document.getElementById('paypalBtn');
+  function trackDonate(m){ if (window.nhmTrack) window.nhmTrack('donate_click', { method: m, amount: amount > 0 ? amount : 0 }); }
+  if (ppBtn) ppBtn.addEventListener('click', function(){ trackDonate('paypal'); });
+  if (venmoBtn) venmoBtn.addEventListener('click', function(){ trackDonate('venmo'); });
+
   updateLinks();
 </script>
+<script src="/assets/analytics.js" defer></script>
 <script src="/assets/content.js" defer></script>
 <script src="/assets/edit.js" defer></script>
 <script src="/assets/newsletter.js" defer></script>

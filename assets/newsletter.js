@@ -40,6 +40,7 @@
             form.style.display = 'none';
             status.textContent = "You're in. Watch your inbox.";
             status.classList.add('ok');
+            if (window.nhmTrack) window.nhmTrack('newsletter_signup', { page: location.pathname });
           } else {
             status.textContent = (res.j && res.j.message) || 'Something went wrong — please try again.';
             status.classList.add('bad');
