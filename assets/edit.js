@@ -55,9 +55,10 @@
   function injectStyles() {
     var s = document.createElement('style');
     s.textContent =
-      '.nhm-editable{outline:1px dashed rgba(218,49,35,.65);outline-offset:3px;cursor:text;border-radius:2px;transition:background .15s}' +
-      '.nhm-editable:hover{background:rgba(218,49,35,.10)}' +
-      '.nhm-editable:focus{outline:2px solid #da3123;background:rgba(218,49,35,.12)}' +
+      /* bright cyan reads on dark AND red/colored sections */
+      '.nhm-editable{outline:2px dashed #2ad8ff;outline-offset:3px;cursor:text;border-radius:2px;transition:background .15s}' +
+      '.nhm-editable:hover{background:rgba(42,216,255,.14)}' +
+      '.nhm-editable:focus{outline:2px solid #2ad8ff;background:rgba(42,216,255,.18)}' +
       '#nhm-bar{position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#0a0a0a;border-top:2px solid #da3123;color:#f5f4f1;' +
       'font-family:Archivo,system-ui,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px;box-shadow:0 -8px 30px rgba(0,0,0,.55)}' +
       '#nhm-bar .nhm-l{display:flex;align-items:center;gap:12px;font-size:13px;flex-wrap:wrap}' +
