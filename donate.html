@@ -306,8 +306,7 @@
     <p class="section-lead" data-edit="donate.choose_lead">Pick an amount — or enter your own. Then give in seconds through PayPal or Venmo. Every gift is tax-deductible.</p>
 
     <div class="tiers" id="tiers">
-      <button class="tier active" data-amount="25">
-        <span class="badge">Most Common</span>
+      <button class="tier" data-amount="25">
         <div class="amt">$25</div>
         <div class="name" data-edit="donate.tier1_name">The Table</div>
         <div class="desc" data-edit="donate.tier1_desc">Feeds a room — a shared meal for men doing the work of recovery.</div>
@@ -317,7 +316,8 @@
         <div class="name" data-edit="donate.tier2_name">The Week</div>
         <div class="desc" data-edit="donate.tier2_desc">Funds a full week of job training and skill-building resources.</div>
       </button>
-      <button class="tier" data-amount="250">
+      <button class="tier active" data-amount="250">
+        <span class="badge">Most Common</span>
         <div class="amt">$250</div>
         <div class="name" data-edit="donate.tier3_name">The Month</div>
         <div class="desc" data-edit="donate.tier3_desc">A month of resources and support for a man rebuilding his life.</div>
@@ -334,10 +334,10 @@
       <input type="number" id="customAmount" min="1" step="1" placeholder="Enter a custom amount" inputmode="numeric" aria-label="Custom donation amount">
     </div>
 
-    <div class="pay-head">Selected amount: <b id="amtLabel">$25</b></div>
+    <div class="pay-head">Selected amount: <b id="amtLabel">$250</b></div>
     <div class="pay-buttons">
       <a id="venmoBtn" class="pay-btn venmo" href="#" target="_blank" rel="noopener">
-        <span class="dot"></span> Give <span id="vAmt">$25</span> · Venmo
+        <span class="dot"></span> Give <span id="vAmt">$250</span> · Venmo
       </a>
       <a id="paypalBtn" class="pay-btn paypal" href="https://www.paypal.com/ncp/payment/TS6J7ABEZH32E" target="_blank" rel="noopener">
         <span class="dot"></span> Give · PayPal
@@ -411,7 +411,7 @@
   const NOTE = "No Half Measures donation";
   /* PayPal uses a fixed hosted-checkout link (set on the button); amount is confirmed on PayPal's page. */
 
-  let amount = 25;
+  let amount = 250;
 
   const tiers      = document.getElementById('tiers');
   const customEl   = document.getElementById('customAmount');
