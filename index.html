@@ -343,6 +343,9 @@
     transition:background .15s ease;white-space:nowrap;
   }
   .newsletter-row .nl-form button:hover{background:var(--red-dim)}
+  .nl-status{flex-basis:100%;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);min-height:16px}
+  .nl-status.ok{color:#5ec76a}
+  .nl-status.bad{color:var(--red)}
 
   /* ---------- impact grid ---------- */
   .impact-grid{
@@ -714,6 +717,18 @@
       </div>
     </div>
 
+    <div class="newsletter-row" style="margin-top:48px">
+      <div class="nl-label">
+        <strong>Hope Merchant Newsletter</strong>
+        <p>One story a week about real people getting their lives back. No spam.</p>
+      </div>
+      <form class="nl-form" data-newsletter>
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="nl-status" data-nl-status></div>
+    </div>
+
     <h3 class="big" data-edit="index.footer_big">All In / Only Way Out</h3>
 
     <div class="row" style="margin-top:48px">
@@ -778,5 +793,6 @@
 </script>
 <script src="/assets/content.js" defer></script>
 <script src="/assets/edit.js" defer></script>
+<script src="/assets/newsletter.js" defer></script>
 </body>
 </html>

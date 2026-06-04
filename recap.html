@@ -326,6 +326,9 @@
     transition:background .15s;white-space:nowrap;
   }
   .nl-form button:hover{background:#b5271f}
+  .nl-status{flex-basis:100%;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);min-height:16px}
+  .nl-status.ok{color:#5ec76a}
+  .nl-status.bad{color:var(--red)}
 
   /* ── DONATE SECTION ── */
   .give-section{
@@ -560,10 +563,11 @@
         <strong>Hope Merchant Newsletter</strong>
         <p>Join the people committed to the work. One email a week, every week.</p>
       </div>
-      <div class="nl-form">
-        <input type="email" placeholder="Your email address" aria-label="Email address">
-        <button type="button">Subscribe →</button>
-      </div>
+      <form class="nl-form" data-newsletter>
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="nl-status" data-nl-status></div>
     </div>
   </div>
 </section>
@@ -747,5 +751,6 @@ document.addEventListener('keydown', e => {
 </script>
 <script src="/assets/content.js" defer></script>
 <script src="/assets/edit.js" defer></script>
+<script src="/assets/newsletter.js" defer></script>
 </body>
 </html>

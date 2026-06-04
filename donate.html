@@ -248,6 +248,22 @@
     footer{padding:48px 16px}
     footer .links{gap:14px}
   }
+
+  /* ── NEWSLETTER ── */
+  .newsletter-row{margin-top:48px;padding:32px;border:1px solid #1f1f1d;background:linear-gradient(180deg,#0d0d0d,#080808);display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .nl-label{flex:1;min-width:200px}
+  .nl-label strong{display:block;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:14px;color:var(--ink);margin-bottom:6px}
+  .nl-label p{color:var(--ink-dim);font-size:14px;line-height:1.5}
+  .nl-form{display:flex;flex:2;min-width:240px}
+  .nl-form input{flex:1;background:#0a0a0a;border:2px solid #1f1f1d;border-right:none;color:var(--ink);font-family:'Archivo',sans-serif;font-size:14px;padding:14px 16px;outline:none;transition:border-color .15s}
+  .nl-form input::placeholder{color:var(--ink-faint)}
+  .nl-form input:focus{border-color:var(--red)}
+  .nl-form button{background:var(--red);color:var(--ink);border:none;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:0.08em;padding:14px 22px;transition:background .15s;white-space:nowrap;cursor:pointer}
+  .nl-form button:hover{background:var(--red-dim)}
+  .nl-status{flex-basis:100%;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);min-height:16px}
+  .nl-status.ok{color:#5ec76a}
+  .nl-status.bad{color:var(--red)}
+  @media(max-width:540px){.newsletter-row .nl-form{flex-direction:column}.newsletter-row .nl-form input{border-right:2px solid #1f1f1d;border-bottom:none}.newsletter-row .nl-form button{width:100%}}
 </style>
 </head>
 <body>
@@ -355,6 +371,18 @@
         <a href="#">Contact</a>
       </div>
     </div>
+    <div class="newsletter-row" style="margin-top:48px">
+      <div class="nl-label">
+        <strong>Hope Merchant Newsletter</strong>
+        <p>One story a week about real people getting their lives back. No spam.</p>
+      </div>
+      <form class="nl-form" data-newsletter>
+        <input type="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="nl-status" data-nl-status></div>
+    </div>
+
     <h3 class="big">Nobody Made It Going Halfway</h3>
     <div class="row" style="margin-top:48px">
       <div class="mono">© 2026 · NO HALF MEASURES · A 501(c)(3)</div>
@@ -424,5 +452,6 @@
 </script>
 <script src="/assets/content.js" defer></script>
 <script src="/assets/edit.js" defer></script>
+<script src="/assets/newsletter.js" defer></script>
 </body>
 </html>
