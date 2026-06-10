@@ -1,765 +1,224 @@
 ---
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Ticker from '../components/Ticker.astro';
-import Newsletter from '../components/Newsletter.astro';
-import Footer from '../components/Footer.astro';
-
-const navLinks = [
-  { href: '#mission', label: 'What We Do' },
-  { href: '#ground', label: 'On the Ground' },
-  { href: '#values', label: 'Who We Are' },
-  { href: '/recap', label: 'Recap' },
-];
-const tickerItems = [
-  'All In Is The Only Way Out',
-  'No Half Measures',
-  'Nobody Made It Going Halfway',
-  'Full Commitment Changes Everything',
-  'Become a Hope Merchant',
-];
-const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '#mission', label: 'What We Do' },
-  { href: '/recap', label: 'Recap' },
-  { href: '/donate', label: 'Donate' },
-  { href: '#', label: 'Instagram' },
-  { href: '#', label: 'YouTube' },
-];
 ---
 
 <Base
-  title="NHM — All In Is The Only Way Out"
+  title="No Half Measures — All In Is The Only Way Out"
   description="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
   ogTitle="No Half Measures — All In Is The Only Way Out"
   ogDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
   ogUrl="https://nhmlife.com/"
   twitterTitle="No Half Measures — All In Is The Only Way Out"
   twitterDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
-  fontsHref="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  fontsHref="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
 >
 
-<!-- ============================================================ NAV -->
-<Nav links={navLinks}>
-  <div class="right" slot="cta">
-    <a href="/donate" class="donate">Donate</a>
-  </div>
-</Nav>
+<!-- glowing sine-wave shader, fixed behind both panels -->
+<canvas id="bg" aria-hidden="true"></canvas>
 
-<!-- ============================================================ 01 HERO -->
-<section class="hero" data-screen-label="01 Hero">
-  <div class="hero-grid"></div>
+<div class="brand-mark" aria-hidden="true">NHM</div>
 
-  <div class="float" data-speed="0.18" style="top:14%;left:6%"><div class="stamp">All In</div></div>
-  <div class="float" data-speed="0.32" style="top:22%;right:8%"><div class="nm-mini">N/M</div></div>
-  <div class="float" data-speed="0.45" style="top:62%;left:4%"><div class="dot"></div></div>
-  <div class="float" data-speed="0.55" style="top:74%;right:14%"><div class="tag">No Half Measures</div></div>
-  <div class="float" data-speed="0.25" style="top:48%;right:4%"><div class="square"></div></div>
-  <div class="float" data-speed="0.38" style="top:88%;left:18%"><div class="stamp">Fredericksburg, VA</div></div>
-  <div class="float" data-speed="0.2" style="top:8%;right:30%"><span class="slash">/</span></div>
+<main class="split">
 
-  <div class="hero-eyebrow">
-    <span class="bar"></span>
-    <span class="mono red" data-edit="index.hero_eyebrow">// ALL IN IS THE ONLY WAY OUT</span>
-    <span class="bar"></span>
-  </div>
-
-  <h1 class="hero-title block">
-    <span data-edit="index.hero_title_1">NO HALF</span><br><span class="red" data-edit="index.hero_title_2">MEASURES</span>
-  </h1>
-
-  <p class="hero-sub" data-edit="index.hero_sub">
-    No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.
-  </p>
-
-  <div class="hero-ctas">
-    <a href="/donate" class="btn-gold">Donate <span>→</span></a>
-    <a href="#mission" class="btn-outline">What We Do <span>→</span></a>
-  </div>
-</section>
-
-<!-- ============================================================ 01 WHAT WE DO -->
-<section id="mission" data-screen-label="01 What We Do">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">/ 01 — MISSION</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.mission_title_1">What we do.</span><br><span style="color:var(--red)" data-edit="index.mission_title_2">No filters.</span></h2>
+  <!-- ── LEFT · THE MISSION (red dominant) ── -->
+  <a class="panel left" href="/home">
+    <div class="panel-inner">
+      <div class="eyebrow">
+        <span class="bar"></span>
+        <span class="mono" data-edit="gateway.left_eyebrow">// THE MISSION</span>
       </div>
-      <div class="mono" style="max-width:280px;text-align:right" data-edit="index.mission_subhead">We meet people where they are and ask, "how can I help?"</div>
+      <h1 class="block ptitle">
+        <span data-edit="gateway.left_title_1">No Half</span><br>
+        <span data-edit="gateway.left_title_2">Measures</span>
+      </h1>
+      <p class="psub" data-edit="gateway.left_sub">All in is the only way out. Community, education, opportunity, accountability.</p>
+      <span class="enter" data-edit="gateway.left_cta">Enter the Mission</span><span class="enter-arrow">→</span>
     </div>
+  </a>
 
-    <div class="pillars">
-      <div class="pillar">
-        <div class="num">/ 01</div>
-        <h3 data-edit="index.pillar1_title">In Addiction</h3>
-        <p data-edit="index.pillar1_body">We connect them to resources and model lives that show recovery is possible.</p>
+  <!-- ── RIGHT · THE STORE (black dominant, disabled) ── -->
+  <div class="panel right" aria-disabled="true">
+    <span class="badge" data-edit="gateway.right_badge">Coming Soon</span>
+    <div class="panel-inner">
+      <div class="eyebrow">
+        <span class="bar"></span>
+        <span class="mono red" data-edit="gateway.right_eyebrow">// THE STORE</span>
       </div>
-      <div class="pillar">
-        <div class="num">/ 02</div>
-        <h3 data-edit="index.pillar2_title">In Recovery</h3>
-        <p data-edit="index.pillar2_body">We provide job training and opportunities that expand their vision.</p>
-      </div>
-      <div class="pillar">
-        <div class="num">/ 03</div>
-        <h3 data-edit="index.pillar3_title">Transitioning Out</h3>
-        <p data-edit="index.pillar3_body">Housing — a stable place to land during critical seasons of rebuilding.</p>
-      </div>
-      <div class="pillar">
-        <div class="num">/ 04</div>
-        <h3 data-edit="index.pillar4_title">At Every Stage</h3>
-        <p data-edit="index.pillar4_body">Community to lean on when life gets heavy and hope feels out of reach.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ STORY MOSAIC -->
-<section id="ground" data-screen-label="Story Mosaic" style="padding-top:60px">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">/ 02 — ON THE GROUND</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.ground_title_1">Show up.</span><br><span data-edit="index.ground_title_2">Open doors.</span><br><span data-edit="index.ground_title_3">Share meals.</span></h2>
-      </div>
-      <div class="mono" style="max-width:260px;text-align:right" data-edit="index.ground_subhead">We don't help from a distance. Real people. Real rooms. Real recoveries.</div>
-    </div>
-
-    <div class="mosaic">
-      <div class="photo a has-img" data-parallax="-30" data-label="01 / STREET" style="min-height:0">
-        <img src="images/street.webp" alt="Meeting men where they are, on the street" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo b has-img" data-parallax="40"  data-label="02 / BROTHERHOOD">
-        <img src="images/team.webp" alt="The NHM team together" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo c has-img" data-parallax="-20" data-label="03 / RECOVERY">
-        <img src="images/training.webp" alt="Job training and skill-building in recovery" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo d has-img" data-parallax="55"  data-label="04 / HOUSING">
-        <img src="images/townhouse.webp" alt="Transitional housing" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo e has-img" data-parallax="-45" data-label="05 / FREDERICKSBURG">
-        <img src="images/burg.webp" alt="Downtown Fredericksburg, Virginia" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
+      <h1 class="block ptitle outline">
+        <span data-edit="gateway.right_title_1">NHM</span><br>
+        <span data-edit="gateway.right_title_2">Merch</span>
+      </h1>
+      <p class="psub" data-edit="gateway.right_sub">Wear the mission. Every piece funds recovery. The store is being built.</p>
+      <span class="soon-note mono" data-edit="gateway.right_note">→ DROPS SOON</span>
     </div>
   </div>
 
-  <div class="float" data-speed="0.3"  style="top:30%;right:6%;z-index:5"><div class="nm-mini">N/M</div></div>
-  <div class="float" data-speed="0.45" style="bottom:18%;left:6%;z-index:5"><div class="stamp">Wholehearted</div></div>
-</section>
+</main>
 
-<!-- ============================================================ MANIFESTO STRIP -->
-<section class="manifesto" data-screen-label="Manifesto">
-  <div class="container">
-    <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE</div>
-    <h2 data-parallax-x="-40">All in is the<br>only way out.</h2>
-    <div class="row">
-      <div class="manifesto-body" style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
-        Nobody made it going halfway.<br>Half efforts build nothing.<br>Full commitment changes everything.
-      </div>
-      <div class="meta">NO HALF MEASURES · EST. FREDERICKSBURG · /</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ VALUES -->
-<section id="values" data-screen-label="Values">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">// VALUES</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.values_title_1">Who</span><br><span data-edit="index.values_title_2">we</span><br><span style="color:var(--red)" data-edit="index.values_title_3">are.</span></h2>
-      </div>
-    </div>
-
-    <div class="values-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start">
-      <ol style="list-style:none;display:grid;gap:0;border-top:1px solid #1f1f1d">
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 01</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value1_title">Bring Purpose to Pain.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value1_body">Meet people at their lowest. Transform lives with meaning.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 02</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value2_title">Live Openhanded.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value2_body">Defined by generosity — time, gifts, resources for the good of others.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 03</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value3_title">Operate with Excellence.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value3_body">Discipline, integrity, intentionality. We don't settle for less than our best.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 04</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value4_title">Speak Life to Addiction.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value4_body">Confront what's broken. Call people higher — honestly, with compassion.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 05</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value5_title">Set the Standard.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value5_body">Living examples of wholehearted living — grit, humility, sacrifice.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 06</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value6_title">Empower Potential.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value6_body">Equip people to break cycles — education, accountability, opportunity.</p></div>
-        </li>
-      </ol>
-
-      <div class="values-sidebar" style="position:sticky;top:80px">
-        <div class="photo has-img" data-parallax="-30" data-label="DON / FOUNDER" style="aspect-ratio:3/4">
-          <img src="images/founder.webp" alt="Don, founder of No Half Measures" loading="lazy" decoding="async">
-          <span class="ph-scrim"></span>
-        </div>
-        <div class="framed-wordmark red" style="margin-top:24px;font-size:18px">No Half Measures</div>
-        <div class="mono" style="margin-top:12px">— A LIFE WORTH LIVING ON THE OTHER SIDE OF PAIN.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="float" data-speed="0.5"  style="top:8%;right:38%;z-index:5"><span class="slash">/</span></div>
-  <div class="float" data-speed="0.3"  style="bottom:14%;right:12%;z-index:5"><div class="tag">Est. 2024</div></div>
-</section>
-
-<!-- ============================================================ 08 THE ASK -->
-<section class="the-ask" data-screen-label="08 The Ask">
-  <div class="the-ask-bg"></div>
-  <div class="container">
-    <div class="mono red" style="margin-bottom:28px">/ 03 — THE ASK</div>
-    <h2><span data-edit="index.ask_title_1">Nobody made it</span><br><span data-edit="index.ask_title_2">going halfway.</span></h2>
-    <p class="the-ask-sub" data-edit="index.ask_sub">Your gift funds recovery — housing, training, and the brotherhood that keeps men sober. Every dollar goes to the work.</p>
-    <div class="the-ask-ctas">
-      <a href="/donate" class="btn-gold">Donate <span>→</span></a>
-    </div>
-    <div class="the-ask-legal" data-edit="index.ask_legal">NHM Foundation is a 501(c)(3) · Gifts are tax-deductible</div>
-  </div>
-</section>
-
-<!-- ============================================================ FOOTER -->
-<Footer
-  brandClass="framed-wordmark"
-  brandStyle="font-size:22px"
-  monoStyle="margin-top:14px"
-  links={footerLinks}
-  big="All In / Only Way Out"
-  bigEditKey="index.footer_big"
-  screenLabel="Footer"
->
-  <Newsletter style="margin-top:48px" />
-</Footer>
-
-<!-- ============================================================ TICKER -->
-<Ticker items={tickerItems} />
-
-<script is:inline>
-  /* ---------- parallax (rAF throttled, skips mobile + reduced-motion) ---------- */
-  const floats = Array.from(document.querySelectorAll('.float'));
-  const photos = Array.from(document.querySelectorAll('[data-parallax]'));
-  const manifestoTitle = document.querySelector('[data-parallax-x]');
-  let ticking = false;
-
-  function update(){
-    const mobile = window.matchMedia('(max-width:880px)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    if(mobile || reducedMotion){ ticking = false; return; }
-    const y = window.scrollY;
-    for(const el of floats){
-      const speed = parseFloat(el.dataset.speed || 0.3);
-      el.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
-    }
-    for(const el of photos){
-      const amt = parseFloat(el.dataset.parallax || 0);
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      el.style.transform = `translate3d(0, ${progress * amt}px, 0)`;
-    }
-    if(manifestoTitle){
-      const rect = manifestoTitle.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      manifestoTitle.style.transform = `translate3d(${progress * -60}px, 0, 0)`;
-    }
-    ticking = false;
-  }
-
-  function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-</script>
+<div class="foot mono">© 2026 · NO HALF MEASURES · A 501(c)(3) · FREDERICKSBURG, VA</div>
 
 </Base>
 
 <style is:global>
-
   :root{
     --red:#da3123;
-    --red-dim:#a8261b;
     --bg:#0a0a0a;
     --ink:#f5f4f1;
     --ink-dim:#8a8784;
-    --ink-faint:#3a3a38;
-    --frame:3px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  body{font-feature-settings:"ss01";line-height:1.4;padding-bottom:36px}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
 
-  /* ---------- type utilities ---------- */
-  .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.01em;line-height:0.88;text-transform:uppercase}
-  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.04em;text-transform:uppercase;font-size:11px;color:var(--ink-dim)}
+  .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.02em;line-height:0.88;text-transform:uppercase}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;font-size:11px}
   .mono.red{color:var(--red)}
-  .mono.gold{color:var(--red)}
 
-  /* ---------- logo / lockups ---------- */
-  .framed-wordmark{
-    display:inline-flex;align-items:center;justify-content:center;
-    border:var(--frame) solid currentColor;
-    padding:0.42em 0.55em 0.32em;
-    font-family:'Archivo Black',sans-serif;font-weight:900;
-    letter-spacing:0.005em;line-height:1;text-transform:uppercase;
-    font-size:42px;color:var(--ink);
-  }
-  .framed-wordmark.red{color:var(--red)}
+  #bg{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
 
-  .lettermark{
-    display:inline-flex;align-items:center;justify-content:center;
-    border:2px solid currentColor;
-    padding:6px 10px 4px;
-    font-family:'Archivo Black',sans-serif;font-weight:900;
-    letter-spacing:0.005em;line-height:1;text-transform:uppercase;
-    font-size:18px;
+  .brand-mark{
+    position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:30;
+    border:2px solid var(--ink);padding:7px 11px 5px;
+    font-family:'Archivo Black',sans-serif;font-weight:900;font-size:18px;
+    letter-spacing:0.005em;line-height:1;text-transform:uppercase;color:var(--ink);
+    background:rgba(10,10,10,0.55);
   }
 
-  /* ---------- nav ---------- */
-  nav.top{
-    position:fixed;top:0;left:0;right:0;z-index:60;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 28px;
-    background:rgba(10,10,10,0.92);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    color:var(--ink);
+  .split{position:fixed;inset:0;z-index:10;display:flex}
+
+  .panel{
+    position:relative;flex:1;display:flex;align-items:center;justify-content:center;
+    padding:48px 36px;overflow:hidden;
+    transition:flex .45s cubic-bezier(.2,.7,.2,1);
   }
-  nav.top ul{display:flex;gap:28px;list-style:none}
-  nav.top ul a{
-    font-family:'Archivo',sans-serif;font-weight:600;
-    text-transform:uppercase;font-size:11px;letter-spacing:0.12em;
-    color:var(--ink-dim);transition:color .15s ease;
-  }
-  nav.top ul a:hover{color:var(--ink)}
-  nav.top .right{display:flex;align-items:center;gap:18px}
-  nav.top .donate{
-    background:#fff;color:#0a0a0a;border:none;
-    padding:9px 18px 7px;cursor:pointer;
+  .panel-inner{max-width:520px;text-align:center}
+
+  .eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px}
+  .eyebrow .bar{width:42px;height:2px;background:currentColor;opacity:.7}
+
+  .ptitle{font-size:clamp(44px,7.2vw,118px);margin-bottom:22px}
+  .psub{font-size:15px;line-height:1.6;max-width:380px;margin:0 auto 36px}
+
+  /* ── left / mission ── */
+  .panel.left{background:rgba(218,49,35,0.93);color:#0a0a0a}
+  .panel.left .mono{color:rgba(0,0,0,0.75)}
+  .panel.left .psub{color:rgba(0,0,0,0.78)}
+  .panel.left .enter,.panel.left .enter-arrow{
+    display:inline-flex;align-items:center;gap:10px;
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:11px;letter-spacing:0.1em;
-    transition:background .15s ease;
+    font-size:14px;letter-spacing:0.05em;
+    border:2px solid #0a0a0a;padding:16px 24px 12px;
+    transition:background .15s ease,color .15s ease;
   }
-  nav.top .donate:hover{background:rgba(255,255,255,0.85)}
+  .panel.left .enter-arrow{border-left:none;padding-left:18px;padding-right:18px}
+  .panel.left:hover{flex:1.12}
+  .panel.left:hover .enter,.panel.left:hover .enter-arrow{background:#0a0a0a;color:var(--red)}
 
-  /* ---------- ticker ---------- */
-  .ticker{
-    position:fixed;bottom:0;left:0;right:0;z-index:55;
-    background:var(--red);color:#0a0a0a;
-    border-top:2px solid #0a0a0a;
-    overflow:hidden;height:36px;display:flex;align-items:center;
-  }
-  .ticker-track{display:flex;white-space:nowrap;animation:scroll 44s linear infinite;gap:48px;padding-left:48px}
-  .ticker-track span{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:13px;letter-spacing:0.08em;
-    display:inline-flex;align-items:center;gap:48px;
-  }
-  .ticker-track span::after{content:"/";color:#0a0a0a;opacity:0.6;font-weight:900;margin-left:48px}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  /* ---------- CTAs ---------- */
-  .btn-gold{
-    display:inline-flex;align-items:center;gap:12px;
-    background:#fff;color:#0a0a0a;
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:15px;letter-spacing:0.05em;
-    padding:20px 30px 16px;
-    transition:transform .15s ease,background .15s ease;
-  }
-  .btn-gold:hover{transform:translateY(-2px);background:rgba(255,255,255,0.88)}
-
-  .btn-outline{
-    display:inline-flex;align-items:center;gap:12px;
-    background:transparent;color:var(--ink);
-    border:2px solid var(--ink-faint);
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:15px;letter-spacing:0.05em;
-    padding:18px 30px 14px;
-    transition:transform .15s ease,border-color .15s ease;
-  }
-  .btn-outline:hover{transform:translateY(-2px);border-color:var(--ink-dim)}
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;min-height:100vh;
-    padding:140px 28px 120px;
-    display:flex;flex-direction:column;
-    align-items:center;justify-content:center;
-    text-align:center;overflow:hidden;
-  }
-  .hero-grid{
-    position:absolute;inset:0;pointer-events:none;
-    background-image:
-      linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),
-      linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);
-    background-size:80px 80px;
-    mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
-  }
-  .hero-eyebrow{
-    display:flex;align-items:center;gap:14px;
-    margin-bottom:36px;
-  }
-  .hero-eyebrow .bar{width:48px;height:2px;background:var(--red)}
-
-  .hero-title{
-    font-size:clamp(60px,12vw,172px);
-    letter-spacing:-0.025em;line-height:0.88;
-    margin-bottom:20px;
-  }
-  .hero-title .red{color:var(--red)}
-
-  .hero-tagline{
-    font-family:'Archivo Black',sans-serif;
-    text-transform:uppercase;letter-spacing:0.04em;
-    font-size:clamp(13px,1.4vw,18px);
-    color:var(--red);
-    margin-bottom:20px;
-  }
-
-  .hero-sub{
-    max-width:560px;color:var(--ink-dim);
-    font-size:16px;line-height:1.65;
-    margin-bottom:44px;
-  }
-
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-
-  /* ---------- floating elements ---------- */
-  .float{position:absolute;pointer-events:none;will-change:transform}
-  .float .tag{
-    background:var(--red);color:#0a0a0a;
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:11px;letter-spacing:0.06em;padding:6px 10px 4px;
-    box-shadow:0 8px 30px rgba(218,49,35,0.25);
-  }
-  .float .stamp{
+  /* ── right / store (disabled) ── */
+  .panel.right{background:rgba(10,10,10,0.78);color:var(--ink);cursor:default}
+  .panel.right .psub{color:var(--ink-dim)}
+  .panel.right .ptitle.outline{-webkit-text-stroke:2px var(--ink);color:transparent}
+  .panel.right .ptitle.outline span:last-child{-webkit-text-stroke:0;color:var(--red)}
+  .panel.right .badge{
+    position:absolute;top:26px;right:28px;z-index:5;
     border:2px solid var(--red);color:var(--red);
     font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:11px;letter-spacing:0.06em;padding:6px 10px 4px;
-    background:rgba(218,49,35,0.06);
+    font-size:12px;letter-spacing:0.08em;padding:8px 12px 6px;
+    transform:rotate(6deg);
+    background:rgba(218,49,35,0.07);
   }
-  .float .nm-mini{
-    border:2px solid var(--red);color:var(--red);
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:18px;letter-spacing:0;padding:4px 8px 2px;
+  .panel.right .soon-note{color:var(--ink-dim)}
+  .panel.right:hover .badge{transform:rotate(0deg);transition:transform .25s ease}
+
+  /* seam */
+  .panel.left::after{
+    content:"";position:absolute;top:0;right:0;bottom:0;width:2px;
     background:#0a0a0a;
   }
-  .float .dot{width:10px;height:10px;background:var(--red);border-radius:50%}
-  .float .slash{
-    color:var(--red);font-family:'Archivo Black',sans-serif;
-    font-size:80px;line-height:1;transform:skewX(-12deg);opacity:0.6;
-  }
-  .float .square{width:14px;height:14px;background:var(--red)}
 
-  /* ---------- section base ---------- */
-  section{position:relative;padding:140px 28px;overflow:hidden}
-  .container{max-width:1240px;margin:0 auto;position:relative}
-  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:48px}
-  .section-num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:12px;letter-spacing:0.08em}
-  .section-num.gold{color:var(--red)}
-  .section-title{font-size:clamp(40px,7vw,96px);letter-spacing:-0.02em}
-
-  /* ---------- photo placeholder ---------- */
-  .photo{
-    position:relative;
-    background:repeating-linear-gradient(135deg,#161614 0 14px,#1c1c1a 14px 28px);
-    border:1px solid #232321;color:var(--ink-dim);
-    display:flex;align-items:flex-end;justify-content:flex-start;
-    font-family:'JetBrains Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:0.12em;overflow:hidden;
-  }
-  .photo::before{content:attr(data-label);position:absolute;top:14px;left:14px;color:var(--ink-dim)}
-  .photo::after{content:"PHOTO PLACEHOLDER";position:absolute;bottom:14px;right:14px;color:#4a4a48}
-  .photo .crosshair{position:absolute;top:50%;left:50%;width:36px;height:36px;transform:translate(-50%,-50%);opacity:0.25}
-  .photo .crosshair::before,.photo .crosshair::after{content:"";position:absolute;background:#fff}
-  .photo .crosshair::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)}
-  .photo .crosshair::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%)}
-  /* real images inside .photo */
-  .photo.has-img{background:#111;border:1px solid #232321}
-  .photo.has-img::before{color:#fff;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,0.6);bottom:14px;top:auto;left:14px}
-  .photo.has-img::after{display:none}
-  .photo.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .photo.has-img .ph-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,10,0.55))}
-
-  /* ---------- stakes section ---------- */
-  .stakes-callout{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(20px,3vw,38px);letter-spacing:-0.015em;line-height:1.1;
-    color:var(--ink);
-    padding:36px 0;
-    border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
-    margin-top:8px;
-  }
-  .stakes-callout .red{color:var(--red)}
-
-  /* ---------- don's story ---------- */
-  .dons-story-inner{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:80px;align-items:center;
-  }
-  .pull-quote{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(22px,3.2vw,40px);letter-spacing:-0.02em;line-height:1.05;
-    border-left:4px solid var(--red);padding-left:24px;
-    margin-bottom:28px;
-  }
-  .dons-story-text p{
-    color:var(--ink-dim);font-size:16px;line-height:1.65;margin-top:16px;
-  }
-  .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
-
-  /* ---------- pillars ---------- */
-  .pillars{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-    margin-top:48px;border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
-  }
-  .pillar{padding:36px 24px;border-right:1px solid #1f1f1d;position:relative}
-  .pillar:last-child{border-right:none}
-  .pillar .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em}
-  .pillar h3{margin-top:18px;font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:24px;letter-spacing:-0.01em;line-height:1}
-  .pillar p{margin-top:14px;color:var(--ink-dim);font-size:14px;line-height:1.55}
-
-  /* ---------- manifesto strip ---------- */
-  .manifesto{
-    padding:160px 28px;
-    background:var(--red);color:#0a0a0a;
-    position:relative;overflow:hidden;
-  }
-  .manifesto .container{display:grid;grid-template-columns:1fr;gap:24px}
-  .manifesto h2{
-    font-family:'Archivo Black',sans-serif;
-    font-size:clamp(56px,14vw,220px);line-height:0.86;letter-spacing:-0.03em;
-    text-transform:uppercase;
-  }
-  .manifesto .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-  .manifesto .meta{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(0,0,0,0.7)}
-
-  /* ---------- mosaic ---------- */
-  .mosaic{
-    display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:80px;gap:18px;
-    margin-top:48px;
-  }
-  .mosaic .photo.a{grid-column:1/span 5;grid-row:1/span 6}
-  .mosaic .photo.b{grid-column:7/span 6;grid-row:2/span 5}
-  .mosaic .photo.c{grid-column:2/span 4;grid-row:8/span 5}
-  .mosaic .photo.d{grid-column:7/span 5;grid-row:8/span 7}
-  .mosaic .photo.e{grid-column:1/span 5;grid-row:14/span 4}
-
-  /* ---------- plan section ---------- */
-  .plan-cols{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-    margin-top:48px;border-top:1px solid #1f1f1d;border-bottom:1px solid #1f1f1d;
-  }
-  .plan-col{padding:40px 32px;border-right:1px solid #1f1f1d}
-  .plan-col:last-child{border-right:none}
-  .plan-col .num{font-family:'JetBrains Mono',monospace;color:var(--red);font-size:11px;letter-spacing:0.08em;margin-bottom:20px}
-  .plan-col h3{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(30px,4.5vw,54px);letter-spacing:-0.015em;line-height:0.88;margin-bottom:20px;
-  }
-  .plan-col p{color:var(--ink-dim);font-size:14px;line-height:1.6}
-
-  .plan-ctas{margin-top:48px;display:flex;gap:14px;flex-wrap:wrap}
-
-  /* newsletter form (shared by plan + footer) */
-  .newsletter-row{
-    margin-top:48px;padding:32px;
-    border:1px solid #1f1f1d;
-    background:linear-gradient(180deg,#0d0d0d,#080808);
-    display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-  }
-  .newsletter-row .nl-label{
-    flex:1;min-width:180px;
-  }
-  .newsletter-row .nl-label strong{
-    display:block;font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:13px;letter-spacing:0.02em;color:var(--ink);margin-bottom:6px;
-  }
-  .newsletter-row .nl-label p{color:var(--ink-dim);font-size:13px;line-height:1.5}
-  .newsletter-row .nl-form{display:flex;flex:2;min-width:240px}
-  .newsletter-row .nl-form input{
-    flex:1;background:#0a0a0a;border:2px solid #1f1f1d;border-right:none;
-    color:var(--ink);font-family:'Archivo',sans-serif;font-size:14px;
-    padding:14px 16px;outline:none;transition:border-color .15s ease;
-  }
-  .newsletter-row .nl-form input::placeholder{color:var(--ink-faint)}
-  .newsletter-row .nl-form input:focus{border-color:var(--red)}
-  .newsletter-row .nl-form button{
-    background:var(--red);color:var(--ink);border:none;cursor:pointer;
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:12px;letter-spacing:0.08em;padding:14px 20px;
-    transition:background .15s ease;white-space:nowrap;
-  }
-  .newsletter-row .nl-form button:hover{background:var(--red-dim)}
-  .nl-status{flex-basis:100%;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);min-height:16px}
-  .nl-status.ok{color:#5ec76a}
-  .nl-status.bad{color:var(--red)}
-
-  /* ---------- impact grid ---------- */
-  .impact-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-    margin-top:48px;border:1px solid #1f1f1d;
-  }
-  .impact-cell{padding:36px 28px;border-right:1px solid #1f1f1d;position:relative}
-  .impact-cell:last-child{border-right:none}
-  .impact-cell::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--red);
-  }
-  .impact-cell .amount{
-    font-family:'Archivo Black',sans-serif;
-    font-size:clamp(28px,4vw,52px);letter-spacing:-0.02em;line-height:1;
-    color:var(--ink);margin-bottom:14px;
-  }
-  .impact-cell .amount small{font-size:0.48em;color:var(--ink-dim);letter-spacing:0}
-  .impact-cell p{color:var(--ink-dim);font-size:14px;line-height:1.55}
-  .impact-cell .freq{
-    margin-top:14px;font-family:'JetBrains Mono',monospace;
-    font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-faint);
-  }
-  .impact-cta{margin-top:48px;text-align:center}
-
-  /* ---------- values ---------- */
-  /* (uses inline styles for grid + sticky, overridden by mobile classes) */
-
-  /* ---------- the ask ---------- */
-  .the-ask{
-    padding:160px 28px;
-    background:linear-gradient(180deg,#080808,#0f0f0d);
-    border-top:1px solid #1f1f1d;
-    text-align:center;position:relative;overflow:hidden;
-  }
-  .the-ask-bg{
-    position:absolute;inset:0;pointer-events:none;
-    background-image:
-      linear-gradient(to right,rgba(255,255,255,0.02) 1px,transparent 1px),
-      linear-gradient(to bottom,rgba(255,255,255,0.02) 1px,transparent 1px);
-    background-size:80px 80px;
-    mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);
-  }
-  .the-ask h2{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(44px,9.5vw,148px);line-height:0.88;letter-spacing:-0.03em;
-    margin-bottom:32px;
-  }
-  .the-ask-sub{
-    font-size:18px;color:var(--ink-dim);line-height:1.55;
-    max-width:440px;margin:0 auto 48px;
-  }
-  .the-ask-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
-  .the-ask-legal{
-    font-family:'JetBrains Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-faint);
+  .foot{
+    position:fixed;bottom:18px;left:0;right:0;z-index:30;
+    text-align:center;color:var(--ink-dim);font-size:10px;pointer-events:none;
   }
 
-  /* ---------- footer ---------- */
-  footer{padding:80px 28px;border-top:1px solid #1f1f1d;position:relative}
-  footer .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-  footer .links{display:flex;gap:24px;flex-wrap:wrap}
-  footer .links a{
-    font-family:'Archivo',sans-serif;font-weight:600;
-    text-transform:uppercase;font-size:11px;letter-spacing:0.12em;color:var(--ink-dim);
+  /* ── mobile: stack ── */
+  @media (max-width:780px){
+    html,body{overflow:auto}
+    .split{position:relative;flex-direction:column;min-height:100svh}
+    .panel{min-height:50svh;padding:80px 22px 64px}
+    .panel.left:hover{flex:1}
+    .panel.left::after{top:auto;right:0;left:0;bottom:0;width:auto;height:2px}
+    .ptitle{font-size:clamp(52px,15vw,96px)}
+    .brand-mark{top:18px}
+    .foot{position:relative;bottom:auto;padding:18px 0 26px;background:var(--bg)}
+    #bg{position:fixed}
   }
-  footer .links a:hover{color:var(--ink)}
-  footer .big{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(72px,16vw,260px);line-height:0.85;letter-spacing:-0.03em;
-    margin-top:64px;
-    -webkit-text-stroke:1px var(--ink);color:transparent;
-  }
-
-  /* ===== TABLET / MOBILE ≤880px ===== */
-  @media (max-width:880px){
-    nav.top ul{display:none}
-    nav.top{padding:14px 20px}
-    .hero{padding:100px 20px 80px}
-    section{padding:80px 20px}
-    .manifesto{padding:80px 20px}
-    .the-ask{padding:100px 20px}
-    .section-head{flex-direction:column;gap:16px}
-    .section-head .mono{max-width:100%!important;text-align:left!important}
-    /* override inline max-width/text-align on all direct child divs in section-head */
-    .section-head > div{max-width:100%!important;text-align:left!important}
-    .float{display:none}
-    /* pillars 2-col */
-    .pillars{grid-template-columns:1fr 1fr}
-    .pillar:nth-child(2){border-right:none}
-    .pillar:nth-child(1),.pillar:nth-child(2){border-bottom:1px solid #1f1f1d}
-    /* plan cols 1-col */
-    .plan-cols{grid-template-columns:1fr}
-    .plan-col{border-right:none;border-bottom:1px solid #1f1f1d}
-    .plan-col:last-child{border-bottom:none}
-    /* impact grid 2-col */
-    .impact-grid{grid-template-columns:1fr 1fr}
-    .impact-cell:nth-child(2){border-right:none}
-    .impact-cell:nth-child(1),.impact-cell:nth-child(2){border-bottom:1px solid #1f1f1d}
-    /* mosaic stacked */
-    .mosaic{grid-auto-rows:60px}
-    .mosaic .photo.a{grid-column:1/span 12;grid-row:1/span 5}
-    .mosaic .photo.b{grid-column:1/span 12;grid-row:6/span 5}
-    .mosaic .photo.c{grid-column:1/span 12;grid-row:11/span 5}
-    .mosaic .photo.d{grid-column:1/span 12;grid-row:16/span 5}
-    .mosaic .photo.e{grid-column:1/span 12;grid-row:21/span 5}
-    /* manifesto */
-    .manifesto .row{flex-direction:column;gap:16px}
-    .manifesto-body{font-size:16px!important}
-    /* don's story */
-    .dons-story-inner{grid-template-columns:1fr;gap:40px}
-    /* values */
-    .values-grid{grid-template-columns:1fr!important;gap:40px!important}
-    .values-sidebar{position:static!important;top:auto!important}
-    /* newsletter row */
-    .newsletter-row{flex-direction:column;align-items:flex-start}
-    /* footer */
-    footer{padding:60px 20px}
-    footer .big{font-size:clamp(36px,10vw,260px);word-break:break-word}
-  }
-
-  /* ===== PHONE ≤480px ===== */
-  @media (max-width:480px){
-    section{padding:64px 16px}
-    .manifesto{padding:64px 16px}
-    .hero{padding:88px 16px 80px}
-    .the-ask{padding:80px 16px}
-    /* pillars 1-col */
-    .pillars{grid-template-columns:1fr}
-    .pillar{border-right:none;border-bottom:1px solid #1f1f1d}
-    .pillar:last-child{border-bottom:none}
-    /* impact grid 1-col */
-    .impact-grid{grid-template-columns:1fr}
-    .impact-cell{border-right:none!important;border-bottom:1px solid #1f1f1d}
-    .impact-cell:last-child{border-bottom:none}
-    /* CTAs full-width */
-    .hero-ctas,.plan-ctas,.cta-row,.the-ask-ctas{flex-direction:column;width:100%}
-    .btn-gold,.btn-outline{width:100%;justify-content:center;font-size:14px;padding:18px 20px 14px}
-    /* newsletter — stack form column on narrow phones */
-    .newsletter-row .nl-form{width:100%;flex-direction:column}
-    .newsletter-row .nl-form input{border-right:2px solid #1f1f1d;border-bottom:none}
-    .newsletter-row .nl-form button{width:100%;padding:16px 20px}
-    footer{padding:48px 16px}
-    footer .links{gap:16px}
-    footer .big{font-size:clamp(30px,8.5vw,260px)}
-  }
-
 </style>
+
+<script is:inline>
+/* Glowing sine-wave background — vanilla WebGL port of the Three.js
+   "web-gl-shader" component, tinted NHM red. Zero dependencies. */
+(function () {
+  var canvas = document.getElementById('bg');
+  var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return; // no WebGL: panels render over plain black, still fine
+
+  var VERT = 'attribute vec2 position;void main(){gl_Position=vec4(position,0.,1.);}';
+  var FRAG =
+    'precision highp float;' +
+    'uniform vec2 resolution;uniform float time;' +
+    'const float xScale=1.0;const float yScale=0.5;const float distortion=0.05;' +
+    'void main(){' +
+    ' vec2 p=(gl_FragCoord.xy*2.0-resolution)/min(resolution.x,resolution.y);' +
+    ' float d=length(p)*distortion;' +
+    ' float rx=p.x*(1.0+d);float gx=p.x;float bx=p.x*(1.0-d);' +
+    ' float r=0.05/abs(p.y+sin((rx+time)*xScale)*yScale);' +
+    ' float g=0.05/abs(p.y+sin((gx+time)*xScale)*yScale);' +
+    ' float b=0.05/abs(p.y+sin((bx+time)*xScale)*yScale);' +
+    ' gl_FragColor=vec4(r,g*0.16,b*0.14,1.0);' + // crimson-dominant glow
+    '}';
+
+  function compile(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    return s;
+  }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  var uRes = gl.getUniformLocation(prog, 'resolution');
+  var uTime = gl.getUniformLocation(prog, 'time');
+  var t = 0;
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function frame() {
+    gl.uniform1f(uTime, t);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    t += 0.01;
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    t = 4.2; frame(); // single static frame for reduced-motion users
+  } else {
+    (function loop() { frame(); requestAnimationFrame(loop); })();
+  }
+})();
+</script>
