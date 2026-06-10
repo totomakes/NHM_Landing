@@ -1,29 +1,190 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Give — No Half Measures · All In Starts Here</title>
-<meta name="description" content="Every dollar funds recovery — job training, housing, community. No overhead games. No half measures. Your gift goes to the work.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="No Half Measures">
-<meta property="og:title" content="Give — No Half Measures">
-<meta property="og:description" content="Every dollar funds recovery — job training, housing, community. Your gift goes straight to the work.">
-<meta property="og:url" content="https://nhmlife.com/donate">
-<meta property="og:image" content="https://nhmlife.com/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Give — No Half Measures">
-<meta name="twitter:description" content="Every dollar funds recovery — job training, housing, community. Your gift goes straight to the work.">
-<meta name="twitter:image" content="https://nhmlife.com/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Ticker from '../components/Ticker.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Footer from '../components/Footer.astro';
+
+const navLinks = [
+  { href: '/#mission', label: 'What We Do' },
+  { href: '/#ground', label: 'On the Ground' },
+  { href: '/#values', label: 'Who We Are' },
+  { href: '/recap', label: 'Recap' },
+];
+const tickerItems = [
+  'All In Starts Here',
+  'Every Dollar Goes To The Work',
+  'No Half Measures',
+  'Become a Hope Merchant',
+];
+const footerLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/recap', label: 'Recap' },
+  { href: '#', label: 'Instagram' },
+  { href: '#', label: 'YouTube' },
+  { href: '#', label: 'Contact' },
+];
+---
+
+<Base
+  title="Give — No Half Measures · All In Starts Here"
+  description="Every dollar funds recovery — job training, housing, community. No overhead games. No half measures. Your gift goes to the work."
+  ogTitle="Give — No Half Measures"
+  ogDescription="Every dollar funds recovery — job training, housing, community. Your gift goes straight to the work."
+  ogUrl="https://nhmlife.com/donate"
+  twitterTitle="Give — No Half Measures"
+  twitterDescription="Every dollar funds recovery — job training, housing, community. Your gift goes straight to the work."
+  fontsHref="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+>
+
+<!-- ── NAV ── -->
+<Nav links={navLinks}>
+  <a href="#choose" class="nav-cta" slot="cta">Give Now</a>
+</Nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="eyebrow">
+    <span class="bar"></span>
+    <span data-edit="donate.hero_eyebrow">// GIVE — NO HALF MEASURES</span>
+    <span class="bar"></span>
+  </div>
+  <h1 class="hero-title"><span data-edit="donate.hero_title_1">All in</span><br><span class="red" data-edit="donate.hero_title_2">starts here.</span></h1>
+  <p class="hero-sub" data-edit="donate.hero_sub">
+    Every dollar funds recovery — job training, housing, community. No overhead games. No half measures. Your gift goes straight to the work.
+  </p>
+  <div class="hero-ctas">
+    <a href="#choose" class="btn-primary">Choose an Amount <span>↓</span></a>
+    <a href="/#mission" class="btn-outline">See What We Do <span>→</span></a>
+  </div>
+</section>
+
+<!-- ── CHOOSE YOUR IMPACT ── -->
+<section id="choose">
+  <div class="container">
+    <div class="section-num">/ 01 — CHOOSE YOUR IMPACT</div>
+    <h2 class="section-title" data-edit="donate.choose_title">Choose your impact.</h2>
+    <p class="section-lead" data-edit="donate.choose_lead">Pick an amount — or enter your own. Then give in seconds through PayPal or Venmo. Every gift is tax-deductible.</p>
+
+    <div class="tiers" id="tiers">
+      <button class="tier" data-amount="25">
+        <div class="amt">$25</div>
+        <div class="name" data-edit="donate.tier1_name">The Table</div>
+        <div class="desc" data-edit="donate.tier1_desc">Feeds a room — a shared meal for men doing the work of recovery.</div>
+      </button>
+      <button class="tier" data-amount="100">
+        <div class="amt">$100</div>
+        <div class="name" data-edit="donate.tier2_name">The Week</div>
+        <div class="desc" data-edit="donate.tier2_desc">Funds a full week of job training and skill-building resources.</div>
+      </button>
+      <button class="tier active" data-amount="250">
+        <span class="badge">Most Common</span>
+        <div class="amt">$250</div>
+        <div class="name" data-edit="donate.tier3_name">The Month</div>
+        <div class="desc" data-edit="donate.tier3_desc">A month of resources and support for a man rebuilding his life.</div>
+      </button>
+      <button class="tier" data-amount="500">
+        <div class="amt">$500</div>
+        <div class="name" data-edit="donate.tier4_name">The Door</div>
+        <div class="desc" data-edit="donate.tier4_desc">Opens a door — a contribution toward transitional housing.</div>
+      </button>
+    </div>
+
+    <div class="custom-row">
+      <span class="cur">$</span>
+      <input type="number" id="customAmount" min="1" step="1" placeholder="Enter a custom amount" inputmode="numeric" aria-label="Custom donation amount">
+    </div>
+
+    <div class="pay-head">Selected amount: <b id="amtLabel">$250</b></div>
+    <div class="pay-buttons">
+      <a id="venmoBtn" class="pay-btn venmo" href="#" target="_blank" rel="noopener">
+        <span class="dot"></span> Give <span id="vAmt">$250</span> · Venmo
+      </a>
+      <a id="paypalBtn" class="pay-btn paypal" href="https://www.paypal.com/ncp/payment/TS6J7ABEZH32E" target="_blank" rel="noopener">
+        <span class="dot"></span> Give · PayPal
+      </a>
+    </div>
+    <div class="assure">Venmo pre-fills your amount · PayPal opens a secure checkout where you confirm it · Tax-deductible · 501(c)(3)</div>
+  </div>
+</section>
+
+<!-- ── NOTE STRIP ── -->
+<div class="note-strip">
+  <div class="container">
+    <h2 data-edit="donate.note_heading">No overhead games. No half measures.</h2>
+    <p data-edit="donate.note_body">You'll receive a confirmation and a tax receipt at the email tied to your payment. Every dollar goes to the ground — housing, training, and the brotherhood that keeps men sober long after the program ends.</p>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<Footer
+  links={footerLinks}
+  containerStyle="max-width:1240px"
+  big="Nobody Made It Going Halfway"
+  right2="/ ALL IN IS THE ONLY WAY OUT /"
+>
+  <Newsletter style="margin-top:48px" />
+</Footer>
+
+<!-- ── TICKER ── -->
+<Ticker items={tickerItems} />
+
+<script is:inline>
+  /* ===== PAYMENT ACCOUNTS ===== */
+  const VENMO_HANDLE = "nohalfmeasuresfoundation";   // venmo.com/u/nohalfmeasuresfoundation
+  const NOTE = "No Half Measures donation";
+  /* PayPal uses a fixed hosted-checkout link (set on the button); amount is confirmed on PayPal's page. */
+
+  let amount = 250;
+
+  const tiers      = document.getElementById('tiers');
+  const customEl   = document.getElementById('customAmount');
+  const venmoBtn   = document.getElementById('venmoBtn');
+  const amtLabel   = document.getElementById('amtLabel');
+  const vAmt       = document.getElementById('vAmt');
+
+  function fmt(a){ return '$' + a; }
+
+  function updateLinks(){
+    const a = amount > 0 ? amount : '';
+    venmoBtn.href = `https://venmo.com/${VENMO_HANDLE}?txn=pay${a ? `&amount=${a}` : ''}&note=${encodeURIComponent(NOTE)}`;
+    const label = a ? fmt(a) : '—';
+    amtLabel.textContent = label;
+    vAmt.textContent  = label;
+  }
+
+  function selectTier(amt, el){
+    amount = amt;
+    customEl.value = '';
+    [...tiers.children].forEach(c => c.classList.toggle('active', c === el));
+    updateLinks();
+  }
+
+  tiers.addEventListener('click', e => {
+    const t = e.target.closest('.tier');
+    if(t) selectTier(+t.dataset.amount, t);
+  });
+
+  customEl.addEventListener('input', () => {
+    const v = parseInt(customEl.value, 10);
+    [...tiers.children].forEach(c => c.classList.remove('active'));
+    amount = (!isNaN(v) && v > 0) ? v : 0;
+    updateLinks();
+  });
+
+  var ppBtn = document.getElementById('paypalBtn');
+  function trackDonate(m){ if (window.nhmTrack) window.nhmTrack('donate_click', { method: m, amount: amount > 0 ? amount : 0 }); }
+  if (ppBtn) ppBtn.addEventListener('click', function(){ trackDonate('paypal'); });
+  if (venmoBtn) venmoBtn.addEventListener('click', function(){ trackDonate('venmo'); });
+
+  updateLinks();
+</script>
+
+</Base>
+
+<style is:global>
+
   :root{
     --red:#da3123;
     --red-dim:#b5271f;
@@ -264,200 +425,5 @@
   .nl-status.ok{color:#5ec76a}
   .nl-status.bad{color:var(--red)}
   @media(max-width:540px){.newsletter-row .nl-form{flex-direction:column}.newsletter-row .nl-form input{border-right:2px solid #1f1f1d;border-bottom:none}.newsletter-row .nl-form button{width:100%}}
+
 </style>
-</head>
-<body>
-
-<!-- ── NAV ── -->
-<nav class="top">
-  <a href="/" class="lettermark">NHM</a>
-  <ul class="nav-links">
-    <li><a href="/#mission">What We Do</a></li>
-    <li><a href="/#ground">On the Ground</a></li>
-    <li><a href="/#values">Who We Are</a></li>
-    <li><a href="/recap">Recap</a></li>
-  </ul>
-  <a href="#choose" class="nav-cta">Give Now</a>
-</nav>
-
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="eyebrow">
-    <span class="bar"></span>
-    <span data-edit="donate.hero_eyebrow">// GIVE — NO HALF MEASURES</span>
-    <span class="bar"></span>
-  </div>
-  <h1 class="hero-title"><span data-edit="donate.hero_title_1">All in</span><br><span class="red" data-edit="donate.hero_title_2">starts here.</span></h1>
-  <p class="hero-sub" data-edit="donate.hero_sub">
-    Every dollar funds recovery — job training, housing, community. No overhead games. No half measures. Your gift goes straight to the work.
-  </p>
-  <div class="hero-ctas">
-    <a href="#choose" class="btn-primary">Choose an Amount <span>↓</span></a>
-    <a href="/#mission" class="btn-outline">See What We Do <span>→</span></a>
-  </div>
-</section>
-
-<!-- ── CHOOSE YOUR IMPACT ── -->
-<section id="choose">
-  <div class="container">
-    <div class="section-num">/ 01 — CHOOSE YOUR IMPACT</div>
-    <h2 class="section-title" data-edit="donate.choose_title">Choose your impact.</h2>
-    <p class="section-lead" data-edit="donate.choose_lead">Pick an amount — or enter your own. Then give in seconds through PayPal or Venmo. Every gift is tax-deductible.</p>
-
-    <div class="tiers" id="tiers">
-      <button class="tier" data-amount="25">
-        <div class="amt">$25</div>
-        <div class="name" data-edit="donate.tier1_name">The Table</div>
-        <div class="desc" data-edit="donate.tier1_desc">Feeds a room — a shared meal for men doing the work of recovery.</div>
-      </button>
-      <button class="tier" data-amount="100">
-        <div class="amt">$100</div>
-        <div class="name" data-edit="donate.tier2_name">The Week</div>
-        <div class="desc" data-edit="donate.tier2_desc">Funds a full week of job training and skill-building resources.</div>
-      </button>
-      <button class="tier active" data-amount="250">
-        <span class="badge">Most Common</span>
-        <div class="amt">$250</div>
-        <div class="name" data-edit="donate.tier3_name">The Month</div>
-        <div class="desc" data-edit="donate.tier3_desc">A month of resources and support for a man rebuilding his life.</div>
-      </button>
-      <button class="tier" data-amount="500">
-        <div class="amt">$500</div>
-        <div class="name" data-edit="donate.tier4_name">The Door</div>
-        <div class="desc" data-edit="donate.tier4_desc">Opens a door — a contribution toward transitional housing.</div>
-      </button>
-    </div>
-
-    <div class="custom-row">
-      <span class="cur">$</span>
-      <input type="number" id="customAmount" min="1" step="1" placeholder="Enter a custom amount" inputmode="numeric" aria-label="Custom donation amount">
-    </div>
-
-    <div class="pay-head">Selected amount: <b id="amtLabel">$250</b></div>
-    <div class="pay-buttons">
-      <a id="venmoBtn" class="pay-btn venmo" href="#" target="_blank" rel="noopener">
-        <span class="dot"></span> Give <span id="vAmt">$250</span> · Venmo
-      </a>
-      <a id="paypalBtn" class="pay-btn paypal" href="https://www.paypal.com/ncp/payment/TS6J7ABEZH32E" target="_blank" rel="noopener">
-        <span class="dot"></span> Give · PayPal
-      </a>
-    </div>
-    <div class="assure">Venmo pre-fills your amount · PayPal opens a secure checkout where you confirm it · Tax-deductible · 501(c)(3)</div>
-  </div>
-</section>
-
-<!-- ── NOTE STRIP ── -->
-<div class="note-strip">
-  <div class="container">
-    <h2 data-edit="donate.note_heading">No overhead games. No half measures.</h2>
-    <p data-edit="donate.note_body">You'll receive a confirmation and a tax receipt at the email tied to your payment. Every dollar goes to the ground — housing, training, and the brotherhood that keeps men sober long after the program ends.</p>
-  </div>
-</div>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="container" style="max-width:1240px">
-    <div class="row">
-      <div>
-        <div class="framed">No Half Measures</div>
-        <div class="mono" style="margin-top:12px">// FREDERICKSBURG, VA — NHMLIFE.COM</div>
-      </div>
-      <div class="links">
-        <a href="/">Home</a>
-        <a href="/recap">Recap</a>
-        <a href="#">Instagram</a>
-        <a href="#">YouTube</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-    <div class="newsletter-row" style="margin-top:48px">
-      <div class="nl-label">
-        <strong>Hope Merchant Newsletter</strong>
-        <p>One story a week about real people getting their lives back. No spam.</p>
-      </div>
-      <form class="nl-form" data-newsletter>
-        <input type="email" placeholder="Your email address" aria-label="Email address" required>
-        <button type="submit">Subscribe →</button>
-      </form>
-      <div class="nl-status" data-nl-status></div>
-    </div>
-
-    <h3 class="big">Nobody Made It Going Halfway</h3>
-    <div class="row" style="margin-top:48px">
-      <div class="mono">© 2026 · NO HALF MEASURES · A 501(c)(3)</div>
-      <div class="mono">/ ALL IN IS THE ONLY WAY OUT /</div>
-    </div>
-  </div>
-</footer>
-
-<!-- ── TICKER ── -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>All In Starts Here</span>
-    <span>Every Dollar Goes To The Work</span>
-    <span>No Half Measures</span>
-    <span>Become a Hope Merchant</span>
-    <span>All In Starts Here</span>
-    <span>Every Dollar Goes To The Work</span>
-    <span>No Half Measures</span>
-    <span>Become a Hope Merchant</span>
-  </div>
-</div>
-
-<script>
-  /* ===== PAYMENT ACCOUNTS ===== */
-  const VENMO_HANDLE = "nohalfmeasuresfoundation";   // venmo.com/u/nohalfmeasuresfoundation
-  const NOTE = "No Half Measures donation";
-  /* PayPal uses a fixed hosted-checkout link (set on the button); amount is confirmed on PayPal's page. */
-
-  let amount = 250;
-
-  const tiers      = document.getElementById('tiers');
-  const customEl   = document.getElementById('customAmount');
-  const venmoBtn   = document.getElementById('venmoBtn');
-  const amtLabel   = document.getElementById('amtLabel');
-  const vAmt       = document.getElementById('vAmt');
-
-  function fmt(a){ return '$' + a; }
-
-  function updateLinks(){
-    const a = amount > 0 ? amount : '';
-    venmoBtn.href = `https://venmo.com/${VENMO_HANDLE}?txn=pay${a ? `&amount=${a}` : ''}&note=${encodeURIComponent(NOTE)}`;
-    const label = a ? fmt(a) : '—';
-    amtLabel.textContent = label;
-    vAmt.textContent  = label;
-  }
-
-  function selectTier(amt, el){
-    amount = amt;
-    customEl.value = '';
-    [...tiers.children].forEach(c => c.classList.toggle('active', c === el));
-    updateLinks();
-  }
-
-  tiers.addEventListener('click', e => {
-    const t = e.target.closest('.tier');
-    if(t) selectTier(+t.dataset.amount, t);
-  });
-
-  customEl.addEventListener('input', () => {
-    const v = parseInt(customEl.value, 10);
-    [...tiers.children].forEach(c => c.classList.remove('active'));
-    amount = (!isNaN(v) && v > 0) ? v : 0;
-    updateLinks();
-  });
-
-  var ppBtn = document.getElementById('paypalBtn');
-  function trackDonate(m){ if (window.nhmTrack) window.nhmTrack('donate_click', { method: m, amount: amount > 0 ? amount : 0 }); }
-  if (ppBtn) ppBtn.addEventListener('click', function(){ trackDonate('paypal'); });
-  if (venmoBtn) venmoBtn.addEventListener('click', function(){ trackDonate('venmo'); });
-
-  updateLinks();
-</script>
-<script src="/assets/analytics.js" defer></script>
-<script src="/assets/content.js" defer></script>
-<script src="/assets/edit.js" defer></script>
-<script src="/assets/newsletter.js" defer></script>
-</body>
-</html>

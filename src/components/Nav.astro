@@ -1,0 +1,14 @@
+---
+// Fixed top nav, shared by every page.
+// links: [{ href, label }] — per-page anchors/routes.
+// The right-side CTA differs per page; pass it through the "cta" slot.
+const { links = [] } = Astro.props;
+---
+
+<nav class="top">
+  <a href="/" class="lettermark">NHM</a>
+  <ul class="nav-links">
+    {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+  </ul>
+  <slot name="cta" />
+</nav>

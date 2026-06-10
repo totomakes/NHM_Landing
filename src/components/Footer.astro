@@ -1,0 +1,40 @@
+---
+// Site footer. Structure is shared; brand style, links, and the big outline
+// headline vary per page via props. Anything placed in the default slot
+// (e.g. <Newsletter/>) renders between the top row and the big headline.
+const {
+  brandClass = 'framed',
+  brandStyle,
+  monoStyle = 'margin-top:12px',
+  links = [],
+  big,
+  bigEditKey,
+  containerStyle,
+  screenLabel,
+  left2 = '© 2026 · NO HALF MEASURES · A 501(c)(3)',
+  right2 = '/ DRAWING A LINE. REJECTING COMPROMISE. /',
+} = Astro.props;
+---
+
+<footer data-screen-label={screenLabel}>
+  <div class="container" style={containerStyle}>
+    <div class="row">
+      <div>
+        <div class={brandClass} style={brandStyle}>No Half Measures</div>
+        <div class="mono" style={monoStyle}>// FREDERICKSBURG, VA — NHMLIFE.COM</div>
+      </div>
+      <div class="links">
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+
+    <slot />
+
+    <h3 class="big" data-edit={bigEditKey}>{big}</h3>
+
+    <div class="row" style="margin-top:48px">
+      <div class="mono">{left2}</div>
+      <div class="mono">{right2}</div>
+    </div>
+  </div>
+</footer>

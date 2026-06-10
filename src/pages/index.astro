@@ -1,29 +1,298 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NHM — All In Is The Only Way Out</title>
-<meta name="description" content="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="No Half Measures">
-<meta property="og:title" content="No Half Measures — All In Is The Only Way Out">
-<meta property="og:description" content="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.">
-<meta property="og:url" content="https://nhmlife.com/">
-<meta property="og:image" content="https://nhmlife.com/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="No Half Measures — All In Is The Only Way Out">
-<meta name="twitter:description" content="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.">
-<meta name="twitter:image" content="https://nhmlife.com/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Ticker from '../components/Ticker.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Footer from '../components/Footer.astro';
+
+const navLinks = [
+  { href: '#mission', label: 'What We Do' },
+  { href: '#ground', label: 'On the Ground' },
+  { href: '#values', label: 'Who We Are' },
+  { href: '/recap', label: 'Recap' },
+];
+const tickerItems = [
+  'All In Is The Only Way Out',
+  'No Half Measures',
+  'Nobody Made It Going Halfway',
+  'Full Commitment Changes Everything',
+  'Become a Hope Merchant',
+];
+const footerLinks = [
+  { href: '/', label: 'Home' },
+  { href: '#mission', label: 'What We Do' },
+  { href: '/recap', label: 'Recap' },
+  { href: '/donate', label: 'Donate' },
+  { href: '#', label: 'Instagram' },
+  { href: '#', label: 'YouTube' },
+];
+---
+
+<Base
+  title="NHM — All In Is The Only Way Out"
+  description="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  ogTitle="No Half Measures — All In Is The Only Way Out"
+  ogDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  ogUrl="https://nhmlife.com/"
+  twitterTitle="No Half Measures — All In Is The Only Way Out"
+  twitterDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  fontsHref="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Narrow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+>
+
+<!-- ============================================================ NAV -->
+<Nav links={navLinks}>
+  <div class="right" slot="cta">
+    <a href="/donate" class="donate">Donate</a>
+  </div>
+</Nav>
+
+<!-- ============================================================ 01 HERO -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-grid"></div>
+
+  <div class="float" data-speed="0.18" style="top:14%;left:6%"><div class="stamp">All In</div></div>
+  <div class="float" data-speed="0.32" style="top:22%;right:8%"><div class="nm-mini">N/M</div></div>
+  <div class="float" data-speed="0.45" style="top:62%;left:4%"><div class="dot"></div></div>
+  <div class="float" data-speed="0.55" style="top:74%;right:14%"><div class="tag">No Half Measures</div></div>
+  <div class="float" data-speed="0.25" style="top:48%;right:4%"><div class="square"></div></div>
+  <div class="float" data-speed="0.38" style="top:88%;left:18%"><div class="stamp">Fredericksburg, VA</div></div>
+  <div class="float" data-speed="0.2" style="top:8%;right:30%"><span class="slash">/</span></div>
+
+  <div class="hero-eyebrow">
+    <span class="bar"></span>
+    <span class="mono red" data-edit="index.hero_eyebrow">// ALL IN IS THE ONLY WAY OUT</span>
+    <span class="bar"></span>
+  </div>
+
+  <h1 class="hero-title block">
+    <span data-edit="index.hero_title_1">NO HALF</span><br><span class="red" data-edit="index.hero_title_2">MEASURES</span>
+  </h1>
+
+  <p class="hero-sub" data-edit="index.hero_sub">
+    No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="/donate" class="btn-gold">Donate <span>→</span></a>
+    <a href="#mission" class="btn-outline">What We Do <span>→</span></a>
+  </div>
+</section>
+
+<!-- ============================================================ 01 WHAT WE DO -->
+<section id="mission" data-screen-label="01 What We Do">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">/ 01 — MISSION</div>
+        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.mission_title_1">What we do.</span><br><span style="color:var(--red)" data-edit="index.mission_title_2">No filters.</span></h2>
+      </div>
+      <div class="mono" style="max-width:280px;text-align:right" data-edit="index.mission_subhead">We meet people where they are and ask, "how can I help?"</div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">/ 01</div>
+        <h3 data-edit="index.pillar1_title">In Addiction</h3>
+        <p data-edit="index.pillar1_body">We connect them to resources and model lives that show recovery is possible.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">/ 02</div>
+        <h3 data-edit="index.pillar2_title">In Recovery</h3>
+        <p data-edit="index.pillar2_body">We provide job training and opportunities that expand their vision.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">/ 03</div>
+        <h3 data-edit="index.pillar3_title">Transitioning Out</h3>
+        <p data-edit="index.pillar3_body">Housing — a stable place to land during critical seasons of rebuilding.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">/ 04</div>
+        <h3 data-edit="index.pillar4_title">At Every Stage</h3>
+        <p data-edit="index.pillar4_body">Community to lean on when life gets heavy and hope feels out of reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STORY MOSAIC -->
+<section id="ground" data-screen-label="Story Mosaic" style="padding-top:60px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">/ 02 — ON THE GROUND</div>
+        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.ground_title_1">Show up.</span><br><span data-edit="index.ground_title_2">Open doors.</span><br><span data-edit="index.ground_title_3">Share meals.</span></h2>
+      </div>
+      <div class="mono" style="max-width:260px;text-align:right" data-edit="index.ground_subhead">We don't help from a distance. Real people. Real rooms. Real recoveries.</div>
+    </div>
+
+    <div class="mosaic">
+      <div class="photo a has-img" data-parallax="-30" data-label="01 / STREET" style="min-height:0">
+        <img src="images/street.webp" alt="Meeting men where they are, on the street" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo b has-img" data-parallax="40"  data-label="02 / BROTHERHOOD">
+        <img src="images/team.webp" alt="The NHM team together" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo c has-img" data-parallax="-20" data-label="03 / RECOVERY">
+        <img src="images/training.webp" alt="Job training and skill-building in recovery" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo d has-img" data-parallax="55"  data-label="04 / HOUSING">
+        <img src="images/townhouse.webp" alt="Transitional housing" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+      <div class="photo e has-img" data-parallax="-45" data-label="05 / FREDERICKSBURG">
+        <img src="images/burg.webp" alt="Downtown Fredericksburg, Virginia" loading="lazy" decoding="async"><span class="ph-scrim"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="float" data-speed="0.3"  style="top:30%;right:6%;z-index:5"><div class="nm-mini">N/M</div></div>
+  <div class="float" data-speed="0.45" style="bottom:18%;left:6%;z-index:5"><div class="stamp">Wholehearted</div></div>
+</section>
+
+<!-- ============================================================ MANIFESTO STRIP -->
+<section class="manifesto" data-screen-label="Manifesto">
+  <div class="container">
+    <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE</div>
+    <h2 data-parallax-x="-40">All in is the<br>only way out.</h2>
+    <div class="row">
+      <div class="manifesto-body" style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
+        Nobody made it going halfway.<br>Half efforts build nothing.<br>Full commitment changes everything.
+      </div>
+      <div class="meta">NO HALF MEASURES · EST. FREDERICKSBURG · /</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ VALUES -->
+<section id="values" data-screen-label="Values">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-num">// VALUES</div>
+        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.values_title_1">Who</span><br><span data-edit="index.values_title_2">we</span><br><span style="color:var(--red)" data-edit="index.values_title_3">are.</span></h2>
+      </div>
+    </div>
+
+    <div class="values-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start">
+      <ol style="list-style:none;display:grid;gap:0;border-top:1px solid #1f1f1d">
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 01</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value1_title">Bring Purpose to Pain.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value1_body">Meet people at their lowest. Transform lives with meaning.</p></div>
+        </li>
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 02</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value2_title">Live Openhanded.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value2_body">Defined by generosity — time, gifts, resources for the good of others.</p></div>
+        </li>
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 03</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value3_title">Operate with Excellence.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value3_body">Discipline, integrity, intentionality. We don't settle for less than our best.</p></div>
+        </li>
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 04</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value4_title">Speak Life to Addiction.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value4_body">Confront what's broken. Call people higher — honestly, with compassion.</p></div>
+        </li>
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 05</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value5_title">Set the Standard.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value5_body">Living examples of wholehearted living — grit, humility, sacrifice.</p></div>
+        </li>
+        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
+          <span class="mono red">/ 06</span>
+          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value6_title">Empower Potential.</strong>
+          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value6_body">Equip people to break cycles — education, accountability, opportunity.</p></div>
+        </li>
+      </ol>
+
+      <div class="values-sidebar" style="position:sticky;top:80px">
+        <div class="photo has-img" data-parallax="-30" data-label="DON / FOUNDER" style="aspect-ratio:3/4">
+          <img src="images/founder.webp" alt="Don, founder of No Half Measures" loading="lazy" decoding="async">
+          <span class="ph-scrim"></span>
+        </div>
+        <div class="framed-wordmark red" style="margin-top:24px;font-size:18px">No Half Measures</div>
+        <div class="mono" style="margin-top:12px">— A LIFE WORTH LIVING ON THE OTHER SIDE OF PAIN.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="float" data-speed="0.5"  style="top:8%;right:38%;z-index:5"><span class="slash">/</span></div>
+  <div class="float" data-speed="0.3"  style="bottom:14%;right:12%;z-index:5"><div class="tag">Est. 2024</div></div>
+</section>
+
+<!-- ============================================================ 08 THE ASK -->
+<section class="the-ask" data-screen-label="08 The Ask">
+  <div class="the-ask-bg"></div>
+  <div class="container">
+    <div class="mono red" style="margin-bottom:28px">/ 03 — THE ASK</div>
+    <h2><span data-edit="index.ask_title_1">Nobody made it</span><br><span data-edit="index.ask_title_2">going halfway.</span></h2>
+    <p class="the-ask-sub" data-edit="index.ask_sub">Your gift funds recovery — housing, training, and the brotherhood that keeps men sober. Every dollar goes to the work.</p>
+    <div class="the-ask-ctas">
+      <a href="/donate" class="btn-gold">Donate <span>→</span></a>
+    </div>
+    <div class="the-ask-legal" data-edit="index.ask_legal">NHM Foundation is a 501(c)(3) · Gifts are tax-deductible</div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<Footer
+  brandClass="framed-wordmark"
+  brandStyle="font-size:22px"
+  monoStyle="margin-top:14px"
+  links={footerLinks}
+  big="All In / Only Way Out"
+  bigEditKey="index.footer_big"
+  screenLabel="Footer"
+>
+  <Newsletter style="margin-top:48px" />
+</Footer>
+
+<!-- ============================================================ TICKER -->
+<Ticker items={tickerItems} />
+
+<script is:inline>
+  /* ---------- parallax (rAF throttled, skips mobile + reduced-motion) ---------- */
+  const floats = Array.from(document.querySelectorAll('.float'));
+  const photos = Array.from(document.querySelectorAll('[data-parallax]'));
+  const manifestoTitle = document.querySelector('[data-parallax-x]');
+  let ticking = false;
+
+  function update(){
+    const mobile = window.matchMedia('(max-width:880px)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(mobile || reducedMotion){ ticking = false; return; }
+    const y = window.scrollY;
+    for(const el of floats){
+      const speed = parseFloat(el.dataset.speed || 0.3);
+      el.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
+    }
+    for(const el of photos){
+      const amt = parseFloat(el.dataset.parallax || 0);
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      el.style.transform = `translate3d(0, ${progress * amt}px, 0)`;
+    }
+    if(manifestoTitle){
+      const rect = manifestoTitle.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      manifestoTitle.style.transform = `translate3d(${progress * -60}px, 0, 0)`;
+    }
+    ticking = false;
+  }
+
+  function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+</script>
+
+</Base>
+
+<style is:global>
+
   :root{
     --red:#da3123;
     --red-dim:#a8261b;
@@ -492,308 +761,5 @@
     footer .links{gap:16px}
     footer .big{font-size:clamp(30px,8.5vw,260px)}
   }
+
 </style>
-</head>
-<body>
-
-<!-- ============================================================ NAV -->
-<nav class="top">
-  <a href="/" class="lettermark">NHM</a>
-  <ul>
-    <li><a href="#mission">What We Do</a></li>
-    <li><a href="#ground">On the Ground</a></li>
-    <li><a href="#values">Who We Are</a></li>
-    <li><a href="/recap">Recap</a></li>
-  </ul>
-  <div class="right">
-    <a href="/donate" class="donate">Donate</a>
-  </div>
-</nav>
-
-<!-- ============================================================ 01 HERO -->
-<section class="hero" data-screen-label="01 Hero">
-  <div class="hero-grid"></div>
-
-  <div class="float" data-speed="0.18" style="top:14%;left:6%"><div class="stamp">All In</div></div>
-  <div class="float" data-speed="0.32" style="top:22%;right:8%"><div class="nm-mini">N/M</div></div>
-  <div class="float" data-speed="0.45" style="top:62%;left:4%"><div class="dot"></div></div>
-  <div class="float" data-speed="0.55" style="top:74%;right:14%"><div class="tag">No Half Measures</div></div>
-  <div class="float" data-speed="0.25" style="top:48%;right:4%"><div class="square"></div></div>
-  <div class="float" data-speed="0.38" style="top:88%;left:18%"><div class="stamp">Fredericksburg, VA</div></div>
-  <div class="float" data-speed="0.2" style="top:8%;right:30%"><span class="slash">/</span></div>
-
-  <div class="hero-eyebrow">
-    <span class="bar"></span>
-    <span class="mono red" data-edit="index.hero_eyebrow">// ALL IN IS THE ONLY WAY OUT</span>
-    <span class="bar"></span>
-  </div>
-
-  <h1 class="hero-title block">
-    <span data-edit="index.hero_title_1">NO HALF</span><br><span class="red" data-edit="index.hero_title_2">MEASURES</span>
-  </h1>
-
-  <p class="hero-sub" data-edit="index.hero_sub">
-    No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability.
-  </p>
-
-  <div class="hero-ctas">
-    <a href="/donate" class="btn-gold">Donate <span>→</span></a>
-    <a href="#mission" class="btn-outline">What We Do <span>→</span></a>
-  </div>
-</section>
-
-<!-- ============================================================ 01 WHAT WE DO -->
-<section id="mission" data-screen-label="01 What We Do">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">/ 01 — MISSION</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.mission_title_1">What we do.</span><br><span style="color:var(--red)" data-edit="index.mission_title_2">No filters.</span></h2>
-      </div>
-      <div class="mono" style="max-width:280px;text-align:right" data-edit="index.mission_subhead">We meet people where they are and ask, "how can I help?"</div>
-    </div>
-
-    <div class="pillars">
-      <div class="pillar">
-        <div class="num">/ 01</div>
-        <h3 data-edit="index.pillar1_title">In Addiction</h3>
-        <p data-edit="index.pillar1_body">We connect them to resources and model lives that show recovery is possible.</p>
-      </div>
-      <div class="pillar">
-        <div class="num">/ 02</div>
-        <h3 data-edit="index.pillar2_title">In Recovery</h3>
-        <p data-edit="index.pillar2_body">We provide job training and opportunities that expand their vision.</p>
-      </div>
-      <div class="pillar">
-        <div class="num">/ 03</div>
-        <h3 data-edit="index.pillar3_title">Transitioning Out</h3>
-        <p data-edit="index.pillar3_body">Housing — a stable place to land during critical seasons of rebuilding.</p>
-      </div>
-      <div class="pillar">
-        <div class="num">/ 04</div>
-        <h3 data-edit="index.pillar4_title">At Every Stage</h3>
-        <p data-edit="index.pillar4_body">Community to lean on when life gets heavy and hope feels out of reach.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ STORY MOSAIC -->
-<section id="ground" data-screen-label="Story Mosaic" style="padding-top:60px">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">/ 02 — ON THE GROUND</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.ground_title_1">Show up.</span><br><span data-edit="index.ground_title_2">Open doors.</span><br><span data-edit="index.ground_title_3">Share meals.</span></h2>
-      </div>
-      <div class="mono" style="max-width:260px;text-align:right" data-edit="index.ground_subhead">We don't help from a distance. Real people. Real rooms. Real recoveries.</div>
-    </div>
-
-    <div class="mosaic">
-      <div class="photo a has-img" data-parallax="-30" data-label="01 / STREET" style="min-height:0">
-        <img src="images/street.webp" alt="Meeting men where they are, on the street" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo b has-img" data-parallax="40"  data-label="02 / BROTHERHOOD">
-        <img src="images/team.webp" alt="The NHM team together" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo c has-img" data-parallax="-20" data-label="03 / RECOVERY">
-        <img src="images/training.webp" alt="Job training and skill-building in recovery" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo d has-img" data-parallax="55"  data-label="04 / HOUSING">
-        <img src="images/townhouse.webp" alt="Transitional housing" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-      <div class="photo e has-img" data-parallax="-45" data-label="05 / FREDERICKSBURG">
-        <img src="images/burg.webp" alt="Downtown Fredericksburg, Virginia" loading="lazy" decoding="async"><span class="ph-scrim"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="float" data-speed="0.3"  style="top:30%;right:6%;z-index:5"><div class="nm-mini">N/M</div></div>
-  <div class="float" data-speed="0.45" style="bottom:18%;left:6%;z-index:5"><div class="stamp">Wholehearted</div></div>
-</section>
-
-<!-- ============================================================ MANIFESTO STRIP -->
-<section class="manifesto" data-screen-label="Manifesto">
-  <div class="container">
-    <div class="mono" style="color:rgba(0,0,0,0.7)">// TAGLINE</div>
-    <h2 data-parallax-x="-40">All in is the<br>only way out.</h2>
-    <div class="row">
-      <div class="manifesto-body" style="max-width:520px;font-family:'Archivo Black',sans-serif;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1">
-        Nobody made it going halfway.<br>Half efforts build nothing.<br>Full commitment changes everything.
-      </div>
-      <div class="meta">NO HALF MEASURES · EST. FREDERICKSBURG · /</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ VALUES -->
-<section id="values" data-screen-label="Values">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-num">// VALUES</div>
-        <h2 class="block section-title" style="margin-top:18px"><span data-edit="index.values_title_1">Who</span><br><span data-edit="index.values_title_2">we</span><br><span style="color:var(--red)" data-edit="index.values_title_3">are.</span></h2>
-      </div>
-    </div>
-
-    <div class="values-grid" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start">
-      <ol style="list-style:none;display:grid;gap:0;border-top:1px solid #1f1f1d">
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 01</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value1_title">Bring Purpose to Pain.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value1_body">Meet people at their lowest. Transform lives with meaning.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 02</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value2_title">Live Openhanded.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value2_body">Defined by generosity — time, gifts, resources for the good of others.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 03</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value3_title">Operate with Excellence.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value3_body">Discipline, integrity, intentionality. We don't settle for less than our best.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 04</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value4_title">Speak Life to Addiction.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value4_body">Confront what's broken. Call people higher — honestly, with compassion.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 05</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value5_title">Set the Standard.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value5_body">Living examples of wholehearted living — grit, humility, sacrifice.</p></div>
-        </li>
-        <li style="padding:24px 0;border-bottom:1px solid #1f1f1d;display:grid;grid-template-columns:60px 1fr;gap:24px;align-items:baseline">
-          <span class="mono red">/ 06</span>
-          <div><strong style="font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:22px;letter-spacing:-0.005em" data-edit="index.value6_title">Empower Potential.</strong>
-          <p style="color:var(--ink-dim);font-size:14px;margin-top:6px;line-height:1.55" data-edit="index.value6_body">Equip people to break cycles — education, accountability, opportunity.</p></div>
-        </li>
-      </ol>
-
-      <div class="values-sidebar" style="position:sticky;top:80px">
-        <div class="photo has-img" data-parallax="-30" data-label="DON / FOUNDER" style="aspect-ratio:3/4">
-          <img src="images/founder.webp" alt="Don, founder of No Half Measures" loading="lazy" decoding="async">
-          <span class="ph-scrim"></span>
-        </div>
-        <div class="framed-wordmark red" style="margin-top:24px;font-size:18px">No Half Measures</div>
-        <div class="mono" style="margin-top:12px">— A LIFE WORTH LIVING ON THE OTHER SIDE OF PAIN.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="float" data-speed="0.5"  style="top:8%;right:38%;z-index:5"><span class="slash">/</span></div>
-  <div class="float" data-speed="0.3"  style="bottom:14%;right:12%;z-index:5"><div class="tag">Est. 2024</div></div>
-</section>
-
-<!-- ============================================================ 08 THE ASK -->
-<section class="the-ask" data-screen-label="08 The Ask">
-  <div class="the-ask-bg"></div>
-  <div class="container">
-    <div class="mono red" style="margin-bottom:28px">/ 03 — THE ASK</div>
-    <h2><span data-edit="index.ask_title_1">Nobody made it</span><br><span data-edit="index.ask_title_2">going halfway.</span></h2>
-    <p class="the-ask-sub" data-edit="index.ask_sub">Your gift funds recovery — housing, training, and the brotherhood that keeps men sober. Every dollar goes to the work.</p>
-    <div class="the-ask-ctas">
-      <a href="/donate" class="btn-gold">Donate <span>→</span></a>
-    </div>
-    <div class="the-ask-legal" data-edit="index.ask_legal">NHM Foundation is a 501(c)(3) · Gifts are tax-deductible</div>
-  </div>
-</section>
-
-<!-- ============================================================ FOOTER -->
-<footer data-screen-label="Footer">
-  <div class="container">
-    <div class="row">
-      <div>
-        <div class="framed-wordmark" style="font-size:22px">No Half Measures</div>
-        <div class="mono" style="margin-top:14px">// FREDERICKSBURG, VA — NHMLIFE.COM</div>
-      </div>
-      <div class="links">
-        <a href="/">Home</a>
-        <a href="#mission">What We Do</a>
-        <a href="/recap">Recap</a>
-        <a href="/donate">Donate</a>
-        <a href="#">Instagram</a>
-        <a href="#">YouTube</a>
-      </div>
-    </div>
-
-    <div class="newsletter-row" style="margin-top:48px">
-      <div class="nl-label">
-        <strong>Hope Merchant Newsletter</strong>
-        <p>One story a week about real people getting their lives back. No spam.</p>
-      </div>
-      <form class="nl-form" data-newsletter>
-        <input type="email" placeholder="Your email address" aria-label="Email address" required>
-        <button type="submit">Subscribe →</button>
-      </form>
-      <div class="nl-status" data-nl-status></div>
-    </div>
-
-    <h3 class="big" data-edit="index.footer_big">All In / Only Way Out</h3>
-
-    <div class="row" style="margin-top:48px">
-      <div class="mono">© 2026 · NO HALF MEASURES · A 501(c)(3)</div>
-      <div class="mono">/ DRAWING A LINE. REJECTING COMPROMISE. /</div>
-    </div>
-  </div>
-</footer>
-
-<!-- ============================================================ TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>All In Is The Only Way Out</span>
-    <span>No Half Measures</span>
-    <span>Nobody Made It Going Halfway</span>
-    <span>Full Commitment Changes Everything</span>
-    <span>Become a Hope Merchant</span>
-    <span>All In Is The Only Way Out</span>
-    <span>No Half Measures</span>
-    <span>Nobody Made It Going Halfway</span>
-    <span>Full Commitment Changes Everything</span>
-    <span>Become a Hope Merchant</span>
-  </div>
-</div>
-
-<script>
-  /* ---------- parallax (rAF throttled, skips mobile + reduced-motion) ---------- */
-  const floats = Array.from(document.querySelectorAll('.float'));
-  const photos = Array.from(document.querySelectorAll('[data-parallax]'));
-  const manifestoTitle = document.querySelector('[data-parallax-x]');
-  let ticking = false;
-
-  function update(){
-    const mobile = window.matchMedia('(max-width:880px)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    if(mobile || reducedMotion){ ticking = false; return; }
-    const y = window.scrollY;
-    for(const el of floats){
-      const speed = parseFloat(el.dataset.speed || 0.3);
-      el.style.transform = `translate3d(0, ${-y * speed}px, 0)`;
-    }
-    for(const el of photos){
-      const amt = parseFloat(el.dataset.parallax || 0);
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      el.style.transform = `translate3d(0, ${progress * amt}px, 0)`;
-    }
-    if(manifestoTitle){
-      const rect = manifestoTitle.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
-      manifestoTitle.style.transform = `translate3d(${progress * -60}px, 0, 0)`;
-    }
-    ticking = false;
-  }
-
-  function onScroll(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-</script>
-<script src="/assets/analytics.js" defer></script>
-<script src="/assets/content.js" defer></script>
-<script src="/assets/edit.js" defer></script>
-<script src="/assets/newsletter.js" defer></script>
-</body>
-</html>
