@@ -1,0 +1,11 @@
+---
+// Bottom marquee ticker. Items are doubled so the CSS loop is seamless.
+const { items = [] } = Astro.props;
+const loop = [...items, ...items];
+---
+
+<div class="ticker">
+  <div class="ticker-track">
+    {loop.map((t) => <span>{t}</span>)}
+  </div>
+</div>

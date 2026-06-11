@@ -1,0 +1,20 @@
+---
+// Hope Merchant newsletter signup row (submission wired by /assets/newsletter.js).
+const {
+  heading = 'Hope Merchant Newsletter',
+  text = 'One story a week about real people getting their lives back. No spam.',
+  style,
+} = Astro.props;
+---
+
+<div class="newsletter-row" style={style}>
+  <div class="nl-label">
+    <strong>{heading}</strong>
+    <p>{text}</p>
+  </div>
+  <form class="nl-form" data-newsletter>
+    <input type="email" placeholder="Your email address" aria-label="Email address" required>
+    <button type="submit">Subscribe →</button>
+  </form>
+  <div class="nl-status" data-nl-status></div>
+</div>

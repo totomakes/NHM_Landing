@@ -1,0 +1,224 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="No Half Measures — All In Is The Only Way Out"
+  description="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  ogTitle="No Half Measures — All In Is The Only Way Out"
+  ogDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  ogUrl="https://nhmlife.com/"
+  twitterTitle="No Half Measures — All In Is The Only Way Out"
+  twitterDescription="No Half Measures exists to inspire wholehearted living and transform broken lives through community, education, opportunity, and accountability."
+  fontsHref="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+>
+
+<!-- glowing sine-wave shader, fixed behind both panels -->
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div class="brand-mark" aria-hidden="true">NHM</div>
+
+<main class="split">
+
+  <!-- ── LEFT · THE MISSION (red dominant) ── -->
+  <a class="panel left" href="/home">
+    <div class="panel-inner">
+      <div class="eyebrow">
+        <span class="bar"></span>
+        <span class="mono" data-edit="gateway.left_eyebrow">// THE MISSION</span>
+      </div>
+      <h1 class="block ptitle">
+        <span data-edit="gateway.left_title_1">No Half</span><br>
+        <span data-edit="gateway.left_title_2">Measures</span>
+      </h1>
+      <p class="psub" data-edit="gateway.left_sub">All in is the only way out. Community, education, opportunity, accountability.</p>
+      <span class="enter" data-edit="gateway.left_cta">Enter the Mission</span><span class="enter-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- ── RIGHT · THE STORE (black dominant, disabled) ── -->
+  <div class="panel right" aria-disabled="true">
+    <span class="badge" data-edit="gateway.right_badge">Coming Soon</span>
+    <div class="panel-inner">
+      <div class="eyebrow">
+        <span class="bar"></span>
+        <span class="mono red" data-edit="gateway.right_eyebrow">// THE STORE</span>
+      </div>
+      <h1 class="block ptitle outline">
+        <span data-edit="gateway.right_title_1">NHM</span><br>
+        <span data-edit="gateway.right_title_2">Merch</span>
+      </h1>
+      <p class="psub" data-edit="gateway.right_sub">Wear the mission. Every piece funds recovery. The store is being built.</p>
+      <span class="soon-note mono" data-edit="gateway.right_note">→ DROPS SOON</span>
+    </div>
+  </div>
+
+</main>
+
+<div class="foot mono">© 2026 · NO HALF MEASURES · A 501(c)(3) · FREDERICKSBURG, VA</div>
+
+</Base>
+
+<style is:global>
+  :root{
+    --red:#da3123;
+    --bg:#0a0a0a;
+    --ink:#f5f4f1;
+    --ink-dim:#8a8784;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+  a{color:inherit;text-decoration:none}
+
+  .block{font-family:'Archivo Black','Archivo',sans-serif;font-weight:900;letter-spacing:-0.02em;line-height:0.88;text-transform:uppercase}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0.1em;text-transform:uppercase;font-size:11px}
+  .mono.red{color:var(--red)}
+
+  #bg{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+
+  .brand-mark{
+    position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:30;
+    border:2px solid var(--ink);padding:7px 11px 5px;
+    font-family:'Archivo Black',sans-serif;font-weight:900;font-size:18px;
+    letter-spacing:0.005em;line-height:1;text-transform:uppercase;color:var(--ink);
+    background:rgba(10,10,10,0.55);
+  }
+
+  .split{position:fixed;inset:0;z-index:10;display:flex}
+
+  .panel{
+    position:relative;flex:1;display:flex;align-items:center;justify-content:center;
+    padding:48px 36px;overflow:hidden;
+    transition:flex .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .panel-inner{max-width:520px;text-align:center}
+
+  .eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:30px}
+  .eyebrow .bar{width:42px;height:2px;background:currentColor;opacity:.7}
+
+  .ptitle{font-size:clamp(44px,7.2vw,118px);margin-bottom:22px}
+  .psub{font-size:15px;line-height:1.6;max-width:380px;margin:0 auto 36px}
+
+  /* ── left / mission ── */
+  .panel.left{background:rgba(218,49,35,0.93);color:#0a0a0a}
+  .panel.left .mono{color:rgba(0,0,0,0.75)}
+  .panel.left .psub{color:rgba(0,0,0,0.78)}
+  .panel.left .enter,.panel.left .enter-arrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:14px;letter-spacing:0.05em;
+    border:2px solid #0a0a0a;padding:16px 24px 12px;
+    transition:background .15s ease,color .15s ease;
+  }
+  .panel.left .enter-arrow{border-left:none;padding-left:18px;padding-right:18px}
+  .panel.left:hover{flex:1.12}
+  .panel.left:hover .enter,.panel.left:hover .enter-arrow{background:#0a0a0a;color:var(--red)}
+
+  /* ── right / store (disabled) ── */
+  .panel.right{background:rgba(10,10,10,0.78);color:var(--ink);cursor:default}
+  .panel.right .psub{color:var(--ink-dim)}
+  .panel.right .ptitle.outline{-webkit-text-stroke:2px var(--ink);color:transparent}
+  .panel.right .ptitle.outline span:last-child{-webkit-text-stroke:0;color:var(--red)}
+  .panel.right .badge{
+    position:absolute;top:26px;right:28px;z-index:5;
+    border:2px solid var(--red);color:var(--red);
+    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+    font-size:12px;letter-spacing:0.08em;padding:8px 12px 6px;
+    transform:rotate(6deg);
+    background:rgba(218,49,35,0.07);
+  }
+  .panel.right .soon-note{color:var(--ink-dim)}
+  .panel.right:hover .badge{transform:rotate(0deg);transition:transform .25s ease}
+
+  /* seam */
+  .panel.left::after{
+    content:"";position:absolute;top:0;right:0;bottom:0;width:2px;
+    background:#0a0a0a;
+  }
+
+  .foot{
+    position:fixed;bottom:18px;left:0;right:0;z-index:30;
+    text-align:center;color:var(--ink-dim);font-size:10px;pointer-events:none;
+  }
+
+  /* ── mobile: stack ── */
+  @media (max-width:780px){
+    html,body{overflow:auto}
+    .split{position:relative;flex-direction:column;min-height:100svh}
+    .panel{min-height:50svh;padding:80px 22px 64px}
+    .panel.left:hover{flex:1}
+    .panel.left::after{top:auto;right:0;left:0;bottom:0;width:auto;height:2px}
+    .ptitle{font-size:clamp(52px,15vw,96px)}
+    .brand-mark{top:18px}
+    .foot{position:relative;bottom:auto;padding:18px 0 26px;background:var(--bg)}
+    #bg{position:fixed}
+  }
+</style>
+
+<script is:inline>
+/* Glowing sine-wave background — vanilla WebGL port of the Three.js
+   "web-gl-shader" component, tinted NHM red. Zero dependencies. */
+(function () {
+  var canvas = document.getElementById('bg');
+  var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return; // no WebGL: panels render over plain black, still fine
+
+  var VERT = 'attribute vec2 position;void main(){gl_Position=vec4(position,0.,1.);}';
+  var FRAG =
+    'precision highp float;' +
+    'uniform vec2 resolution;uniform float time;' +
+    'const float xScale=1.0;const float yScale=0.5;const float distortion=0.05;' +
+    'void main(){' +
+    ' vec2 p=(gl_FragCoord.xy*2.0-resolution)/min(resolution.x,resolution.y);' +
+    ' float d=length(p)*distortion;' +
+    ' float rx=p.x*(1.0+d);float gx=p.x;float bx=p.x*(1.0-d);' +
+    ' float r=0.05/abs(p.y+sin((rx+time)*xScale)*yScale);' +
+    ' float g=0.05/abs(p.y+sin((gx+time)*xScale)*yScale);' +
+    ' float b=0.05/abs(p.y+sin((bx+time)*xScale)*yScale);' +
+    ' gl_FragColor=vec4(r,g*0.16,b*0.14,1.0);' + // crimson-dominant glow
+    '}';
+
+  function compile(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    return s;
+  }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  var uRes = gl.getUniformLocation(prog, 'resolution');
+  var uTime = gl.getUniformLocation(prog, 'time');
+  var t = 0;
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function frame() {
+    gl.uniform1f(uTime, t);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    t += 0.01;
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    t = 4.2; frame(); // single static frame for reduced-motion users
+  } else {
+    (function loop() { frame(); requestAnimationFrame(loop); })();
+  }
+})();
+</script>
